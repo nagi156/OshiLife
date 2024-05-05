@@ -1,0 +1,23 @@
+<% if admin_signed_in? && user_signed_in? %>
+  <% if request.fullpath.include? "/admin" %>
+    <!--adminログイン後のリンク-->
+    <% link_to "ユーザー一覧", admin_users_path %>
+    <% link_to "投稿一覧", admin_posts_path %>
+    <% link_to "ログアウト", destroy_admin_session_path %>
+  <% else %>
+    <!--userログイン後のリンク-->
+    <% link_to "ユーザー一覧", users_path %>
+    <% link_to "投稿一覧", posts_path %>
+    <% link_to "マイページ", current_user_path %>
+    <% link_to "新規投稿", new_post_path %>
+  <% end %>
+<% elsif user_signed_in? %>
+  <!--userログイン前のリンク-->
+  <% link_to "TOP", root_path %>
+  <% link_to "Oshi Lifeについて", about_path %>
+  <% link_to "新規登録", new_user_registration_path %>
+  <% link_to "ログイン", new_user_session_path %>
+<% else %>
+  <!--adminログイン前のリンク-->
+  <% link_to "ログイン", new_admin_session_path %>
+<% end %>
