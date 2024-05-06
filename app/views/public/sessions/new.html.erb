@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-10 justify-content-center my-5 mx-auto">
+      <%= render "public/shared/error_messages", resource: resource %>
 
       <h4 class="my-5 text-center">ログイン</h4>
 
@@ -15,12 +16,12 @@
         <div class="form-group d-flex">
           <div class="col-3 text-center"><%= f.label "パスワード" %></div>
           <div class="col-7">
-            <%= f.password_field :password, autocomplete: "current-password", placeholder: "パスワードを入力してください", class: "form-control" %>
+            <%= f.password_field :password, autocomplete: "current-password", class: "form-control" %>
           </div>
         </div>
 
         <div class="col-12 d-md-flex justify-content-center">
-          <%= f.submit "ログイン", class:"btn btn-outline-success" %>
+          <%= f.submit "ログイン", class: "btn btn-outline-success" %>
         </div>
       <% end %>
       <div class="col-12 my-5 text-center">

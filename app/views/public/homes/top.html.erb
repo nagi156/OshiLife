@@ -1,3 +1,17 @@
-
-<h1>TOPページ</h1>
-<h1>user</h1>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-10 justify-content-center my-5 mx-auto">
+      <h1 class= "my-5 text-center">Oshi Life</h1>
+      <div class="text-center">
+        <p>今まで以上にもっと「推し活」を楽しく！！</p>
+      </div>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-center">
+     <%= link_to "新規登録", new_user_registration_path, class: "btn btn-success mx-4" %>
+     <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary mx-4" %>
+    </div>
+    <div class="col-12 d-md-flex justify-content-center">
+      <%= link_to "お試しログイン", users_guest_sign_in_path, class: "btn btn-secondary my-5" %>
+    </div>
+  </div>
+</div>
