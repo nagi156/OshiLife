@@ -29,12 +29,12 @@ Rails.application.routes.draw do
   end
 
   #ここから管理者のルーティング↓
-  devise_for :admin, skip: [:registrations, :passwords], controllers: {
-    sessions: "admin/sessions"
-  }
   scope module: :admin do
     get "/admin" => "homes#top"
   end
+  devise_for :admin, skip: [:registrations, :passwords], controllers: {
+    sessions: "admin/sessions"
+  }
 
   namespace :admin do
     resources :posts, except: [:new, :index]
