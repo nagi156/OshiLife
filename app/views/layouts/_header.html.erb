@@ -3,29 +3,32 @@
     <div class="navbar-brand">
       <%= link_to "LOGO", root_path %>
     </div>
-    <ul class="navbar-nav justify-content-end">
+    <ul class="navbar-nav list-group-horizontal justify-content-end ">
       <% if admin_signed_in? %>
         <% if request.fullpath.include?("/admin")%>
           <!--adminログイン後のリンク-->
-          <li><%= link_to "ユーザー一覧", admin_users_path %></li>
-          <li><%=link_to "投稿一覧", admin_posts_path %></li>
-          <li><%=link_to "ログアウト", destroy_admin_session_path %></li>
+          <li><%= link_to "ユーザー一覧", admin_users_path, class: "nav-link mr-3" %></li>
+          <li><%=link_to "投稿一覧", admin_posts_path, class: "nav-link mr-3" %></li>
+          <l><%=link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link mr-3"%></li>
         <% else %>
           <!--userログイン後のリンク-->
-          <li><%= link_to "ユーザー一覧", users_path %></li>
-          <li><%= link_to "投稿一覧", posts_path %></li>
-          <li><%= link_to "マイページ", current_user_path %></li>
-          <li><%= link_to "新規投稿", new_post_path %></li>
+          <li><%= link_to "ユーザー一覧", users_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "投稿一覧", posts_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "マイページ", current_user_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "新規投稿", new_post_path, class: "nav-link mr-3" %></li>
+          <li><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link mr-3"%></li>
         <% end %>
-      <% elsif %>
-        <!--userログイン前のリンク-->
-        <li><%= link_to "TOP", root_path %></li>
-        <li><%= link_to "Oshi Lifeについて", about_path %></li>
-        <li><%= link_to "新規登録", new_user_registration_path %></li>
-        <li><%= link_to "ログイン", new_user_session_path %></li>
-      <% else %>
-        <!--adminログイン前のリンク-->
-        <li><%= link_to "ログイン", new_admin_session_path %></li>
+      <% else user_signed_in? %>
+        <% unless request.fullpath.include?("/admin")%>
+          <!--userログイン前のリンク-->
+          <li><%= link_to "TOP", root_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "ログイン", new_user_session_path, class: "nav-link mr-3" %></li>
+          <% else %>
+          <!--adminログイン前のリンク-->
+          <li><%= link_to "ログイン", new_admin_session_path, class: "nav-link mr-5" %></li>
+        <% end %>
       <% end %>
     </ul>
   </div>
