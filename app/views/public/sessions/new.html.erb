@@ -1,10 +1,8 @@
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-10 justify-content-center my-5 mx-auto">
-      <%= render "public/shared/error_messages", resource: resource %>
+    <div class="col-md-10 justify-content-center mx-auto">
 
       <h4 class="my-5 text-center">ログイン</h4>
-
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group d-flex">
           <div class="col-3 text-center"><%= f.label "ユーザー名" %></div>
