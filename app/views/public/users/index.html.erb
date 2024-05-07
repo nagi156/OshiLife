@@ -1,5 +1,15 @@
 <% @users.each do |user| %>
-  <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
-  <%= user.name %>
-  <%= user.introduction %>
+  <% if user == current_user %>
+    <%= link_to my_page_path do %>
+      <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
+      <%= user.name %>
+      <%= user.introduction %>
+    <% end %>
+  <% else %>
+    <%= link_to user_path(user) do %>
+      <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
+      <%= user.name %>
+      <%= user.introduction %>
+    <% end %>
+  <% end %>
 <% end %>
