@@ -1,9 +1,4 @@
-
-
-
 <%= image_tag @user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
-
 <%= @user.name %>
-
 <%= @user.introduction %>
-
+<%= render 'posts/index', posts: @posts %>

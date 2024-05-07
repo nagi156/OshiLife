@@ -1,0 +1,12 @@
+<% if posts.exists? %>
+  <% posts.each do |post| %>
+    <%= image_tag post.get_post_image, size: "200x200" %>
+    <%= posts.title %>
+
+    <%= image_tag post.user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
+    <%= post.user.name %>
+    <%= post.user.introduction %>
+  <% end %>
+<% else %>
+  <h6>投稿はされていません</h6>
+<% end %>

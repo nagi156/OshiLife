@@ -1,0 +1,16 @@
+<%= image_tag @my_page.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
+<%= @my_page.name %>
+<%= @my_page.introduction %>
+<% if @posts.exists? %>
+  <% @posts.each do |post| %>
+    <%= image_tag post.get_post_image, size: "200x200" %>
+    <%= posts.title %>
+
+    <%= image_tag post.my_page.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
+    <%= post.my_page.name %>
+    <%= post.my_page.introduction %>
+  <% end %>
+<% else %>
+  <h6>投稿はされていません</h6>
+<% end %>
+

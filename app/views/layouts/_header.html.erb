@@ -16,7 +16,7 @@
           <!--userログイン後のリンク-->
           <li><%= link_to "ユーザー一覧", users_path, class: "nav-link mr-3" %></li>
           <li><%= link_to "投稿一覧", posts_path, class: "nav-link mr-3" %></li>
-          <li><%= link_to "マイページ", user_path(current_user.id), class: "nav-link mr-3" %></li>
+          <li><%= link_to "マイページ", my_page_path, class: "nav-link mr-3" %></li>
           <li><%= link_to "新規投稿", new_post_path, class: "nav-link mr-3" %></li>
           <li><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link mr-3"%></li>
         <% end %>

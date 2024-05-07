@@ -6,6 +6,8 @@ class User < ApplicationRecord
          authentication_keys: [:name]
   validates :name, presence: true, length: { in: 1..50 }
 
+  has_many :posts, dependent: :destroy
+
   has_one_attached :profile_image
   # プロフィール画像の有無
   def get_profile_image

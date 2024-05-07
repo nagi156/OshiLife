@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
-    resources :users, param: :name, except: [:new, :destroy] do
+    get "/my_page", to: "users#my_page", as: "my_page"
+    get '/users/:id', to: 'users#show', as: 'user'
+    resources :users,except: [:new, :show,:destroy] do
       member do
         get :likes
       end
