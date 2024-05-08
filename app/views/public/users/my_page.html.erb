@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-3">
-      <%= link_to "マイページ", my_page_path %><br>
-      <%= link_to "新規投稿", new_post_path %>
+      <%= render 'layouts/side_bar' %>
     </div>
     <div class="col-md-8 offset-md-1">
       <div class="row">
@@ -16,9 +15,7 @@
               <i class="fa-solid fa-gear"></i>
             <% end %>
           <% end %>
-          <div class="text-center">
-            <%= @user.introduction %>
-          </div>
+          <div class="text-center"><%= @user.introduction %></div>
         </div>
       </div>
     </div>

@@ -1,36 +1,31 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <%= form_with model: post do |f| %>
-        <div class="form-group">
-          <!--完成画像-->
-          <%= f.file_field :post_image, accept: "image/*" %>
-        </div>
-        <div class="form-group">
-          <%= f.label "タイトル " %>
-          <%= f.text_field :title, class: "form-control" %>
-        </div>
-        <!--材料フォーム-->
-        <div id="material">
-          <%= f.fields_for :materials do |material| %>
-            <%= render 'material_fields', :f => material %>
-          <% end %>
-          <div class="add_link">
-            <%= link_to_add_association "追加", f, :materials %>
-          </div>
-        </div>
-
-        <!--作り方フォーム-->
-        <div id="material">
-          <%= f.fields_for :recipes do |recipe| %>
-            <%= render 'recipe_fields', :f => recipe %>
-          <% end %>
-          <div class="add_link">
-            <%= link_to_add_association "追加", f, :recipes %>
-          </div>
-        </div>
-        <%= f.submit "投稿", class: "btn btn-success" %>
-      <% end %>
+<%= form_with model: post do |f| %>
+  <div class="field">
+    <%= f.label "完成画像" %>
+    <%= f.file_field :post_image, accept: "image/*" %>
+  </div>
+  <div class="field">
+    <%= f.label "タイトル " %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
+  
+  <!--材料フォーム-->
+  <div id="material">
+    <%= f.fields_for :materials do |material| %>
+      <%= render 'material_fields', :f => material %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "追加", f, :materials %>
     </div>
   </div>
-</div>
+
+  <!--作り方フォーム-->
+  <div id="material">
+    <%= f.fields_for :recipes do |recipe| %>
+      <%= render 'recipe_fields', :f => recipe %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association "追加", f, :recipes %>
+    </div>
+  </div>
+  <%= f.submit "投稿", class: "btn btn-success" %>
+<% end %>

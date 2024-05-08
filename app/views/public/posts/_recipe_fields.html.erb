@@ -1,7 +1,14 @@
-<div class="form-group">
-  <%= f.label "作り方" %>
-  <%= f.file_field :post_image, accept: "image/*" %>
-  <%= f.text_area :instructions, row: "5", class: "form-control" %>
+<div class="nested-fields">
+  <div class="form-group">
+    <%= f.label "作り方" %>
+    <%= f.file_field :post_image, accept: "image/*" %>
+    <div class="row">
+      <div class="col-5">
+        <%= f.text_area :instructions, row: "5", class: "form-control",placeholder: "作り方をお書きください" %>
+      </div>
+      <div class="col-2">
+        <%= link_to_remove_association "削除", f, class: "btn btn-outline-danger", :remote => true%>
+      </div>
+    </div>
+  </div>
 </div>
-
-<%= link_to_remove_association "削除", f, class: "btn btn-outline-danger", :remote => true%>

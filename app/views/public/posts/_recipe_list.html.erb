@@ -1,0 +1,4 @@
+<% recipes.each do |recipe| %>
+  <%= image_tag recipe.post.get_post_image, size: "80x80"%>
+  <%= recipe.instructions %>
+<% end %>
