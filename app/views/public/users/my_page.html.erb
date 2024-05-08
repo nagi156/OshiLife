@@ -11,8 +11,10 @@
         </div>
         <div class="col-md-6">
           <%= @user.name %>
-          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
-            <i class="fa-solid fa-gear"></i>
+          <% unless @user.guest_user? %>
+            <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
+              <i class="fa-solid fa-gear"></i>
+            <% end %>
           <% end %>
           <div class="text-center">
             <%= @user.introduction %>

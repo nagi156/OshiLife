@@ -11,8 +11,7 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path
-      flash[:notice] = "投稿しました"
+      redirect_to posts_path, notice: "投稿しました"
     else
       render :new
       flash[:alert] = "投稿に失敗しました。投稿内容を再度ご確認ください。"

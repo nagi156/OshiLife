@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div class="col-md-6">
+      <h2 class= "text-center my-3">本当に退会しますか？</h2>
+      <p class= "text-center my-3">
+        退会をすると、アカウント情報の編集や投稿が閲覧できなくなります。<br>
+        退会する場合は「退会する」ボタンを押して下さい。
+      </p>
+      <div class="row mt-5 justify-content-around">
+        <div class="col-3">
+          <%= link_to "退会しない", my_page_path, class: "btn btn-primary" %>
+        </div>
+        <div class="col-3">
+          <%= link_to "退会する", withdrawal_path, method: :patch,class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

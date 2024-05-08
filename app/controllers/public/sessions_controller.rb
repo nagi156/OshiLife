@@ -28,6 +28,12 @@ class Public::SessionsController < Devise::SessionsController
     about_path
   end
 
+  def guest_sign_in
+    user = User.guest
+    sign_in user
+    redirect_to posts_path, notice: "ゲストさんでログインしました。"
+  end
+
   protected
 
   # If you have extra params to permit, append them to the sanitizer.
@@ -40,8 +46,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless user.valid_password?(params[:user][:password])
     return unless user.is_active?
       redirect_to posts_path
-    return　redirect_to new_user_registration_path
-      flash[:alert] = "退会済みです。再度ご登録をしてご利用ください"
+    return　redirect_to new_user_registration_path, alert: "退会済みです。再度ご登録をしてご利用ください"
   end
 
 end
