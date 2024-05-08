@@ -1,7 +1,29 @@
-<%= image_tag @user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
-<%= @user.name %>
-<%= @user.introduction %>
-<%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
-  <i class="fa-solid fa-gear"></i>
-<% end %>
-<%= render 'public/posts/index', posts: @posts %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to "マイページ", my_page_path %><br>
+      <%= link_to "新規投稿", new_post_path %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <div class="row">
+        <div class="col-md-2">
+          <%= image_tag @user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
+        </div>
+        <div class="col-md-6">
+          <%= @user.name %>
+          <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
+            <i class="fa-solid fa-gear"></i>
+          <% end %>
+          <div class="text-center">
+            <%= @user.introduction %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-4 my-4">
+      <%= render 'public/posts/index', posts: @posts %>
+    </div>
+  </div>
+</div>

@@ -19,10 +19,12 @@ class Public::SessionsController < Devise::SessionsController
   # end
 
   def after_sign_in_path_for(resource)
+    flash[:notice] = "ログインしました。"
     posts_path
   end
 
   def after_sign_out_path_for(resource)
+    flash[:notice] = "ログアウトしました。"
     about_path
   end
 
@@ -38,9 +40,7 @@ class Public::SessionsController < Devise::SessionsController
     return unless user.valid_password?(params[:user][:password])
     return unless user.is_active?
       redirect_to posts_path
-      flash[:notice] = "ログインしました。"
-    return
-      render new_user_registration_path
+    return　redirect_to new_user_registration_path
       flash[:alert] = "退会済みです。再度ご登録をしてご利用ください"
   end
 

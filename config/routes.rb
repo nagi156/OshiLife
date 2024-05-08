@@ -12,16 +12,18 @@ Rails.application.routes.draw do
     get "home/about" => "homes#about", as: "about"
     get "/my_page", to: "users#my_page", as: "my_page"
     get '/users/:id', to: 'users#show', as: 'user'
-    resources :users,except: [:new, :show,:destroy] do
+    resources :users, except: [:new, :show,:destroy] do
       member do
         get :likes
       end
-      get "users/unsubscribe" => "users#unsubscribe"
-      get "users/withdraw" => "users#withdraw"
       resource :relationships, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
     end
+    # 退会確認用のルーティング
+    get '/users/:id/unsubscribe' => 'users#unsubscribe', as: 'unsubscribe'
+    # 論理削除用のルーティング
+    patch '/users/:id/withdrawal' => 'users#withdrawal', as: 'withdrawal'
     resources :posts do
       resource :favorites, only: [:create, :destroy]
       resources :comment, only: [:create, :destroy]
