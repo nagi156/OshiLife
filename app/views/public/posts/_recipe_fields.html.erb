@@ -1,0 +1,7 @@
+<div class="form-group">
+  <%= f.label "作り方" %>
+  <%= f.file_field :post_image, accept: "image/*" %>
+  <%= f.text_area :instructions, row: "5", class: "form-control" %>
+</div>
+
+<%= link_to_remove_association "削除", f, class: "btn btn-outline-danger", :remote => true%>
