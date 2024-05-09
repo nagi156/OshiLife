@@ -6,9 +6,9 @@
     <div class="col-md-8 offset-md-1">
       <div class="row">
         <div class="col-4">
-          <%= image_tag @post.get_post_image, size: "200x200" %>
+          <%= image_tag @post.get_complete_image, size: "200x200" %>
         </div>
-        <div class="col-8">
+        <div class="col-8 p-0">
           <h3><%= @post.title %></h3>
           <%= render partial: 'material_list', locals:{ materials: @post.materials} %>
         </div>
@@ -16,7 +16,7 @@
           <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
         </div>
       </div>
-      
+
     </div>
   </div>
 </div>

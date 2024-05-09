@@ -1,13 +1,12 @@
-<% if posts.exists? %>
-  <% posts.each do |post| %>
-  <%= link_to post_path(post) do %>
-    <%= image_tag post.get_post_image, size: "200x200" %>
-    <%= post.title %>
-  <% end %>
+<% posts.each do |post| %>
+  <% if post.user.is_active? %>
+    <%= link_to post_path(post) do %>
+      <%= image_tag post.get_complete_image, size: "200x200" %>
+      <%= post.title %>
+    <% end %>
     <%= image_tag post.user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-primary" %>
     <%= post.user.name %>
     <%= post.user.introduction %>
   <% end %>
-<% else %>
-  <h6>投稿はされていません</h6>
 <% end %>
+

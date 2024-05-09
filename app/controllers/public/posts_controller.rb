@@ -1,7 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
-  
+
   def new
     @post = Post.new
     @material = @post.materials.build
@@ -55,12 +55,12 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(
-      :title,:post_image,#postモデルの属性
-      materials_attributes:[:id,:name, :amount, :_destroy],#材料モデル（子モデル）の属性
-      recipes_attributes:[:id, :instructions, :_destroy]#作り方モデル（子モデル）の属性
+      :title,:complete_image,#postモデルの属性
+      materials_attributes:[:id,:name, :amount,:_destroy],#材料モデル（子モデル）の属性
+      recipes_attributes:[:id, :instructions, :recipe_image, :_destroy]#作り方モデル（子モデル）の属性
       )
   end
-  
+
   def ensure_correct_user
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id

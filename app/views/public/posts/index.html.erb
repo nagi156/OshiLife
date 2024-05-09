@@ -4,7 +4,11 @@
       <%= render 'layouts/side_bar' %>
     </div>
     <div class="col-md-8 offset-md-1">
+      <% if @posts.exists? %>
         <%= render 'index', posts: @posts %>
+      <% else %>
+        <h6>投稿はされていません</h6>
+      <% end %>
     </div>
   </div>
-</div>        
+</div>
