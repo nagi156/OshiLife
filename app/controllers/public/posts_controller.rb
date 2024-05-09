@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
-
+  before_action :ensure_correct_user, only: [:edit, :update]
+  
   def new
     @post = Post.new
     @material = @post.materials.build
@@ -26,14 +27,28 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-
   def edit
+    @post = Post.find(params[:id])
   end
 
   def update
+    @post = Post.find(params[:id])
+    if @post.update
+      redirect_to post_path(@post), notice: "編集しました。"
+    else
+      render :edit
+      flash[:alert] = "編集に失敗しました。内容を確認してください。"
+    end
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      redirect_to my_page_path
+    else
+      render :show
+      flash[:alert] = "削除できませんでした。"
+    end
   end
 
   private
@@ -44,5 +59,12 @@ class Public::PostsController < ApplicationController
       materials_attributes:[:id,:name, :amount, :_destroy],#材料モデル（子モデル）の属性
       recipes_attributes:[:id, :instructions, :_destroy]#作り方モデル（子モデル）の属性
       )
+  end
+  
+  def ensure_correct_user
+    @post = Post.find(params[:id])
+    unless @post.user_id == current_user.id
+      redirect_to posts_path
+    end
   end
 end
