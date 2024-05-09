@@ -1,11 +1,11 @@
 <%= form_with model: post do |f| %>
-  <div class="field">
-    <%= f.label "完成画像" %>
+  <div class="form-group row">
+    <%= f.label "完成画像",class: "col-4 col-form-label" %>
     <%= f.file_field :complete_image, accept: "image/*" %>
   </div>
-  <div class="field">
-    <%= f.label "タイトル " %>
-    <%= f.text_field :title, class: "form-control" %>
+  <div class="form-group row">
+    <%= f.label "タイトル ",class: "col-3 col-form-label" %>
+    <%= f.text_field :title, class: "col-9 form-control" %>
   </div>
 
   <!--材料フォーム-->
@@ -14,18 +14,24 @@
       <%= render 'material_fields', :f => material %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association "追加", f, :materials %>
+      <%= link_to_add_association "追加", f, :materials, class: "btn btn-primary" %>
     </div>
   </div>
 
   <!--作り方フォーム-->
-  <div id="material">
+  <div id="recipe">
     <%= f.fields_for :recipes do |recipe| %>
       <%= render 'recipe_fields', :f => recipe %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association "追加", f, :recipes %>
+        <%= link_to_add_association "追加", f, :recipes, class: "btn btn-primary" %>
     </div>
   </div>
-  <%= f.submit "投稿", class: "btn btn-success" %>
+  <div class="form-group mt-5">
+    <% if @post.new_record? %>
+      <%= f.submit "投稿", class: "btn btn-success" %>
+    <% else %>
+      <%= f.submit "編集を保存", class: "btn btn-success" %>
+    <% end %>
+  </div>
 <% end %>

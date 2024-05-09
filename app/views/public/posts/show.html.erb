@@ -16,6 +16,8 @@
           <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
         </div>
       </div>
+      <%= link_to "編集",edit_post_path(@post), class: "btn btn-success" %>
+      <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
 
     </div>
   </div>
