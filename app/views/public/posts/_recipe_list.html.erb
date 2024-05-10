@@ -1,4 +1,10 @@
 <% recipes.each do |recipe| %>
-  <%= image_tag recipe.get_recipe_image, size: "80x80"%>
-  <%= recipe.instructions %>
+  <div class="d-flex">
+    <div class="flex-shrink-0">
+      <%= image_tag recipe.get_recipe_image, size: "100x100"%>
+    </div>
+    <div class="flex-grow-1 ms-3 ml-3">
+      <%= recipe.instructions %>
+    </div>
+  </div>
 <% end %>

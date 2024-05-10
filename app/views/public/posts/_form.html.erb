@@ -32,6 +32,7 @@
       <%= f.submit "投稿", class: "btn btn-success" %>
     <% else %>
       <%= f.submit "編集を保存", class: "btn btn-success" %>
+      <%= link_to "戻る", post_path(post), class: "btn btn-secondary mx-3" %>
     <% end %>
   </div>
 <% end %>
