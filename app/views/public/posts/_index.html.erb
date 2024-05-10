@@ -1,20 +1,31 @@
 <div class="d-flex flex-wrap">
   <% posts.each do |post| %>
     <% if post.user.is_active? %>
-      <%= link_to post_path(post) do %>
-        <div class="card border-dark text-center mx-1" style="width: 15rem;">
-          <div class="card-img-top">
+      <div class="card border-dark text-center m-3" style="width: 15rem;">
+        <%= link_to post_path(post) do %>
+          <div class="card-img-top pt-2">
             <%= image_tag post.get_complete_image, size: "200x200" %>
           </div>
           <div class="card-body">
             <h5 class="card-title"><%= post.title %></h5>
-            <div class="text-left">
-              <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-primary" %>
-              <%= post.user.name %>
-            </div>
+          </div>
+        <% end %>
+        <div class="card-body pt-0">
+          <div class="text-left">
+            <% if post.user_id == current_user.id %>
+              <%= link_to my_page_path do %>
+                <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                <%= post.user.name %>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(post.user) do %>
+                <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                <%= post.user.name %>
+              <% end %>
+            <% end %>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 </div>

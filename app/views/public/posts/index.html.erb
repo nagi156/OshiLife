@@ -1,9 +1,6 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-3">
-      <%= render 'layouts/side_bar' %>
-    </div>
-    <div class="col-md-8 offset-md-1">
+    <div class="col">
       <% if @posts.exists? %>
         <%= render 'index', posts: @posts %>
       <% else %>
