@@ -1,6 +1,10 @@
 <div class="container">
   <div class="row">
-    <div class="col">
+    <div class="col-3">
+      <%= render 'layouts/side_bar' %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <h4>投稿一覧</h4>
       <% if @posts.exists? %>
         <%= render 'index', posts: @posts %>
       <% else %>

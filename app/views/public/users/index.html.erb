@@ -1,37 +1,42 @@
 <div class="container">
   <div class="row">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>ユーザー一覧</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @users.each do |user| %>
+    <div class="col-3">
+      <%= render 'layouts/side_bar' %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <table class="table">
+        <thead>
           <tr>
-            <% if user.is_active? %>
-              <% if user == current_user %>
-                <td class="width-20">
-                  <%= link_to my_page_path do %>
-                    <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-                    <%= user.name %>
-                  <% end %>
-                </td>
-                <td class="width-80"><%= user.introduction %></td>
-              <% else %>
-                <td class="width-20">
-                  <%= link_to user_path(user) do %>
-                    <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-                    <%= user.name %>
-                  <% end %>
-                </td>
-                 <td class="width-80"><%= user.introduction %></td>
-              <% end %>
-            <% end %>
+            <th>ユーザー一覧</th>
+            <th></th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+            <tr>
+              <% if user.is_active? %>
+                <% if user == current_user %>
+                  <td class="width-20">
+                    <%= link_to my_page_path do %>
+                      <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                      <%= user.name %>
+                    <% end %>
+                  </td>
+                  <td class="width-80"><%= user.introduction %></td>
+                <% else %>
+                  <td class="width-20">
+                    <%= link_to user_path(user) do %>
+                      <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                      <%= user.name %>
+                    <% end %>
+                  </td>
+                   <td class="width-80"><%= user.introduction %></td>
+                <% end %>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
