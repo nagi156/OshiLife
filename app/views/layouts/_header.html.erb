@@ -14,6 +14,7 @@
       <% elsif user_signed_in? %>
         <% unless request.fullpath.include?("/admin") %>
           <!--userログイン後のリンク-->
+          <li><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
           <li><%= link_to "ユーザー一覧", users_path, class: "nav-link mr-3",style: "color: #98514B;"%></li>
           <li><%= link_to "投稿一覧", posts_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
           <li><%= link_to "マイページ", my_page_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
@@ -23,7 +24,6 @@
       <% else %>
         <% unless request.fullpath.include?("/admin")%>
           <!--userログイン前のリンク-->
-          <li><%= link_to "TOP", root_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
           <li><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
           <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
           <li><%= link_to "ログイン", new_user_session_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>

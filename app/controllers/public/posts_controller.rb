@@ -12,10 +12,11 @@ class Public::PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user_id = current_user.id
     if @post.save
-      redirect_to posts_path, notice: "投稿しました"
+      flash[:notice] = "投稿しました"
+      redirect_to posts_path
     else
+      flash.now[:alert] = "投稿に失敗しました。投稿内容を再度ご確認ください。"
       render :new
-      flash[:alert] = "投稿に失敗しました。投稿内容を再度ご確認ください。"
     end
   end
 
@@ -36,8 +37,8 @@ class Public::PostsController < ApplicationController
     if @post.update(post_params)
       redirect_to post_path(@post), notice: "編集しました。"
     else
-      render :edit
       flash[:alert] = "編集に失敗しました。内容を確認してください。"
+      render :edit
     end
   end
 
@@ -46,8 +47,8 @@ class Public::PostsController < ApplicationController
     if @post.destroy
       redirect_to my_page_path
     else
-      render :show
       flash[:alert] = "削除できませんでした。"
+      render :show
     end
   end
 
