@@ -5,9 +5,9 @@
       <h4 class="my-5 text-center">ログイン</h4>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-group d-flex">
-          <div class="col-3 text-center"><%= f.label "ユーザー名" %></div>
+          <div class="col-3 text-center"><%= f.label "メールアドレス" %></div>
           <div class="col-7">
-            <%= f.text_field :name, autofocus: true, placeholder: "ユーザー名を入力してください", class: "form-control" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "sample@example", class: "form-control" %>
           </div>
         </div>
 

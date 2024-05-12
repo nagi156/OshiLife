@@ -38,7 +38,7 @@ class Public::SessionsController < Devise::SessionsController
 
   # If you have extra params to permit, append them to the sanitizer.
   def user_state
-    user = User.find_by(name: params[:user][:name])
+    user = User.find_by(email: params[:user][:email])  # メールアドレスでユーザーを検索
     return if user.nil?
     return unless user.valid_password?(params[:user][:password])
     return if user.is_active
