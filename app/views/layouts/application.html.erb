@@ -10,16 +10,18 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <%= render 'layouts/header' %>
-  </header>
-
   <body>
-    <div class="text-center">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+    <div id="wrapper">
+      <header>
+        <%= render 'layouts/header' %>
+      </header>
+
+          <div class="text-center">
+            <p class="notice"><%= notice %></p>
+            <p class="alert"><%= alert %></p>
+          </div>
+          <%= yield %>
+      <footer><%= render 'layouts/footer' %></footer>
     </div>
-    <%= yield %>
   </body>
-  <footer><%= render 'layouts/footer' %></footer>
 </html>

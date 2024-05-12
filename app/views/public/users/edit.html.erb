@@ -2,6 +2,7 @@
   <div class="row justify-content-md-center">
     <div class="col-6">
       <h5>プロフィールの変更</h5>
+      <%= render 'layouts/errors', obj: @user %>
       <%= form_with model: @user do |f| %>
         <div class="form-group">
           <%= f.label "プロフィール画像" %>
