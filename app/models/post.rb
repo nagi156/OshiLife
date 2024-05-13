@@ -23,4 +23,10 @@ class Post < ApplicationRecord
   def image_convert_for_complete_image(image)
      complete_image.variant(resize: "300").processed
   end
+
+  # 検索機能のメソッド
+  def self.search_for(search, word)
+    Post.where("title LIKE ?", "%#{word}%")
+  end
+
 end

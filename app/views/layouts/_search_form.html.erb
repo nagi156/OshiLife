@@ -1,0 +1,43 @@
+<% if admin_signed_in? %>
+  <%= form_with url: admin_search_path, method: :get do |f| %>
+    <div class="row mr-3 justify-content-end">
+      <div class="d-flex">
+        <div class="col-8 p-0">
+          <%= f.text_field :word, class: "form-control", placeholder: "キーワード" %>
+          <%= f.hidden_field :search, value: 'partial' %>
+        </div>
+        <div class="col-4">
+          <%= f.submit "検索", class: "btn btn-outline-success btn-block" %>
+        </div>
+      </div>
+    </div>
+    <div class="button_radio text-right">
+      <%= f.radio_button :model,"ユーザー",checked: true %>
+      <%= f.label "ユーザー" %>
+      <%= f.radio_button :model,"投稿" %>
+      <%= f.label "投稿" %>
+    </div>
+  <% end %>
+<% elsif user_signed_in? %>
+  <%= form_with url: search_path, method: :get do |f| %>
+    <div class="row mr-3 justify-content-end">
+      <div class="d-flex">
+        <div class="col-8 p-0">
+          <%= f.text_field :word, class: "form-control", placeholder: "キーワード" %>
+          <%= f.hidden_field :search, value: 'partial' %>
+        </div>
+        <div class="col-4">
+          <%= f.submit "検索", class: "btn btn-outline-success btn-block" %>
+        </div>
+      </div>
+    </div>
+    <div class="button_radio text-right">
+      <%= f.radio_button :model,"ユーザー",checked: true %>
+      <%= f.label "ユーザー" %>
+      <%= f.radio_button :model,"投稿" %>
+      <%= f.label "投稿" %>
+    </div>
+  <% end %>
+<% else %>
+  <br>
+<% end %>

@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
 
   has_one_attached :profile_image
-  # プロフィール画像の有無
+  # プロフィール画像の有無&リサイズ
   def get_profile_image
     if profile_image.attached?
       image_convert_for_profile_image(profile_image)
@@ -21,7 +21,6 @@ class User < ApplicationRecord
   def image_convert_for_profile_image(image)
     profile_image.variant( resize: "208" ).processed
   end
-
 
   # 有効ユーザーのみログインできるメソッド
   def active_for_authentication?
@@ -39,4 +38,11 @@ class User < ApplicationRecord
   def guest_user?
     email == GUEST_USER_EMAIL
   end
+
+  # 検索機能のメソッド
+  def self.search_for(search, word)
+    User.where("name LIKE ?", "%#{word}%")
+  end
+
 end
+

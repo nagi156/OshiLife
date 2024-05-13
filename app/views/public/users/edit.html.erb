@@ -1,26 +1,24 @@
-<div class="container">
-  <div class="row justify-content-md-center">
-    <div class="col-6">
-      <h5>プロフィールの変更</h5>
-      <%= render 'layouts/errors', obj: @user %>
-      <%= form_with model: @user do |f| %>
-        <div class="form-group">
-          <%= f.label "プロフィール画像" %>
-          <%= f.file_field :profile_image, accept: "image/*" %>
-        </div>
-        <div class="form-group">
-          <%= f.label "ユーザー名" %>
-          <%= f.text_field :name, class: "form-control" %>
-        </div>
-         <div class="form-group">
-          <%= f.label "自己紹介" %>
-          <%= f.text_area :introduction, row: "5", class: "form-control" %>
-        </div>
-        <div class="row justify-content-between">
-          <div class="col-3"><%= f.submit "保存", class: "btn btn-success" %></div>
-          <div class="col-3"><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></div>
-        </div>
-      <% end %>
-    </div>
+<div class="row justify-content-md-center">
+  <div class="col-6">
+    <h5>プロフィールの変更</h5>
+    <%= render 'layouts/errors', obj: @user %>
+    <%= form_with model: @user do |f| %>
+      <div class="form-group">
+        <%= f.label "プロフィール画像" %>
+        <%= f.file_field :profile_image, accept: "image/*" %>
+      </div>
+      <div class="form-group">
+        <%= f.label "ユーザー名" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+       <div class="form-group">
+        <%= f.label "自己紹介" %>
+        <%= f.text_area :introduction, row: "5", class: "form-control" %>
+      </div>
+      <div class="row justify-content-between">
+        <div class="col-3"><%= f.submit "保存", class: "btn btn-success" %></div>
+        <div class="col-3"><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></div>
+      </div>
+    <% end %>
   </div>
 </div>
