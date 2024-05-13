@@ -1,0 +1,10 @@
+<%= form_with model: [post, comment] do |f| %>
+<div class="row g-2 my-1">
+  <div class="col-10">
+    <%= f.text_area :comment, class: "form-control" %>
+  </div>
+  <div class="col-2">
+    <%= f.submit "返信", class: "btn btn-secondary my-1" %>
+  </div>
+</div>
+<% end %>

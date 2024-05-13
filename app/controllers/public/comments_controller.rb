@@ -15,4 +15,9 @@ class Public::CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     redirect_to request.referer, notice: "コメントを削除しました。"
   end
+  private
+  
+  def comment_params
+    params.require(:comment).permit(:comment)
+  end
 end
