@@ -30,7 +30,6 @@ Rails.application.routes.draw do
       resources :comment, only: [:create, :destroy]
     end
     resources :chats, only: [:show, :create, :destroy]
-    get "search" => "searches#search"
   end
 
   #ここから管理者のルーティング↓
@@ -43,6 +42,6 @@ Rails.application.routes.draw do
     resources :posts, except: [:new, :index]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
-    get "search" => "searches#search"
   end
+  get "search" => "searches#search"
 end

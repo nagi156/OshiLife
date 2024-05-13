@@ -15,12 +15,14 @@
       <header>
         <%= render 'layouts/header' %>
       </header>
-
-          <div class="text-center">
-            <p class="notice"><%= notice %></p>
-            <p class="alert"><%= alert %></p>
-          </div>
-          <%= yield %>
+      <main>
+        <div class="text-center">
+          <p class="notice p-0"><%= notice %></p>
+          <p class="alert p-0"><%= alert %></p>
+        </div>
+        <%= render 'layouts/search_form' %>
+        <%= yield %>
+      </main>
       <footer><%= render 'layouts/footer' %></footer>
     </div>
   </body>
