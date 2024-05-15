@@ -7,8 +7,8 @@
       <% if admin_signed_in? %>
         <% if request.fullpath.include?("/admin")%>
           <!--adminログイン後のリンク-->
-          <li><%= link_to "ユーザー一覧", admin_users_path, class: "nav-link mr-3" %></li>
-          <li><%=link_to "投稿一覧", admin_posts_path, class: "nav-link mr-3" %></li>
+          <li><%= link_to "ユーザー一覧", admin_users_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li><%=link_to "投稿一覧", admin_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
           <l><%=link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;"%></li>
         <% end %>
       <% elsif user_signed_in? %>

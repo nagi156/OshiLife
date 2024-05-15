@@ -1,9 +1,8 @@
-<!--投稿一覧-->
+<h4 class="text-center">投稿一覧</h4>
 <div class="row">
   <div class="col-12">
-    <h4>投稿一覧</h4>
     <% if @posts.exists? %>
-      <%= render 'public/posts/index', posts: @posts %>
+      <%= render 'index', posts: @posts %>
     <% else %>
       <h6>投稿はされていません</h6>
     <% end %>

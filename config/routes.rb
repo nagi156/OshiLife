@@ -39,7 +39,7 @@ Rails.application.routes.draw do
   }
 
   namespace :admin do
-    root "homes#top"
+    get '' => "homes#top"
     resources :posts, except: [:new, :index]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
