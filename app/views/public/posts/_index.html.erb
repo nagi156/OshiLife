@@ -1,7 +1,7 @@
 <div class="d-flex flex-wrap">
   <% posts.each do |post| %>
     <% if post.user.is_active? %>
-      <div class="card border-dark text-center m-3" style="width: 15rem;">
+      <div class="card border-dark text-center m-2" style="width: 15rem;">
         <%= link_to post_path(post) do %>
           <div class="card-img-top pt-2">
             <%= image_tag post.get_complete_image, size: "200x200" %>

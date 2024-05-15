@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { in: 1..50 }
 
   has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_one_attached :profile_image
   # プロフィール画像の有無&リサイズ

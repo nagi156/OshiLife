@@ -1,8 +1,8 @@
 <%= render 'layouts/errors', obj: post %>
 <%= form_with model: post do |f| %>
-  <div class="form-group row">
-    <%= f.label "完成画像",class: "col-4 col-form-label" %>
-    <%= f.file_field :complete_image, accept: "image/*" %>
+  <div class="d-flex flex-wrap form-group row">
+    <%= f.label "完成画像",class: "col-4 col-md-3 col-form-label" %>
+    <%= f.file_field :complete_image, accept: "image/*",class: "col-8 col-md-9" %>
   </div>
   <div class="form-group row">
     <%= f.label "タイトル ",class: "col-3 col-form-label" %>
@@ -15,7 +15,9 @@
       <%= render 'material_fields', :f => material %>
     <% end %>
     <div class="links">
-      <%= link_to_add_association "追加", f, :materials, class: "btn btn-primary" %>
+      <%= link_to_add_association f, :materials, class: "btn btn-primary col-6 col-md-3" do %>
+        <i class="fa-solid fa-plus"></i> 追加
+      <% end %>
     </div>
   </div>
 
@@ -25,12 +27,16 @@
       <%= render 'recipe_fields', :f => recipe %>
     <% end %>
     <div class="links">
-        <%= link_to_add_association "追加", f, :recipes, class: "btn btn-primary" %>
+      <%= link_to_add_association f, :recipes, class: "btn btn-primary col-6 col-md-3" do %>
+        <i class="fa-solid fa-plus"></i> 追加
+      <% end %>
     </div>
   </div>
-  <div class="form-group mt-5">
+  <div class="form-group">
     <% if @post.new_record? %>
-      <%= f.submit "投稿", class: "btn btn-success" %>
+      <div class="post_btn">
+        <%= f.submit "投稿", class: "btn btn-success col-6 col-md-4" %>
+      </div>
     <% else %>
       <%= f.submit "編集を保存", class: "btn btn-success" %>
       <%= link_to "戻る", post_path(post), class: "btn btn-secondary mx-3" %>

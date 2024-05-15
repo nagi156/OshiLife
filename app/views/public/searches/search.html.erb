@@ -1,7 +1,15 @@
-<% if @model == "ユーザー" %>
-  <h4>ユーザー検索　「<%= @word %>」の結果</h4>
-    <%= render 'public/users/index', users: @records %>
-<% else %>
-  <h4>投稿検索　「<%= @word %>」の結果</h4>
-    <%= render 'public/posts/index', posts: @records %>
-<% end %>
+<div class="row">
+  <div class="col-3">
+    <%= render 'layouts/side_bar' %>
+  </div>
+  <div class="col-9">
+    <% if @model == "ユーザー" %>
+      <h4>ユーザー検索　「<%= @word %>」の結果</h4>
+        <%= render 'public/users/index', users: @records %>
+    <% else %>
+      <h4>投稿検索　「<%= @word %>」の結果</h4>
+        <%= render 'public/posts/index', posts: @records %>
+    <% end %>
+  </div>
+</div>
+

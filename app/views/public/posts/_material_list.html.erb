@@ -1,10 +1,10 @@
 <% materials.each do |material| %>
-  <ul class="list-group-flush col-6">
-    <li class="list-group-item p-0">
-      <div class="d-flex">
-        ・<%= material.name %>
-        <span class="ml-3"><%= material.amount %>個</span>
-      </div>
-    </li>
+  <ul class="row d-flex flex-wrap list-group-flush">
+    <div class="d-flex">
+      <li>
+        <span class="col-8"><%= material.name %></span>
+        <span class="col-4"><%= material.amount %>個</span>
+      </li>
+    </div>
   </ul>
 <% end %>

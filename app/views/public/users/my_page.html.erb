@@ -1,5 +1,5 @@
 <div class="row justify-content-center mb-4">
-  <div class="col-3">
+  <div class="col-md-3">
     <%= render 'layouts/side_bar' %>
   </div>
   <div class="col-md-9">
@@ -10,8 +10,8 @@
       </div>
       <div class="col-md-6 text-center">
         <div class="row">
-          <div class="col-7"><h5><%= @user.name %></h5></div>
-          <div class="col-5">
+          <div class="user_name col-7"><h5><%= @user.name %></h5></div>
+          <div class="edit_btn col-5">
             <% unless @user.guest_user? %>
               <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
                 編集　<i class="fa-solid fa-gears"></i>
@@ -25,8 +25,12 @@
       <div class="col-8"><%= @user.introduction %></div>
     </div>
     <h4>投稿一覧</h4>
-    <div class="row justify-content-center">
-      <%= render 'public/posts/index', posts: @posts %>
+    <div class="row">
+      <% if @posts.exists? %>
+        <%= render 'public/posts/index', posts: @posts %>
+      <% else %>
+        <h6>投稿はされていません</h6>
+      <% end %>
     </div>
   </div>
 </div>
