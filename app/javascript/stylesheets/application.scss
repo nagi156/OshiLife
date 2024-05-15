@@ -20,7 +20,16 @@ footer {
   margin-left: 30%;
 }
 
-.comment_counter{
-  margin-left: 80%;
+#comment_counter{
+  margin-left: 50%;
   line-height: 50px;
+}
+
+.user_name, .edit_btn{
+  padding-top: 5%;
+}
+.links, .post_btn{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10%;
 }

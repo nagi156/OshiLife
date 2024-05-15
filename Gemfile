@@ -59,6 +59,8 @@ gem 'devise'
 gem 'kaminari','~> 1.2.1'
 gem 'cocoon'
 gem 'image_processing', '~> 1.2'
+gem 'jquery-rails'
+
 
 gem 'dotenv-rails'
 group :production do

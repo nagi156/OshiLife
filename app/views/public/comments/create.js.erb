@@ -1,0 +1,3 @@
+$("#comment_counter").html("コメント数 <%= @post.comments.count %>");
+$("#comment_index").html("<%= j(render 'public/comments/index', post: @post) %>");
+$("#comment_area").val("");

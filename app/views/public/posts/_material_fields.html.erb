@@ -1,18 +1,16 @@
 <div class="nested-fields">
-  <div class="form-group row g-3">
-    <div class="form-group col-7">
-      <div class="row">
+  <div class="d-flex flex-wrap form-group row g-3">
+    <div class="form-group col-5 col-md-7">
+      <div class="form-group row">
         <%= f.label "材料",class: "col-5 col-form-label"  %>
-        <div class="col-7 p-0">
-          <%= f.text_field :name, class: "form-control", placeholder: "例) うちわ" %>
-        </div>
+        <%= f.text_field :name, class: "col-7 form-control", placeholder: "例) うちわ" %>
       </div>
     </div>
-    <div class="form-group col-3">
+    <div class="form-group col-4 col-md-3">
       <%= f.label "数量",class: "col-form-label"%>
       <%= f.select :amount, *[1..20] %>
     </div>
-    <div class="col-2 px-0">
+    <div class="col-3 col-md-2 px-0">
       <%= link_to_remove_association "削除", f, class: "btn btn-outline-danger", :remote => true%>
     </div>
   </div>
