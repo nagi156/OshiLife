@@ -1,35 +1,38 @@
-<nav class="navbar bg-body-tertiary" style="background-color: #f5b2b2;">
-  <div class="container-fluid">
-    <div class="navbar-brand">
-      <%= link_to "OshiLife", root_path,style: "color: #98514B;" %>
-    </div>
-    <ul class="navbar-nav list-group-horizontal justify-content-end ">
+<nav class="navbar navbar-expand-lg navbar-light fixed-top">
+  <div class="navbar-brand">
+    <%= link_to "OshiLife", root_path,style: "color: #98514B;" %>
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+    <ul class="navbar-nav">
       <% if admin_signed_in? %>
         <% if request.fullpath.include?("/admin")%>
           <!--adminログイン後のリンク-->
-          <li><%= link_to "ユーザー一覧", admin_users_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%=link_to "投稿一覧", admin_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <l><%=link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;"%></li>
+          <li class="nav-item"><%= link_to "ユーザー一覧", admin_users_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%=link_to "投稿一覧", admin_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%=link_to "ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;"%></li>
         <% end %>
       <% elsif user_signed_in? %>
         <% unless request.fullpath.include?("/admin") %>
           <!--userログイン後のリンク-->
-          <li><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%= link_to "ユーザー一覧", users_path, class: "nav-link mr-3",style: "color: #98514B;"%></li>
-          <li><%= link_to "投稿一覧", posts_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%= link_to "マイページ", my_page_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%= link_to "新規投稿", new_post_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;"%></li>
+          <li class="nav-item"><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "ユーザー一覧", users_path, class: "nav-link mr-3",style: "color: #98514B;"%></li>
+          <li class="nav-item"><%= link_to "投稿一覧", posts_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "マイページ", my_page_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "新規投稿", new_post_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%=link_to "ログアウト", destroy_user_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;"%></li>
         <% end %>
       <% else %>
         <% unless request.fullpath.include?("/admin")%>
           <!--userログイン前のリンク-->
-          <li><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%= link_to "新規登録", new_user_registration_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
-          <li><%= link_to "ログイン", new_user_session_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "Oshi Lifeについて", about_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "新規登録", new_user_registration_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "ログイン", new_user_session_path, class: "nav-link mr-3",style: "color: #98514B;" %></li>
         <% else %>
           <!--adminログイン前のリンク-->
-          <li><%= link_to "ログイン", new_admin_session_path, class: "nav-link mr-5",style: "color: #98514B;" %></li>
+          <li class="nav-item"><%= link_to "ログイン", new_admin_session_path, class: "nav-link mr-5",style: "color: #98514B;" %></li>
         <% end %>
       <% end %>
     </ul>
