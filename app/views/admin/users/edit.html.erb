@@ -2,7 +2,7 @@
   <div class="col-12 col-lg-6">
     <h5>プロフィールの変更</h5>
     <%= render 'layouts/errors', obj: @user %>
-    <%= form_with model: @user do |f| %>
+    <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
       <div class="form-group">
         <%= f.label "プロフィール画像" %>
         <%= f.file_field :profile_image, accept: "image/*" %>
@@ -23,7 +23,7 @@
           <%= f.radio_button :is_active, :false %>
           <%= f.label :is_active, "退会", { value: :false } %>
         </div>
-        <div class="col-lg-3 text-right"><%= f.submit "保存", class: "btn btn-success" %></div>
+        <div class="col-lg-3 text-right"><%= f.submit "変更を保存", class: "btn btn-success" %></div>
       </div>
     <% end %>
   </div>
