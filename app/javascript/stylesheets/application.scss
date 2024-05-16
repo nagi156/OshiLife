@@ -15,10 +15,6 @@ footer {
   margin-right: 10%;
 }
 
-.side_link{
-  margin-left: 30%;
-}
-
 #comment_counter{
   margin-left: 50%;
   line-height: 50px;
@@ -66,13 +62,13 @@ nav{
 // @include media-breakpoint-up(sm) {
 // 極小デバイス（縦向きモバイル, 576px 未満）
 @media (max-width: 575.98px) {
- label {
+ label,.card-title {
    font-size: 1.0rem;
  }
 }
 
 @media (max-width: 575.98px) {
- p {
+ p, .user_name_index, .introduction, {
    font-size: 0.7rem;
  }
 }

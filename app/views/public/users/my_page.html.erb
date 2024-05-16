@@ -1,10 +1,7 @@
+<h5 class="text-center">プロフィール</h5>
 <div class="row justify-content-center mb-4">
-  <div class="col-md-3">
-    <%= render 'layouts/side_bar' %>
-  </div>
-  <div class="col-md-9">
-    <h5>プロフィール</h5>
-    <div class="row">
+  <div class="col-12 col-md-10 col-lg-8">
+    <div class="row justify-content-center">
       <div class="col-md-2">
         <%= image_tag @user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
       </div>
@@ -24,8 +21,8 @@
     <div class="row justify-content-center my-4">
       <div class="col-8"><%= @user.introduction %></div>
     </div>
-    <h4>投稿一覧</h4>
-    <div class="row">
+    <h4 class="text-center">投稿一覧</h4>
+    <div class="row justify-content-center d-flex flex-wrap">
       <% if @posts.exists? %>
         <%= render 'public/posts/index', posts: @posts %>
       <% else %>

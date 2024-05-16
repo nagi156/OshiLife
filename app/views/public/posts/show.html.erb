@@ -1,37 +1,36 @@
-<div class="row">
-  <div class="col-3">
-    <%= render 'layouts/side_bar' %>
-  </div>
-  <div class="col-9">
-    <div class="row-6 row-lg-12 d-flex">
-      <div class="col-5 col-lg-4">
+<div class="row justify-content-center">
+  <div class="col-12 col-md-10 col-lg-8">
+    <div class="row">
+      <div class="col-12 col-md-5 col-lg-4 text-center">
         <%= image_tag @post.get_complete_image, size: "200x200",class: "border border-dark-subtle" %>
       </div>
-      <div class="flex-grow-1 ms-3 text-center col-6 col-lg-9">
-        <div class="col-7 col-lg-8 text-left">
-          <% if @post.user == current_user %>
-            <%= link_to my_page_path do %>
-              <%= image_tag @post.user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <span class="mx-3"><%= @post.user.name %></span>
+      <div class="text-center col-12 col-md-7 col-lg-8">
+        <div class="row">
+          <div class="col-8">
+            <% if @post.user == current_user %>
+              <%= link_to my_page_path do %>
+                <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                <span class="user_name_index ml-2"><%= @post.user.name %></span>
+              <% end %>
+            <% else %>
+              <%= link_to user_path(@post.user) do %>
+                <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                <span class="user_name_index mx-3"><%= @post.user.name %></span>
+              <% end %>
             <% end %>
-          <% else %>
-            <%= link_to user_path(@post.user) do %>
-              <%= image_tag @post.user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <span class="mx-3"><%= @post.user.name %></span>
-            <% end %>
-          <% end %>
-          <div class="text-right">
+          </div>
+          <div class="col-4">
             <% if @post.user_id == current_user.id %>
-              <%= link_to "編集",edit_post_path(@post), class: "btn btn-sm btn-success" %>
+              <%= link_to "編集",edit_post_path(@post), class: "btn btn-sm btn-success m-2" %>
               <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
             <% end %>
           </div>
+        </div>
           <h4 class="mb-4"><%= @post.title %></h4>
           <div class="row">
-            <div class="col-2 col-lg-3">材料</div>
-            <div class="col-10 col-lg-9"><%= render partial: 'material_list', locals:{ materials: @post.materials} %></div>
+            <div class="col-2 col-md-3 col-lg-4">材料</div>
+            <div class="col-10 co-md-9 col-lg-8"><%= render partial: 'material_list', locals:{ materials: @post.materials} %></div>
           </div>
-        </div>
       </div>
     </div>
     <div class="row-12 my-3">
