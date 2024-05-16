@@ -1,0 +1,30 @@
+<table class="table w-100">
+  <thead>
+    <tr>
+      <th class="w-30"></th>
+      <th class="w-40">ユーザー</th>
+      <th class="w-30"></th>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td>
+          <%= link_to admin_user_path(user) do %>
+            <%= image_tag user.get_profile_image, size: "80x80", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+            <%= user.name %>
+          <% end %>
+        </td>
+        <td>
+          <% if user.is_active? %>
+            <p class="text-success"><strong>有効</strong></p>
+          <% else %>
+            <p class="text-muted"><strong>退会</strong></p>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

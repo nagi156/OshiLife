@@ -60,6 +60,7 @@ gem 'kaminari','~> 1.2.1'
 gem 'cocoon'
 gem 'image_processing', '~> 1.2'
 gem 'jquery-rails'
+gem 'rails-i18n'
 
 
 gem 'dotenv-rails'
