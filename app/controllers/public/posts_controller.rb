@@ -1,6 +1,7 @@
 class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
+  before_action :ensure_guest_user, except: [:index, :show]
 
   def new
     @post = Post.new
@@ -67,6 +68,12 @@ class Public::PostsController < ApplicationController
     @post = Post.find(params[:id])
     unless @post.user_id == current_user.id
       redirect_to posts_path
+    end
+  end
+  
+  def ensure_guest_user
+    if current_user&.guest_user?
+      redirect_to request.referer, alert: "閲覧のみ可能です。ご利用の際はご登録してご利用ください。"
     end
   end
 end
