@@ -1,21 +1,27 @@
-<table class="table col-lg-auto w-100">
+<table class="table col-12 col-lg-auto">
   <thead>
     <tr>
-      <th class="w-30">コメント一覧</th>
-      <th class="w-50"></th>
-      <th class="w-20"></th>
+      <th>コメント一覧</th>
+      <th></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <% post.comments.each do |comment| %>
+    <% post.comments.each do |comment| %>
+      <tr>
         <% if comment.user_id == current_user.id %>
           <td>
             <%= link_to my_page_path do %>
               <%= image_tag comment.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
               <span class="mx-2"><%= comment.user.name %></span>
               <% end %>
-        </td>
+          </td>
+          <td><%= comment.comment %></td>
+          <td>
+            <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {"turbolinks" => false}, class: "btn btn-sm btn-danger" do %>
+              削除 <i class="fa-solid fa-trash-can"></i>
+            <% end %>
+          </td>
         <% else %>
           <td>
             <%= link_to user_path(comment.user) do %>
@@ -23,14 +29,9 @@
               <%= comment.user.name %>
             <% end %>
           </td>
+          <td><%= comment.comment %></td>
         <% end %>
-        <td><%= comment.comment %></td>
-        <td>
-          <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {"turbolinks" => false}, class: "btn btn-sm btn-danger" do %>
-            削除 <i class="fa-solid fa-trash-can"></i>
-          <% end %>
-        </td>
-      <% end %>
-    </tr>
+      </tr>
+    <% end %>
   </tbody>
 </table>
