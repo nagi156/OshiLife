@@ -18,7 +18,7 @@
           </td>
           <td><%= comment.comment %></td>
           <td>
-            <%= link_to admin_comment_path(comment), method: :delete, data: {"turbolinks" => false}, class: "btn btn-sm btn-danger" do %>
+            <%= link_to admin_comment_path(comment), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" do %>
               削除 <i class="fa-solid fa-trash-can"></i>
             <% end %>
           </td>

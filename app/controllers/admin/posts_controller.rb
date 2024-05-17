@@ -22,7 +22,7 @@ class Admin::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to admin_path
+      redirect_to admin_path, notice: "削除しました。"
     else
       flash[:alert] = "削除できませんでした。"
       render :show

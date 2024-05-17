@@ -15,7 +15,7 @@ footer {
   margin-right: 10%;
 }
 
-.user_name, .edit_btn{
+.user_name{
   padding-top: 5%;
 }
 .links, .post_btn{
@@ -57,13 +57,15 @@ nav{
 // @include media-breakpoint-up(sm) {
 // 極小デバイス（縦向きモバイル, 576px 未満）
 @media (max-width: 575.98px) {
- label,.card-title, .material_amount, .post_title {
+ label,.card-title, .material_amount, .post_title, h5 {
    font-size: 1.0rem;
  }
 }
 
 @media (max-width: 575.98px) {
- p, .user_name, .introduction, .material_list_title, .material_name, .material_amount, #comment_counter, .comment_list,.comment_text, .recipe_instructions {
+ p, .user_name, .introduction, .material_list_title,
+ .material_name, .material_amount, #comment_counter,
+ .comment_list,.comment_text, .recipe_instructions{
    font-size: 0.7rem;
  }
 }
