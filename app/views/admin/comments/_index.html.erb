@@ -1,15 +1,15 @@
-<table class="table col-lg-auto w-100">
+<table class="table col-12 col-lg-auto">
   <thead>
     <tr>
-      <th class="w-30">コメント一覧</th>
-      <th class="w-50"></th>
-      <th class="w-20"></th>
+      <th class="comment_list">コメント一覧</th>
+      <th> <span id="comment_counter">コメント数 <%= @post.comments.count %></span></th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <% if post.comments.exists? %>
-        <% post.comments.each do |comment| %>
+    <% if post.comments.exists? %>
+      <% post.comments.each do |comment| %>
+        <tr>
           <td>
             <%= link_to admin_user_path do %>
               <%= image_tag comment.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
@@ -24,8 +24,8 @@
           </td>
         <% end %>
       <% else %>
-        <td>コメントはありません。</td>
-      <% end %>
-    </tr>
+        <td><p>コメントはありません。</p></td>
+      </tr>
+    <% end %>
   </tbody>
 </table>

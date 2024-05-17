@@ -1,24 +1,22 @@
-<div class="d-flex flex-wrap justify-content-center">
-  <% posts.each do |post| %>
-    <% if post.user.is_active? %>
-      <div class="card border-dark text-center m-2" style="width: 15rem;">
-        <%= link_to admin_post_path(post) do %>
-          <div class="card-img-top pt-2">
-            <%= image_tag post.get_complete_image, size: "200x200" %>
-          </div>
-          <div class="card-body">
-            <h5 class="card-title"><%= post.title %></h5>
-          </div>
-        <% end %>
-        <div class="card-body pt-0">
-          <div class="text-left">
-            <%= link_to admin_user_path(post.user) do %>
-              <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <%= post.user.name %>
-            <% end %>
-          </div>
+<% posts.each do |post| %>
+  <% if post.user.is_active? %>
+    <div class="card border-dark text-center m-2" style="width: 15rem;">
+      <%= link_to admin_post_path(post) do %>
+        <div class="card-img-top pt-2">
+          <%= image_tag post.get_complete_image, size: "200x200" %>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title"><%= post.title %></h5>
+        </div>
+      <% end %>
+      <div class="card-body pt-0">
+        <div class="text-left">
+          <%= link_to admin_user_path(post.user) do %>
+            <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+            <%= post.user.name %>
+          <% end %>
         </div>
       </div>
-    <% end %>
+    </div>
   <% end %>
-</div>
+<% end %>
