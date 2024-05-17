@@ -6,7 +6,7 @@
           <%= image_tag recipe.get_recipe_image, size: "100x100"%>
         </div>
         <div class="flex-grow-1 ms-3 ml-3">
-          <%= recipe.instructions %>
+          <span class="recipe_instructions"><%= recipe.instructions %></span>
         </div>
       </div>
     </li>

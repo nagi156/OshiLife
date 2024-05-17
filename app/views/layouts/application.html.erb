@@ -20,7 +20,9 @@
           <p class="notice m-0"><%= notice %></p>
           <p class="alert m-0"><%= alert %></p>
         </div>
-        <%= render 'layouts/search_form' %>
+        <div class="mt-2">
+          <%= render 'layouts/search_form' %>
+        </div>
         <%= yield %>
       </main>
       <footer><%= render 'layouts/footer' %></footer>
