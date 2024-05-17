@@ -1,6 +1,6 @@
 <div class="row justify-content-md-center">
-  <div class="col-6">
-    <h5>プロフィールの変更</h5>
+  <div class="col-12 col-md-10 col-lg-8">
+    <h5 class="mb-4">プロフィールの変更</h5>
     <%= render 'layouts/errors', obj: @user %>
     <%= form_with model: @user do |f| %>
       <div class="form-group">
@@ -16,8 +16,8 @@
         <%= f.text_area :introduction, row: "5", class: "form-control" %>
       </div>
       <div class="row justify-content-between">
-        <div class="col-3"><%= f.submit "保存", class: "btn btn-success" %></div>
-        <div class="col-3"><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></div>
+        <div class="col-6 col-md-5 col-lg-3"><%= f.submit "保存", class: "btn btn-success" %></div>
+        <div class="col-6 col-md-5 col-lg-3 text-right"><%= link_to "退会する", unsubscribe_path, class: "btn btn-danger" %></div>
       </div>
     <% end %>
   </div>

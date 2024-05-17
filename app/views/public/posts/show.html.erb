@@ -10,12 +10,12 @@
             <% if @post.user == current_user %>
               <%= link_to my_page_path do %>
                 <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-                <span class="user_name_index ml-2"><%= @post.user.name %></span>
+                <span class="user_name ml-2"><%= @post.user.name %></span>
               <% end %>
             <% else %>
               <%= link_to user_path(@post.user) do %>
                 <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-                <span class="user_name_index mx-3"><%= @post.user.name %></span>
+                <span class="user_name mx-3"><%= @post.user.name %></span>
               <% end %>
             <% end %>
           </div>
@@ -26,9 +26,9 @@
             <% end %>
           </div>
         </div>
-          <h4 class="mb-4"><%= @post.title %></h4>
+          <h4 class="post_title mb-4"><%= @post.title %></h4>
           <div class="row">
-            <div class="col-2 col-md-3 col-lg-4">材料</div>
+            <div class="material_list_title col-2 col-md-3 col-lg-4">材料</div>
             <div class="col-10 co-md-9 col-lg-8"><%= render partial: 'material_list', locals:{ materials: @post.materials} %></div>
           </div>
       </div>
@@ -38,12 +38,9 @@
       <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
     </div>
     <!--コメント数-->
-    <div class="row">
-      <div class="col-4 col-lg-6">
-        <span id="comment_counter">コメント数 <%= @post.comments.count %></span>
-      </div>
+    <div class="row justify-content-end">
       <!--コメントフォーム-->
-      <div class="col-8 col-lg-6 px-2">
+      <div class="col-8 col-md-7 col-lg-6">
         <%= render 'public/comments/form',post: @post,comment: @comment %>
       </div>
     </div>

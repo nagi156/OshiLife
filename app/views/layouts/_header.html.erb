@@ -12,17 +12,17 @@
           <!--adminログイン後のリンク-->
           <li class="nav-item">
             <%= link_to admin_users_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-users"></i>ユーザー一覧
+              <i class="fa-solid fa-users"></i> ユーザー一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to admin_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-regular fa-rectangle-list"></i>投稿一覧
+              <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-person-walking-arrow-right"></i>ログアウト
+              <i class="fa-solid fa-person-walking-arrow-right"></i> ログアウト
             <% end %>
           </li>
         <% end %>
@@ -34,12 +34,12 @@
           </li>
           <li class="nav-item">
             <%= link_to users_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-users"></i>ユーザー一覧
+              <i class="fa-solid fa-users"></i> ユーザー一覧
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to posts_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-regular fa-rectangle-list"></i>投稿一覧
+              <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
             <% end %>
           </li>
           <li class="nav-item">
@@ -54,7 +54,7 @@
           </li>
           <li class="nav-item">
             <%=link_to destroy_user_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-person-walking-arrow-right"></i>ログアウト
+              <i class="fa-solid fa-person-walking-arrow-right"></i> ログアウト
             <% end %>
           </li>
         <% end %>
@@ -66,19 +66,19 @@
           </li>
           <li class="nav-item">
             <%= link_to new_user_registration_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-user-plus"></i>新規登録
+              <i class="fa-solid fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li class="nav-item">
             <%= link_to new_user_session_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-door-open"></i>ログイン
+              <i class="fa-solid fa-door-open"></i> ログイン
             <% end %>
           </li>
         <% else %>
           <!--adminログイン前のリンク-->
           <li class="nav-item">
             <%= link_to "ログイン", new_admin_session_path, class: "nav-link mr-5",style: "color: #98514B;" do %>
-              <i class="fa-solid fa-door-open"></i>ログイン
+              <i class="fa-solid fa-door-open"></i> ログイン
             <% end %>
           </li>
         <% end %>

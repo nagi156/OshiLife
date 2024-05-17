@@ -1,8 +1,8 @@
 <table class="table col-12 col-lg-auto">
   <thead>
     <tr>
-      <th>コメント一覧</th>
-      <th></th>
+      <th class="comment_list">コメント一覧</th>
+      <th> <span id="comment_counter">コメント数 <%= @post.comments.count %></span></th>
       <th></th>
     </tr>
   </thead>
@@ -13,7 +13,7 @@
           <td>
             <%= link_to my_page_path do %>
               <%= image_tag comment.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <span class="mx-2"><%= comment.user.name %></span>
+              <span class="user_name mx-2"><%= comment.user.name %></span>
               <% end %>
           </td>
           <td><%= comment.comment %></td>
@@ -26,10 +26,10 @@
           <td>
             <%= link_to user_path(comment.user) do %>
               <%= image_tag comment.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <%= comment.user.name %>
+              <span class="user_name"><%= comment.user.name %></span>
             <% end %>
           </td>
-          <td><%= comment.comment %></td>
+          <td><span class="comment_text"><%= comment.comment %></span></td>
         <% end %>
       </tr>
     <% end %>

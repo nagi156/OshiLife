@@ -15,11 +15,6 @@ footer {
   margin-right: 10%;
 }
 
-#comment_counter{
-  margin-left: 50%;
-  line-height: 50px;
-}
-
 .user_name, .edit_btn{
   padding-top: 5%;
 }
@@ -55,20 +50,20 @@ nav{
 }
 // 小デバイス（横向きモバイル, 768px 未満）
 @media (max-width: 767.98px) {
- label {
+ label, .material_text, .material_list_title, .material_amount, #comment_counter, .comment_list, .comment_text, .recipe_instructions {
    font-size: 1.0rem;
  }
 }
 // @include media-breakpoint-up(sm) {
 // 極小デバイス（縦向きモバイル, 576px 未満）
 @media (max-width: 575.98px) {
- label,.card-title {
+ label,.card-title, .material_amount, .post_title {
    font-size: 1.0rem;
  }
 }
 
 @media (max-width: 575.98px) {
- p, .user_name_index, .introduction, {
+ p, .user_name, .introduction, .material_list_title, .material_name, .material_amount, #comment_counter, .comment_list,.comment_text, .recipe_instructions {
    font-size: 0.7rem;
  }
 }

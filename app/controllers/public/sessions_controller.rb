@@ -31,7 +31,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     user = User.guest
     sign_in user
-    redirect_to posts_path, notice: "ゲストさんでログインしました。"
+    redirect_to posts_path, notice: "ゲスト(閲覧専用)でログインしました。"
   end
 
   protected
