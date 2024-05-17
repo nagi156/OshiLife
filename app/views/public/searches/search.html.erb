@@ -1,11 +1,25 @@
-<div class="row">
+<div class="row justify-content-center">
   <div class="col-12 col-md-10 col-lg-6">
     <% if @model == "ユーザー" %>
       <h4>ユーザー検索　「<%= @word %>」の結果</h4>
-        <%= render 'public/users/index', users: @records %>
+      <div class="row justify-content-center">
+        <% if  @records.exists? %>
+          <div class="col-12 col-md-10 col-lg-6">
+            <%= render 'public/users/index', users: @records %>
+          </div>
+        <% else %>
+          <h6>ユーザーはいません</h6>
+        <% end %>
+      </div>
     <% else %>
       <h4>投稿検索　「<%= @word %>」の結果</h4>
-        <%= render 'public/posts/index', posts: @records %>
+      <div class="row justify-content-center d-flex flex-wrap">
+        <% if  @records.exists? %>
+          <%= render 'public/posts/index', posts: @records %>
+        <% else %>
+          <h6>投稿はされていません</h6>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
