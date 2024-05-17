@@ -16,7 +16,7 @@
             <%= link_to "編集",edit_admin_post_path(@post), class: "btn btn-sm btn-success" %>
           </div>
           <div class="col-2 p-0 mt-3">
-            <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
+            <%= link_to "削除", admin_post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
           </div>
         </div>
           <h4 class="post_title mb-4"><%= @post.title %></h4>
