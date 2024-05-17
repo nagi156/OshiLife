@@ -17,7 +17,7 @@ Rails.application.routes.draw do
       member do
         get :likes
       end
-      resource :relationships, only: [:create, :destroy]
+      resource :relationship, only: [:create, :destroy]
       get "followings" => "relationships#followings", as: "followings"
       get "followers" => "relationships#followers", as: "followers"
     end
@@ -26,7 +26,7 @@ Rails.application.routes.draw do
     # 論理削除用のルーティング
     patch '/users/:id/withdraw' => 'users#withdraw', as: 'withdraw'
     resources :posts do
-      resource :favorites, only: [:create, :destroy]
+      resource :favorite, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
     resources :chats, only: [:show, :create, :destroy]
