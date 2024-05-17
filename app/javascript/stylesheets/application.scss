@@ -57,7 +57,7 @@ nav{
 // @include media-breakpoint-up(sm) {
 // 極小デバイス（縦向きモバイル, 576px 未満）
 @media (max-width: 575.98px) {
- label,.card-title, .material_amount, .post_title, h5 {
+ label,.card-title, .material_amount, .post_title, h4,h5 {
    font-size: 1.0rem;
  }
 }

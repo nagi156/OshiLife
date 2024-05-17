@@ -10,7 +10,7 @@
   <tbody>
     <% users.each do |user| %>
       <tr>
-        <td><%= user.id %></td>
+        <td class="text-center pt-4"><%= user.id %></td>
         <td>
           <%= link_to admin_user_path(user) do %>
             <%= image_tag user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
@@ -19,9 +19,9 @@
         </td>
         <td>
           <% if user.is_active? %>
-            <p class="text-success"><strong>有効</strong></p>
+            <p class="text-center text-success pt-3"><strong>有効</strong></p>
           <% else %>
-            <p class="text-muted"><strong>退会</strong></p>
+            <p class="text-center text-muted pt-3"><strong>退会</strong></p>
           <% end %>
         </td>
       </tr>
