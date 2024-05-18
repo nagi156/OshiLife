@@ -10,7 +10,7 @@
         </div>
       <% end %>
       <div class="card-text pt-0">
-        <div class="text-left ml-1">
+        <div class="text-left m-1">
           <% if post.user_id == current_user.id %>
             <%= link_to my_page_path do %>
               <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
