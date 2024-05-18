@@ -45,6 +45,9 @@ class User < ApplicationRecord
   def self.search_for(search, word)
     User.where("name LIKE ?", "%#{word}%")
   end
-
+  # いいねを探す
+  def favorite_by?(post)
+    self.favorite.exists?(post_id: post.id)
+  end
 end
 
