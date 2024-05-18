@@ -23,13 +23,13 @@
     <div class="row justify-content-center my-4">
       <div class="col-8"><%= @user.introduction %></div>
     </div>
-    <h4 class="text-center">投稿一覧</h4>
-    <div class="row justify-content-center d-flex flex-wrap">
-      <% if @posts.exists? %>
-        <%= render 'public/posts/index', posts: @posts %>
-      <% else %>
-        <h6>投稿はされていません</h6>
-      <% end %>
-    </div>
   </div>
+</div>
+<h4 class="text-center">投稿一覧</h4>
+<div class="row justify-content-center d-flex flex-wrap">
+  <% if @posts.exists? %>
+    <%= render 'public/posts/index', posts: @posts %>
+  <% else %>
+    <h6>投稿はされていません</h6>
+  <% end %>
 </div>

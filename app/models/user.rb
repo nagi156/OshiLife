@@ -47,7 +47,7 @@ class User < ApplicationRecord
   end
   # いいねを探す
   def favorite_by?(post)
-    self.favorite.exists?(post_id: post.id)
+    self.favorites.exists?(post_id: post.id)
   end
 end
 
