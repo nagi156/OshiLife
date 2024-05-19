@@ -9,13 +9,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  
+
   has_many :relationships, foreign_key: :following_id
-  has_many :followings, through: :relationships, source: :followed
-  
+  has_many :followings, through: :relationships, source: :followed #フォローしている一覧を表示するためのもの
+
   has_many :reverse_relationships, class_name: 'Relationship', foreign_key: :followed_id
-  has_many :followers, through: :reverse_relationships, source: :following
-  
+  has_many :followeds, through: :reverse_relationships, source: :following
+
   has_one_attached :profile_image
   # プロフィール画像の有無&リサイズ
   def get_profile_image
@@ -55,10 +55,10 @@ class User < ApplicationRecord
   def favorite_by?(post)
     self.favorites.exists?(post_id: post.id)
   end
-  
+
   # フォローしているか探すメソッド
   def followed_by?(user)
-    reverse_relationships.exists?(following_id: user.id)
+     followings.include?(user)
   end
 end
 
