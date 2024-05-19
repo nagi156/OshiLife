@@ -4,7 +4,7 @@ class Public::UsersController < ApplicationController
   before_action :ensure_guest_user, only: [:edit]
 
   def index
-    @users = User.all
+    @users = User.all.page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def my_page
@@ -45,6 +45,15 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会しました。"
     redirect_to about_path
   end
+  # いいね一覧
+  def likes
+    @user = User.find(params[:id])
+    @likes = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @likes_list = Post.find(@likes)
+    @post = Post.find(params[:id])
+  end
+
+
 
   private
 

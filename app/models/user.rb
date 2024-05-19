@@ -8,6 +8,7 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   has_one_attached :profile_image
   # プロフィール画像の有無&リサイズ
@@ -44,6 +45,9 @@ class User < ApplicationRecord
   def self.search_for(search, word)
     User.where("name LIKE ?", "%#{word}%")
   end
-
+  # いいねを探す
+  def favorite_by?(post)
+    self.favorites.exists?(post_id: post.id)
+  end
 end
 

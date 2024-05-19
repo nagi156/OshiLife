@@ -22,7 +22,7 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.all.page(params[:page]).per(8).order(created_at: :desc)
   end
 
   def show
@@ -70,7 +70,7 @@ class Public::PostsController < ApplicationController
       redirect_to posts_path
     end
   end
-  
+
   def ensure_guest_user
     if current_user&.guest_user?
       redirect_to request.referer, alert: "閲覧のみ可能です。ご利用の際はご登録してご利用ください。"
