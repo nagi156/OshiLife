@@ -48,8 +48,8 @@ class Public::UsersController < ApplicationController
   # いいね一覧
   def likes
     @user = User.find(params[:id])
-    likes = Favorite.where(user_id: @user.id).pluck(:post_id)
-    @likes_list = Post.find(likes)
+    @likes = Favorite.where(user_id: @user.id).pluck(:post_id)
+    @likes_list = Post.find(@likes)
     @post = Post.find(params[:id])
   end
 
