@@ -50,7 +50,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     @likes = Favorite.where(user_id: @user.id).pluck(:post_id)
     @likes_list = Post.find(@likes)
-    @post = Post.find(params[:id])
   end
 
 
