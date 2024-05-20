@@ -10,6 +10,10 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
+  has_many :entries, dependent: :destroy
+  has_many :chats, dependent: :destroy
+  has_many :rooms, through: :entries
+
   has_many :relationships, foreign_key: :following_id
   has_many :followings, through: :relationships, source: :followed #フォローしている一覧を表示するためのもの
 
