@@ -45,6 +45,7 @@ class Public::UsersController < ApplicationController
     flash[:notice] = "退会しました。"
     redirect_to about_path
   end
+  
   # いいね一覧
   def likes
     @user = User.find(params[:id])
