@@ -33,6 +33,6 @@ class Post < ApplicationRecord
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :favorite_count, -> {order(created_at: :desc)}
+  scope :favorite_count, -> {order(created_at: :asc)}
 
 end

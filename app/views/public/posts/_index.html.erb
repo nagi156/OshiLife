@@ -1,35 +1,33 @@
 <% posts.each do |post| %>
   <% if post.user.is_active? %>
-    <div class="card border-dark text-center m-2" style="width: 15rem;">
+    <div class="shadow card m-2" style="width: 15rem;">
       <%= link_to post_path(post) do %>
-        <div class="card-img-top pt-2">
-          <%= image_tag post.get_complete_image, size: "200x200" %>
+        <div class="card-img-top">
+          <%= image_tag post.get_complete_image, size: "208x208", class: "card-img-top" %>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><%= post.title %></h5>
+          <h5 class="card-title text-center"><%= post.title.truncate(9) %></h5>
         </div>
       <% end %>
-      <div class="card-text pt-0">
-        <div class="text-left m-1">
-          <% if post.user_id == current_user.id %>
-            <%= link_to my_page_path do %>
-              <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <%= post.user.name %>
-            <% end %>
-          <% else %>
-            <%= link_to user_path(post.user) do %>
-              <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <%= post.user.name %>
-            <% end %>
+      <div class="card-text p-2">
+        <% if post.user_id == current_user.id %>
+          <%= link_to my_page_path do %>
+            <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+            <%= post.user.name %>
           <% end %>
-        </div>
-         <div class="text-right mr-2">
-          <% unless post.user_id == current_user.id %>
-            <div id="favorite_<%= post.id %>">
-              <%= render 'public/favorites/favorite_btn', post: post %>
-            </div>
+        <% else %>
+          <%= link_to user_path(post.user) do %>
+            <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+            <%= post.user.name %>
           <% end %>
-        </div>
+        <% end %>
+      </div>
+      <div class="card-link border-top p-3 text-right">
+        <% unless post.user_id == current_user.id %>
+          <div id="favorite_<%= post.id %>">
+            <%= render 'public/favorites/favorite_btn', post: post %>
+          </div>
+        <% end %>
       </div>
     </div>
   <% end %>

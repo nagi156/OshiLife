@@ -34,6 +34,19 @@ nav{
   background-color: #f5b2b2;
 }
 
+.chat-bubble {
+  max-width: 70%;
+  word-wrap: break-word;
+}
+
+.my-chat {
+  justify-content: flex-end;
+}
+
+.left-row {
+  justify-content: flex-start;
+}
+
 @media (min-width: 992px) {
  label {
    font-size: 1.0rem;
