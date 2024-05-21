@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :post
   validates :instructions, presence: true, length: { minimum: 1 }
+  # validates :instructions, presence: true, length: { minimum: 1 }
 
   has_one_attached :recipe_image
 

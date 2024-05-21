@@ -47,6 +47,13 @@ nav{
   justify-content: flex-start;
 }
 
+.field_with_errors {
+  display: contents;
+}
+
+
+
+
 @media (min-width: 992px) {
  label {
    font-size: 1.0rem;
