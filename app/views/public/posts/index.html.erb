@@ -1,8 +1,8 @@
 <h4 class="text-center">投稿一覧</h4>
 <p class="text-center my-3">
-  <%= link_to "新しい順", posts_path(latest: "true") %>
-  / <%= link_to "古い順", posts_path(old: "true") %>
-  / <%= link_to "評価の高い順", posts_path(favorite_count: "true") %>
+  <%= link_to "新しい順", posts_path(latest: "true"), style: "color: #027b71;" %>
+  / <%= link_to "古い順", posts_path(old: "true"), style: "color: #027b71;" %>
+  / <%= link_to "評価の高い順", posts_path(most_favorites: "true"), style: "color: #027b71;" %>
 </p>
 <div class="row justify-content-center d-flex flex-wrap">
   <% if @posts.exists? %>

@@ -12,7 +12,7 @@
           </div>
           <div class="edit_btn col-5 pt-3">
             <% unless @user.guest_user? %>
-              <%= link_to edit_user_path(@user), class: "btn btn-outline-secondary" do %>
+              <%= link_to edit_user_path(@user), class: "btn btn_post" do %>
                 編集　<i class="fa-solid fa-gears"></i>
               <% end %>
             <% end %>

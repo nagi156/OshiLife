@@ -12,7 +12,7 @@
           </div>
           <div class="edit_btn col-7 col-md-5 col-lg-5">
             <% unless @user.guest_user? %>
-              <%= link_to edit_admin_user_path(@user), class: "btn btn-outline-secondary btn-block" do %>
+              <%= link_to edit_admin_user_path(@user), class: "btn btn_post btn-block" do %>
                 編集　<i class="fa-solid fa-gears"></i>
               <% end %>
               <span class="">会員ステータス</span>
