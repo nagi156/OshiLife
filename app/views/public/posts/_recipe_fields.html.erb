@@ -6,7 +6,7 @@
   <div class="form-group row justify-content-end">
     <%= f.text_area :instructions, row: "5", class: "col-7 offset-2 form-control", placeholder: "作り方をお書きください" %>
     <div class="col-3 text-center">
-      <%= link_to_remove_association "削除", f, class: "btn btn-outline-danger", :remote => true%>
+      <%= link_to_remove_association "削除", f, class: "btn btn_delete", :remote => true%>
     </div>
   </div>
 </div>

@@ -48,7 +48,7 @@ footer {
   color: #fff;
 }
 
-.btn_post{
+.btn_post, .btn_sign_up{
   background-color: #9cbf68;
   color: #fff;
 }
@@ -64,15 +64,38 @@ footer {
   color: #fff;
 }
 
-.btn_without, .btn_follow{
+.btn_without, .btn_follow, .btn_sign_in, .btn_search{
   background-color: #87b2d9;
   color: #fff;
 }
 
-.btn_followed, .btn_search{
+.btn_followed{
   background-color: #a2d7dd;
   color: #fff;
 }
+
+
+.btn_geust{
+  background-color: #aeb1a9;
+  color: #fff;
+}
+
+
+.btn_likes{
+  color: #98514B;
+  border: solid 1px #98514B;
+}
+.btn_likes:hover{
+  color: #e49da2;
+}
+
+
+.btn_chat{
+  color: #9d9d82;
+  border: solid 1px #9d9d82;
+}
+
+
 
 // 文字色変更
 .name_link, .card-title, label, .user_name{

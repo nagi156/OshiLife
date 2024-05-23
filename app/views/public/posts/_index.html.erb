@@ -2,7 +2,7 @@
   <% if post.user.is_active? %>
     <div class="card shadow m-2" style="width: 15rem;">
       <%= link_to post_path(post) do %>
-        <div class="card-img-top">
+        <div class="card-img-top border-bottom">
           <%= image_tag post.get_complete_image, size: "210x210", class: "card-img-top" %>
         </div>
         <div class="card-body">
