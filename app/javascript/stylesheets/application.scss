@@ -118,6 +118,12 @@ footer {
 }
 
 
+// その他（文字位置など）
+.custom_text{
+  display: grid;
+  justify-content: center;
+}
+
 // フォームのレイアウトを崩さないようにする
 .field_with_errors {
   display: contents;
