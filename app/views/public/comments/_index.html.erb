@@ -18,7 +18,7 @@
           </td>
           <td><%= comment.comment %></td>
           <td>
-            <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {"turbolinks" => false}, class: "btn btn-sm btn-danger" do %>
+            <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {"turbolinks" => false}, class: "btn btn-sm btn_delete" do %>
               削除 <i class="fa-solid fa-trash-can"></i>
             <% end %>
           </td>

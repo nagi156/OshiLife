@@ -4,10 +4,10 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   has_many :materials, dependent: :destroy
-  accepts_nested_attributes_for :materials, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :materials, allow_destroy: true
 
   has_many :recipes, dependent: :destroy
-  accepts_nested_attributes_for :recipes, reject_if: :all_blank, allow_destroy: true
+  accepts_nested_attributes_for :recipes, allow_destroy: true
 
   has_one_attached :complete_image
 
@@ -30,9 +30,13 @@ class Post < ApplicationRecord
   def self.search_for(search, word)
     Post.where("title LIKE ?", "%#{word}%")
   end
+  
+  def favorites_count
+    favorites.count
+  end
 
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
-  scope :favorite_count, -> {order(created_at: :asc)}
+  scope :most_favorites, -> { left_joins(:favorites).group("posts.id").order("COUNT(favorites.id) DESC") }
 
 end

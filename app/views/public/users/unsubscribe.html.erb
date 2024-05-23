@@ -8,10 +8,10 @@
       </p>
       <div class="row mt-5 justify-content-around">
         <div class="col-6 col-md-5 col-lg-3">
-          <%= link_to "退会しない", my_page_path, class: "btn btn-primary" %>
+          <%= link_to "退会しない", my_page_path, class: "btn btn_without" %>
         </div>
         <div class="col-6 col-md-5 col-lg-3 text-right">
-          <%= link_to "退会する", withdraw_path, method: :patch,class: "btn btn-danger", data: { confirm: "本当に退会しますか？" } %>
+          <%= link_to "退会する", withdraw_path, method: :patch,class: "btn btn_delete", data: { confirm: "本当に退会しますか？" } %>
         </div>
       </div>
     </div>

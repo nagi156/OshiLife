@@ -1,6 +1,30 @@
 ja:
   activerecord:
+    # attributes:
+    models:
+      material: "材料"
+      recipe: "レシピ"
+      post: "投稿"
+    attributes:
+      material:
+        name: "名前"
+      recipe:
+        instructions: "説明文"
+      post:
+        title: "投稿タイトル"
+  # activerecord:
     errors:
+      models:
+        material:
+          attributes:
+            name:
+              blank: "名前を入力してください"
+              too_short: "名前は短すぎます（%{count}文字以上で入力してください）"
+        recipe:
+          attributes:
+            instructions:
+              blank: "説明文を入力してください"
+              too_short: "説明文は短すぎます（%{count}文字以上で入力してください）"
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
@@ -16,7 +40,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -42,7 +66,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -180,3 +204,5 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+  # recipe:
+  #   instructions: "説明文"

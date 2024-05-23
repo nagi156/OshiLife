@@ -27,6 +27,8 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザー
+      material: 材料
+      recipe: 作り方
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

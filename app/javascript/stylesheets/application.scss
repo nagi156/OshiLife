@@ -5,20 +5,7 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-footer {
-  margin-top: auto;
-}
-
-.button_radio{
-  margin-right: 10%;
-}
-
-.links, .post_btn{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10%;
+  background-color: #fffbfa;
 }
 
 .notice{
@@ -31,9 +18,69 @@ footer {
 }
 
 nav{
-  background-color: #f5b2b2;
+  background-color: #e9c9d5;
 }
 
+footer {
+  margin-top: auto;
+}
+
+.card{
+  background-color: #fffef7;
+  border: 0.3px solid #a2d7dd;
+}
+
+
+// ボタン、リンク色変更
+.button_radio{
+  margin-right: 10%;
+}
+
+.links{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10%;
+  color: #9d9d82;
+}
+
+.btn_add{
+  background-color: #9d9d82;
+  color: #fff;
+}
+
+.btn_post{
+  background-color: #9cbf68;
+  color: #fff;
+}
+
+.post_btn{
+  display: flex;
+  justify-content: center;
+}
+
+
+.btn_delete{
+  background-color: #a6175a;
+  color: #fff;
+}
+
+.btn_without, .btn_follow{
+  background-color: #87b2d9;
+  color: #fff;
+}
+
+.btn_followed, .btn_search{
+  background-color: #a2d7dd;
+  color: #fff;
+}
+
+// 文字色変更
+.name_link, .card-title, label, .user_name{
+  color: #027b71;
+}
+
+
+// チャット画面
 .chat-bubble {
   max-width: 70%;
   word-wrap: break-word;
@@ -47,6 +94,15 @@ nav{
   justify-content: flex-start;
 }
 
+
+// フォームのレイアウトを崩さないようにする
+.field_with_errors {
+  display: contents;
+}
+
+
+
+// 文字サイズ変更
 @media (min-width: 992px) {
  label {
    font-size: 1.0rem;

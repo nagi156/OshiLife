@@ -11,17 +11,17 @@
         <% if request.fullpath.include?("/admin")%>
           <!--adminログイン後のリンク-->
           <li class="nav-item">
-            <%= link_to admin_users_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to admin_users_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-users"></i> ユーザー一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to admin_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to admin_path, class: "nav-link mr-3",style: "color: #3e8d92" do %>
               <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to destroy_admin_session_path, method: :delete, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-person-walking-arrow-right"></i> ログアウト
             <% end %>
           </li>
@@ -30,27 +30,27 @@
         <% unless request.fullpath.include?("/admin") %>
           <!--userログイン後のリンク-->
           <li class="nav-item">
-            <%= link_to users_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to users_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-users"></i> ユーザー一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to posts_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to posts_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to my_page_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to my_page_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-user"></i> マイページ
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_post_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to new_post_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-pen"></i> 新規投稿
             <% end %>
           </li>
           <li class="nav-item">
-            <%=link_to destroy_user_session_path, method: :delete, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%=link_to destroy_user_session_path, method: :delete, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-person-walking-arrow-right"></i> ログアウト
             <% end %>
           </li>
@@ -59,19 +59,19 @@
         <% unless request.fullpath.include?("/admin")%>
           <!--userログイン前のリンク-->
           <li class="nav-item">
-            <%= link_to new_user_registration_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to new_user_registration_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-user-plus"></i> 新規登録
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to new_user_session_path, class: "nav-link mr-3",style: "color: #98514B;" do %>
+            <%= link_to new_user_session_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-door-open"></i> ログイン
             <% end %>
           </li>
         <% else %>
           <!--adminログイン前のリンク-->
           <li class="nav-item">
-            <%= link_to new_admin_session_path, class: "nav-link mr-5",style: "color: #98514B;" do %>
+            <%= link_to new_admin_session_path, class: "nav-link mr-5",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-door-open"></i> ログイン
             <% end %>
           </li>
