@@ -1,5 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 
+@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+
 body,
 #wrapper {
   display: flex;
@@ -122,6 +124,12 @@ footer {
 .custom_text{
   display: grid;
   justify-content: center;
+}
+
+h1, h3,.navbar-brand{
+  font-family: "Sacramento", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
 
 // フォームのレイアウトを崩さないようにする
