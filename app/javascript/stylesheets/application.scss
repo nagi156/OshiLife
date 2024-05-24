@@ -1,6 +1,5 @@
 @use '~bootstrap/scss/bootstrap';
 
-@import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Sacramento&display=swap');
 
 body,
@@ -49,8 +48,17 @@ footer {
   color: #9d9d82;
 }
 
+.posted_button{
+  display: flex;
+  justify-content: center;
+}
+
 .btn_add{
   background-color: #9d9d82;
+  color: #fff;
+}
+.btn_add:hover{
+  background-color: #D6917E;
   color: #fff;
 }
 
@@ -58,15 +66,17 @@ footer {
   background-color: #9cbf68;
   color: #fff;
 }
-
-.post_btn{
-  display: flex;
-  justify-content: center;
+.btn_post:hover, .btn_sign_up:hover{
+ background-color: #78E3B1;
+  color: #fff;
 }
-
 
 .btn_delete{
   background-color: #a6175a;
+  color: #fff;
+}
+.btn_delete:hover{
+  background-color: #EB0E8F;
   color: #fff;
 }
 
@@ -74,15 +84,29 @@ footer {
   background-color: #87b2d9;
   color: #fff;
 }
+.btn_without:hover, .btn_follow:hover, .btn_sign_in:hover, .btn_search:hover{
+  background-color: #B5DDEC;
+  color: #fff;
+}
+
+
 
 .btn_followed{
   background-color: #a2d7dd;
   color: #fff;
 }
+.btn_followed:hover{
+  background-color: #a2d7dd;
+  color: #FBFDFD;
+}
 
 
 .btn_geust{
   background-color: #aeb1a9;
+  color: #fff;
+}
+.btn_geust:hover{
+  background-color: #9d9d87;
   color: #fff;
 }
 
@@ -92,13 +116,19 @@ footer {
   border: solid 1px #98514B;
 }
 .btn_likes:hover{
-  color: #e49da2;
+  background-color: #98514B;
+  color: #fff;
 }
 
 
-.btn_chat{
-  color: #9d9d82;
-  border: solid 1px #9d9d82;
+.btn_chat, .btn_return{
+  color: #9d9d87;
+  border: solid 1px #9d9d87;
+}
+
+.btn_chat:hover{
+  background-color: #9d9d87;
+  color: #fff;
 }
 
 
@@ -128,20 +158,6 @@ footer {
 .custom_text{
   display: grid;
   justify-content: center;
-}
-
-h1, h3,.navbar-brand{
-  font-family: "Sacramento", cursive;
-  font-weight: 400;
-  font-style: normal;
-}
-
-h1{
-  font-size: 80px;
-}
-
-h3{
-  font-size: 30px;
 }
 
 // フォームのレイアウトを崩さないようにする
