@@ -1,9 +1,9 @@
 <% posts.each do |post| %>
   <% if post.user.is_active? %>
-    <div class="card shadow m-2" style="width: 15rem;">
+    <div class="card shadow m-2" style="width: 18rem;">
       <%= link_to post_path(post) do %>
         <div class="card-img-top border-bottom">
-          <%= image_tag post.get_complete_image, size: "210x210", class: "card-img-top" %>
+          <%= image_tag post.get_complete_image, size: "200x250", class: "card-img-top" %>
         </div>
         <div class="card-body">
           <h5 class="card-title text-center"><%= post.title.truncate(9) %></h5>
@@ -27,6 +27,11 @@
         <% unless post.user_id == current_user.id %>
           <div id="favorite_<%= post.id %>">
             <%= render 'public/favorites/favorite_btn', post: post %>
+          </div>
+        <% else %>
+          <div style="color: red;">
+            <i class="fa-solid fa-heart"></i>
+            <%= post.favorites.count %>
           </div>
         <% end %>
       </div>

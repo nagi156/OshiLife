@@ -11,6 +11,7 @@ body,
   font-family: "Kiwi Maru", serif;
   font-weight: 400;
   font-style: normal;
+  color: #696969;
 }
 
 .notice{
@@ -20,10 +21,6 @@ body,
 
 .alert{
   color: #ff0000;
-}
-
-nav{
-  background-color: #e9c9d5;
 }
 
 footer {
@@ -80,6 +77,7 @@ footer {
   color: #fff;
 }
 
+
 .btn_without, .btn_follow, .btn_sign_in, .btn_search{
   background-color: #87b2d9;
   color: #fff;
@@ -88,7 +86,6 @@ footer {
   background-color: #B5DDEC;
   color: #fff;
 }
-
 
 
 .btn_followed{
@@ -126,7 +123,7 @@ footer {
   border: solid 1px #9d9d87;
 }
 
-.btn_chat:hover{
+.btn_chat:hover, .btn_return:hover{
   background-color: #9d9d87;
   color: #fff;
 }
@@ -159,6 +156,28 @@ footer {
   display: grid;
   justify-content: center;
 }
+
+//ページネーション
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #3e8d92;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+.pagination {
+  justify-content: center;
+}
+.page-item.active .page-link {
+  background-color: #e9c9d5 !important;
+}
+
 
 // フォームのレイアウトを崩さないようにする
 .field_with_errors {
@@ -198,7 +217,7 @@ footer {
  .material_name, .material_amount, #comment_counter,
  .comment_list,.comment_text, .recipe_instructions,
  .follow_count, .btn, .user_status, .text-success,
- .text-muted{
+ .text-muted, .pagination{
    font-size: 0.7rem;
  }
 }
