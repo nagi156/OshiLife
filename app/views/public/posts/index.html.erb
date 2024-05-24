@@ -4,7 +4,7 @@
   / <%= link_to "古い順", posts_path(old: "true"), style: "color: #027b71;" %>
   / <%= link_to "評価の高い順", posts_path(most_favorites: "true"), style: "color: #027b71;" %>
 </p>
-<div class="row justify-content-center d-flex flex-wrap">
+<div class="row justify-content-center d-flex flex-wrap mb-5">
   <% if @posts.exists? %>
     <%= render 'index', posts: @posts %>
   <% else %>

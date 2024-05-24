@@ -1,6 +1,7 @@
 @use '~bootstrap/scss/bootstrap';
 
 @import url('https://fonts.googleapis.com/css2?family=Sacramento&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Sacramento&display=swap');
 
 body,
 #wrapper {
@@ -8,6 +9,9 @@ body,
   flex-direction: column;
   min-height: 100vh;
   background-color: #fffbfa;
+  font-family: "Kiwi Maru", serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .notice{
@@ -132,6 +136,14 @@ h1, h3,.navbar-brand{
   font-style: normal;
 }
 
+h1{
+  font-size: 80px;
+}
+
+h3{
+  font-size: 30px;
+}
+
 // フォームのレイアウトを崩さないようにする
 .field_with_errors {
   display: contents;
@@ -169,7 +181,8 @@ h1, h3,.navbar-brand{
  p, .user_name, .introduction, .material_list_title,
  .material_name, .material_amount, #comment_counter,
  .comment_list,.comment_text, .recipe_instructions,
- .follow_count, .btn{
+ .follow_count, .btn, .user_status, .text-success,
+ .text-muted{
    font-size: 0.7rem;
  }
 }

@@ -22,6 +22,7 @@
           <% end %>
         <% end %>
       </div>
+      <!--いいねボタン-->
       <div class="card-link border-top p-3 text-right">
         <% unless post.user_id == current_user.id %>
           <div id="favorite_<%= post.id %>">

@@ -47,9 +47,8 @@
       <h5>作り方</h5>
       <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
     </div>
-    <!--コメント数-->
+    <!--コメント一覧、フォーム-->
     <div class="row justify-content-end">
-      <!--コメントフォーム-->
       <div class="col-8 col-md-7 col-lg-6">
         <%= render 'public/comments/form',post: @post,comment: @comment %>
       </div>
