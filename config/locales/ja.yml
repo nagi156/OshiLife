@@ -1,18 +1,21 @@
 ja:
   activerecord:
+    models:
+      user: ユーザー
+      material: 材料
+      recipe: 作り方
+      post: 投稿
     attributes:
       user:
         name: 名前
         registration_check: 利用規約
       post:
-        title: 投稿タイトル
-        recipes_instructions: 説明文
-        # recipes:
-          # instructions: 説明文
-      material:
-        name: 名前
-        amount: 数量
-
+        title: タイトル
+      post/materials:
+        name: 材料名
+      post/recipes:
+        instructions: 作り方
+    errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
