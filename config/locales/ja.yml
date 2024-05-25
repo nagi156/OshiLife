@@ -1,5 +1,18 @@
 ja:
   activerecord:
+    attributes:
+      user:
+        name: 名前
+        registration_check: 利用規約
+      post:
+        title: 投稿タイトル
+        recipes_instructions: 説明文
+        # recipes:
+          # instructions: 説明文
+      material:
+        name: 名前
+        amount: 数量
+
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
