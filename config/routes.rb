@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: "homes#top"
     get "home/about" => "homes#about", as: "about"
+    get 'home/privacy' => "homes#privacy", as: "privacy"
     get "/my_page", to: "users#my_page", as: "my_page"
     get '/users/:id', to: 'users#show', as: 'user'
     resources :users, except: [:new, :show,:destroy] do
