@@ -221,3 +221,12 @@ footer {
    font-size: 0.7rem;
  }
 }
+
+@media (max-width: 769.98px) {
+  .name_link {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
+}

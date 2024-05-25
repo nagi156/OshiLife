@@ -31,12 +31,12 @@
     <div class="row mb-2 text-center">
       <div class="follow_count col-4 pt-2">
         <%= link_to  user_followings_path(@user), style: "color: #027b71;" do %>
-          フォロー数： <%= @user.followings.count %>
+          フォロー数： <span id="followings_count_<%= @user.id %>"><%= @user.followings.count %></span>
         <% end %>
       </div>
       <div class="follow_count col-4 pt-2">
         <%= link_to  user_followers_path(@user), style: "color: #027b71;" do %>
-          フォロワー数： <%= @user.followeds.count %>
+          フォロワー数：  <span id="followeds_count_<%= @user.id %>"><%= @user.followeds.count %> </span>
         <% end %>
       </div>
       <div class="col-4 pb-2">
@@ -54,4 +54,9 @@
   <% else %>
     <h6>投稿はされていません</h6>
   <% end %>
+</div>
+<div class="row justify-content-center mb-5">
+  <div class="col-6">
+    <%= paginate @posts %>
+  </div>
 </div>
