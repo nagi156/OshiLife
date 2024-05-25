@@ -1,5 +1,5 @@
 <div class="row justify-content-center">
-  <div class="col-12 col-md-10 col-lg-8">
+  <div class="card mb-5 col-11 col-md-10 col-lg-8">
     <div class="row border p-2">
       <div class="col-12 col-md-5 col-lg-4 text-center">
         <%= image_tag @post.get_complete_image, size: "200x200",class: "border border-dark-subtle" %>
@@ -47,9 +47,8 @@
       <h5>作り方</h5>
       <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
     </div>
-    <!--コメント数-->
+    <!--コメント一覧、フォーム-->
     <div class="row justify-content-end">
-      <!--コメントフォーム-->
       <div class="col-8 col-md-7 col-lg-6">
         <%= render 'public/comments/form',post: @post,comment: @comment %>
       </div>

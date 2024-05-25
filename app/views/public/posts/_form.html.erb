@@ -1,6 +1,6 @@
 <%= render 'layouts/errors', obj: post %>
 <%= form_with model: post do |f| %>
-  <div class="card shadow mb-5">
+  <div class="card shadow">
     <div class="card-body">
       <div class="d-flex flex-wrap form-group row">
         <%= f.label "完成画像",class: "col-4 col-md-3 col-lg-4 col-form-label" %>
@@ -14,7 +14,7 @@
       <!--材料フォーム-->
       <div id="material">
         <%= f.fields_for :materials do |material| %>
-          <%= render 'material_fields', :f => material %>
+          <%= render 'material_fields', f: material %>
         <% end %>
         <div class="links">
           <%= link_to_add_association f, :materials, class: "btn btn_add col-6 col-md-3" do %>
@@ -26,7 +26,7 @@
       <!--作り方フォーム-->
       <div id="recipe">
         <%= f.fields_for :recipes do |recipe| %>
-          <%= render 'recipe_fields', :f => recipe %>
+          <%= render 'recipe_fields', f: recipe %>
         <% end %>
         <div class="links">
           <%= link_to_add_association f, :recipes, class: "btn btn_add col-6 col-md-3" do %>
@@ -36,12 +36,12 @@
       </div>
       <div class="form-group">
         <% if @post.new_record? %>
-          <div class="post_btn">
+          <div class="posted_button">
             <%= f.submit "投稿", class: "btn btn_post col-6 col-md-4" %>
           </div>
         <% else %>
           <%= f.submit "編集を保存", class: "btn btn_post" %>
-          <%= link_to "戻る", post_path(post), class: "btn btn-secondary mx-3" %>
+          <%= link_to "戻る", post_path(post), class: "btn btn_return mx-3" %>
         <% end %>
       </div>
     </div>

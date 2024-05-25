@@ -3,10 +3,10 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  has_many :materials, dependent: :destroy
+  has_many :materials, inverse_of: :post
   accepts_nested_attributes_for :materials, allow_destroy: true
 
-  has_many :recipes, dependent: :destroy
+  has_many :recipes, inverse_of: :post
   accepts_nested_attributes_for :recipes, allow_destroy: true
 
   has_one_attached :complete_image
@@ -30,7 +30,7 @@ class Post < ApplicationRecord
   def self.search_for(search, word)
     Post.where("title LIKE ?", "%#{word}%")
   end
-  
+
   def favorites_count
     favorites.count
   end

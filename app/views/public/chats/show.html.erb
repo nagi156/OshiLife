@@ -1,30 +1,33 @@
-<!--<div class="container">-->
-  <div class="row justify-content-center">
-    <div class="col-12 col-md-8 col-lg-6">
-      <h5 id= "room" class= "text-center mt-3" date-room= "<%= @room.id %>" date-user= "<%= current_user.id %>"><%= @user.name %>さんとのチャット</h5>
+<div class="row justify-content-center my-4">
+  <div class="card col-11 col-md-8 col-lg-6">
+    <h5 id= "room" class= "text-center mt-3" date-room= "<%= @room.id %>" date-user= "<%= current_user.id %>"><%= @user.name %>さんとのチャット</h5>
 
-      <div id="message">
-        <% @chats.each do |chat| %>
-          <% if chat.user_id ==  current_user.id %>
-            <div class="m-2">
-              <%= render 'chat', chat: chat %>
-            </div>
-          <% else %>
-            <div class="d-flex justify-content-start align-items-center left-row mb-2">
-              <%= image_tag @user.get_profile_image, size: "30x30", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-              <div class="ml-2 px-2 rounded" style="background-color: #d5e9ed;"><%= chat.message %></div>
-            </div>
-          <% end %>
+    <div id="message">
+      <% @chats.each do |chat| %>
+        <% if chat.user_id ==  current_user.id %>
+          <div class="m-2">
+            <%= render 'chat', chat: chat %>
+          </div>
+        <% else %>
+          <div class="d-flex justify-content-start align-items-center left-row mb-2">
+            <%= image_tag @user.get_profile_image, size: "30x30", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+            <div class="ml-2 px-2 rounded" style="background-color: #d5e9ed;"><%= chat.message %></div>
+          </div>
         <% end %>
-      </div>
-      <div class="row justify-content-end mt-3 mr-3">
+      <% end %>
+    </div>
+    <div class="row justify-content-end my-3 mr-3">
 
-        <%= form_with model: @chat, data: {remote: true} do |f| %>
-          <%= f.text_field :message, id: "message_area" %>
-          <%= f.submit "送信", class: "btn btn-secondary btn-sm" %>
-          <%= f.hidden_field :room_id %>
-        <% end %>
-      </div>
+      <%= form_with model: @chat, data: {remote: true} do |f| %>
+        <%= f.text_field :message, id: "message_area" %>
+        <%= f.submit "送信", class: "btn btn-secondary btn-sm" %>
+        <%= f.hidden_field :room_id %>
+      <% end %>
     </div>
   </div>
-<!--</div>-->
+</div>
+<div class="row justify-content-center mb-3">
+  <div class="col-11 col-md-8 col-lg-6">
+    <%= link_to "戻る", user_path(@user), class: "btn btn_chat" %>
+  </div>
+</div>

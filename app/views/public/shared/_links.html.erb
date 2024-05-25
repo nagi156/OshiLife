@@ -1,7 +1,7 @@
 <%- if controller_name != 'sessions' %>
-  <p>ご登録がお済みの方は<%= link_to "こちら", new_session_path(resource_name) %>からログインしてください</p>
+  <p>ご登録がお済みの方は<%= link_to "こちら", new_session_path(resource_name), style: "color: #56c4cc;" %>からログインしてください</p>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  <p>ご登録がお済みでない方は<%= link_to "こちら", new_registration_path(resource_name) %>から登録してください</p>
+  <p>ご登録がお済みでない方は<%= link_to "こちら", new_registration_path(resource_name), style: "color: #56c4cc;" %>から登録してください</p>
 <% end %>

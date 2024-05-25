@@ -1,35 +1,33 @@
 ja:
   activerecord:
-    # attributes:
     models:
-      material: "材料"
-      recipe: "レシピ"
-      post: "投稿"
+      user: ユーザー
+      material: 材料
+      recipe: 作り方
+      post: 投稿
     attributes:
-      material:
-        name: "名前"
-      recipe:
-        instructions: "説明文"
+      user:
+        name: 名前
+        registration_check: 利用規約
       post:
-        title: "投稿タイトル"
-  # activerecord:
+        title: タイトル
+      post/materials:
+        name: 材料名
+      post/recipes:
+        instructions: 作り方
     errors:
-      models:
-        material:
-          attributes:
-            name:
-              blank: "名前を入力してください"
-              too_short: "名前は短すぎます（%{count}文字以上で入力してください）"
-        recipe:
-          attributes:
-            instructions:
-              blank: "説明文を入力してください"
-              too_short: "説明文は短すぎます（%{count}文字以上で入力してください）"
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+  views:
+    pagination:
+      first: "&laquo; 最初"
+      last: "最後 &raquo;"
+      previous: "&lsaquo; 前"
+      next: "次 &rsaquo;"
+      truncate: "..."
   date:
     abbr_day_names:
     - 日

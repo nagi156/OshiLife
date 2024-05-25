@@ -1,21 +1,22 @@
 <% posts.each do |post| %>
   <% if post.user.is_active? %>
-    <div class="card border-dark text-center m-2" style="width: 15rem;">
+    <div class="card shadow m-2" style="width: 15rem;">
       <%= link_to admin_post_path(post) do %>
-        <div class="card-img-top pt-2">
-          <%= image_tag post.get_complete_image, size: "200x200" %>
+        <div class="card-img-top border-bottom">
+          <%= image_tag post.get_complete_image, size: "210x210", class: "card-img-top"  %>
         </div>
         <div class="card-body">
-          <h5 class="card-title"><%= post.title %></h5>
+          <h5 class="card-title text-center"><%= post.title.truncate(9) %></h5>
         </div>
       <% end %>
-      <div class="card-body pt-0">
-        <div class="text-left">
-          <%= link_to admin_user_path(post.user) do %>
-            <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-            <%= post.user.name %>
-          <% end %>
-        </div>
+      <div class="card-text p-2">
+        <%= link_to admin_user_path(post.user), class: "name_link" do %>
+          <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+          <%= post.user.name %>
+        <% end %>
+      </div>
+      <div class="card-link border-top p-3 text-right">
+        <i class="fa-solid fa-heart" style= "color: red;"></i> <%= post.favorites.count %>
       </div>
     </div>
   <% end %>

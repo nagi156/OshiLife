@@ -1,11 +1,17 @@
 @use '~bootstrap/scss/bootstrap';
 
+@import url('https://fonts.googleapis.com/css2?family=Kiwi+Maru&family=Sacramento&display=swap');
+
 body,
 #wrapper {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: #fffbfa;
+  font-family: "Kiwi Maru", serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #696969;
 }
 
 .notice{
@@ -15,10 +21,6 @@ body,
 
 .alert{
   color: #ff0000;
-}
-
-nav{
-  background-color: #e9c9d5;
 }
 
 footer {
@@ -43,36 +45,90 @@ footer {
   color: #9d9d82;
 }
 
-.btn_add{
-  background-color: #9d9d82;
-  color: #fff;
-}
-
-.btn_post{
-  background-color: #9cbf68;
-  color: #fff;
-}
-
-.post_btn{
+.posted_button{
   display: flex;
   justify-content: center;
 }
 
+.btn_add{
+  background-color: #9d9d82;
+  color: #fff;
+}
+.btn_add:hover{
+  background-color: #D6917E;
+  color: #fff;
+}
+
+.btn_post, .btn_sign_up{
+  background-color: #9cbf68;
+  color: #fff;
+}
+.btn_post:hover, .btn_sign_up:hover{
+ background-color: #78E3B1;
+  color: #fff;
+}
 
 .btn_delete{
   background-color: #a6175a;
   color: #fff;
 }
+.btn_delete:hover{
+  background-color: #EB0E8F;
+  color: #fff;
+}
 
-.btn_without, .btn_follow{
+
+.btn_without, .btn_follow, .btn_sign_in, .btn_search{
   background-color: #87b2d9;
   color: #fff;
 }
+.btn_without:hover, .btn_follow:hover, .btn_sign_in:hover, .btn_search:hover{
+  background-color: #B5DDEC;
+  color: #fff;
+}
 
-.btn_followed, .btn_search{
+
+.btn_followed{
   background-color: #a2d7dd;
   color: #fff;
 }
+.btn_followed:hover{
+  background-color: #a2d7dd;
+  color: #FBFDFD;
+}
+
+
+.btn_geust{
+  background-color: #aeb1a9;
+  color: #fff;
+}
+.btn_geust:hover{
+  background-color: #9d9d87;
+  color: #fff;
+}
+
+
+.btn_likes{
+  color: #98514B;
+  border: solid 1px #98514B;
+}
+.btn_likes:hover{
+  background-color: #98514B;
+  color: #fff;
+}
+
+
+.btn_chat, .btn_return{
+  color: #9d9d87;
+  border: solid 1px #9d9d87;
+}
+
+.btn_chat:hover, .btn_return:hover{
+  background-color: #9d9d87;
+  color: #fff;
+}
+
+
 
 // 文字色変更
 .name_link, .card-title, label, .user_name{
@@ -92,6 +148,34 @@ footer {
 
 .left-row {
   justify-content: flex-start;
+}
+
+
+// その他（文字位置など）
+.custom_text{
+  display: grid;
+  justify-content: center;
+}
+
+//ページネーション
+.pagination>li>a {
+  border: none;
+  color: #696969;
+}
+
+.pagination>.active>a {
+  background: #3e8d92;
+  border-radius: 15px;
+}
+
+.pagination>li>a:hover {
+  border-radius: 15px;
+}
+.pagination {
+  justify-content: center;
+}
+.page-item.active .page-link {
+  background-color: #e9c9d5 !important;
 }
 
 
@@ -132,7 +216,8 @@ footer {
  p, .user_name, .introduction, .material_list_title,
  .material_name, .material_amount, #comment_counter,
  .comment_list,.comment_text, .recipe_instructions,
- .follow_count, .btn{
+ .follow_count, .btn,.user_status, .text-success,
+ .text-muted, .pagination{
    font-size: 0.7rem;
  }
 }
