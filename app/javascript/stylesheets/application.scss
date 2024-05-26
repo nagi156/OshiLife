@@ -93,8 +93,8 @@ footer {
   color: #fff;
 }
 .btn_followed:hover{
-  background-color: #a2d7dd;
-  color: #FBFDFD;
+  background-color: #ccf9ff;
+  color: #6b9499;
 }
 
 
@@ -220,4 +220,13 @@ footer {
  .text-muted, .pagination{
    font-size: 0.7rem;
  }
+}
+
+@media (max-width: 769.98px) {
+  .name_link {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+  }
 }

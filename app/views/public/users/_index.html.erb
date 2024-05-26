@@ -1,9 +1,9 @@
-<table class="table w-100">
+<table class="table">
   <thead>
     <tr>
-      <th>ユーザー一覧</th>
-      <th></th>
-      <th></th>
+      <th scope="col" style="width: 33%"></th>
+      <th scope="col" style="width: 33%" class="text-center">ユーザー一覧</th>
+      <th scope="col" style="width: 33%"></th>
       </th>
     </tr>
   </thead>
@@ -12,29 +12,32 @@
       <tr>
         <% if user.is_active? %>
           <% if user == current_user %>
-            <td class="w-30">
+            <td>
               <%= link_to my_page_path, class: "name_link" do %>
                 <%= image_tag user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
                 <span class="user_name"><%= user.name %></span>
               <% end %>
             </td>
-            <td class="w-50">
+            <td>
               <span class="introduction"><%= user.introduction %></span>
             </td>
+            <td><br></td>
           <% else %>
-            <td class="w-30">
+            <td>
               <%= link_to user_path(user), class: "name_link" do %>
-                <%= image_tag user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+                <%= image_tag user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "icon_image border border-dark-subtle" %>
                 <span class="user_name"><%= user.name %></span>
               <% end %>
             </td>
-             <td class="w-50">
+             <td>
                <span class="introduction"><%= user.introduction %></span>
              </td>
-             <td>
-               <div id="follow_btn_<%= user.id %>">
-                 <%= render 'public/relationships/follow_btn', user: user %>
-               </div>
+             <td class="text-center">
+               <% if user.is_active? && !current_user.guest_user? && !user.guest_user? %>
+                 <div id="follow_btn_<%= user.id %>">
+                   <%= render 'public/relationships/follow_btn', user: user %>
+                 </div>
+               <% end %>
              </td>
           <% end %>
         <% end %>

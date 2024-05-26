@@ -45,10 +45,15 @@
   </div>
 </div>
 <h4 class="text-center">投稿一覧</h4>
-<div class="row justify-content-center d-flex flex-wrap mb-2">
+<div class="row justify-content-center d-flex flex-wrap my-4">
   <% if @posts.exists? %>
     <%= render 'public/posts/index', posts: @posts %>
   <% else %>
     <h6>投稿はされていません</h6>
   <% end %>
+</div>
+<div class="row justify-content-center mb-5">
+  <div class="col-6">
+    <%= paginate @posts %>
+  </div>
 </div>

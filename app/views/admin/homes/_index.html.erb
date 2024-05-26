@@ -1,9 +1,9 @@
 <% posts.each do |post| %>
   <% if post.user.is_active? %>
-    <div class="card shadow m-2" style="width: 15rem;">
+    <div class="card shadow m-2" style="width: 18rem;">
       <%= link_to admin_post_path(post) do %>
         <div class="card-img-top border-bottom">
-          <%= image_tag post.get_complete_image, size: "210x210", class: "card-img-top"  %>
+          <%= image_tag post.get_complete_image, size: "200x250", class: "card-img-top"  %>
         </div>
         <div class="card-body">
           <h5 class="card-title text-center"><%= post.title.truncate(9) %></h5>
@@ -15,8 +15,11 @@
           <%= post.user.name %>
         <% end %>
       </div>
-      <div class="card-link border-top p-3 text-right">
+      <div class="card-link border-top text-right pt-3 px-3">
         <i class="fa-solid fa-heart" style= "color: red;"></i> <%= post.favorites.count %>
+      </div>
+      <div class="pb-2 px-2">
+        <%= l post.created_at %>
       </div>
     </div>
   <% end %>
