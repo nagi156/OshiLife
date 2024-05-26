@@ -9,7 +9,7 @@
           <h5 class="card-title text-center"><%= post.title.truncate(9) %></h5>
         </div>
       <% end %>
-      <div class="card-text p-2">
+      <div class="card-body p-2">
         <% if post.user_id == current_user.id %>
           <%= link_to my_page_path, class: "name_link" do %>
             <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>

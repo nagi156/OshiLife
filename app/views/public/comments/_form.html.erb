@@ -1,10 +1,10 @@
 <%= form_with model: [post, comment], local: false do |f| %>
-<div class="row g-2 my-1">
-  <div class="col-8 col-lg-9">
-    <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに", id: "comment_area" %>
+  <div class="row g-2 my-1">
+    <div class="col-8 col-lg-9">
+      <%= f.text_area :comment, class: "form-control", placeholder: "コメントをここに", id: "comment_area" %>
+    </div>
+    <div class="col-4 col-lg-3">
+      <%= f.submit "返信", class: "btn btn-secondary my-1" %>
+    </div>
   </div>
-  <div class="col-4 col-lg-3">
-    <%= f.submit "返信", class: "btn btn-secondary my-1" %>
-  </div>
-</div>
 <% end %>
