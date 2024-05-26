@@ -7,12 +7,18 @@
       <div class="col-12 col-md-7 col-lg-8">
         <div class="row d-flex">
           <h4 class="post_title col-9 my-4"><%= @post.title %></h4>
+          <!--いいねボタン-->
           <div class="col-3 text-center my-4">
-            <% unless @post.user_id == current_user.id %>
+            <% unless @post.user_id == current_user.id || current_user.guest_user? %>
               <div id="favorite_<%= @post.id %>">
                 <%= render 'public/favorites/favorite_btn', post: @post %>
               </div>
-              <% end %>
+            <% else %>
+              <div style="color: red;">
+                <i class="fa-solid fa-heart"></i>
+                <%= @post.favorites.count %>
+              </div>
+            <% end %>
           </div>
         </div>
         <div class="row mb-3 border-bottom">

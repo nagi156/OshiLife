@@ -33,9 +33,11 @@
                <span class="introduction"><%= user.introduction %></span>
              </td>
              <td class="text-center">
-               <div id="follow_btn_<%= user.id %>">
-                 <%= render 'public/relationships/follow_btn', user: user %>
-               </div>
+               <% if user.is_active? && !current_user.guest_user? && !user.guest_user? %>
+                 <div id="follow_btn_<%= user.id %>">
+                   <%= render 'public/relationships/follow_btn', user: user %>
+                 </div>
+               <% end %>
              </td>
           <% end %>
         <% end %>

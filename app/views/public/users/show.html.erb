@@ -11,11 +11,13 @@
             <h5><%= @user.name %></h5>
           </div>
             <!--フォローボタン-->
-          <div class="col-4 pt-3">
-            <div id="follow_btn_<%= @user.id %>">
-              <%= render 'public/relationships/follow_btn', user: @user %>
+          <% if @user.is_active? && !current_user.guest_user? && !@user.guest_user? %>
+            <div class="col-4 pt-3">
+              <div id="follow_btn_<%= @user.id %>">
+                <%= render 'public/relationships/follow_btn', user: @user %>
+              </div>
             </div>
-          </div>
+          <% end %>
             <!--DM機能-->
             <div id="chat_btn_<%= @user.id %>" class="pt-3 col-4 ">
               <%= render 'public/chats/btn', user: @user %>
