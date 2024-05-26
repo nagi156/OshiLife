@@ -23,7 +23,7 @@
         <% end %>
       </div>
       <!--いいねボタン-->
-      <div class="card-link border-top p-3 text-right">
+      <div class="card-link border-top text-right pt-3 px-3">
         <% unless post.user_id == current_user.id %>
           <div id="favorite_<%= post.id %>">
             <%= render 'public/favorites/favorite_btn', post: post %>
@@ -34,6 +34,9 @@
             <%= post.favorites.count %>
           </div>
         <% end %>
+      </div>
+      <div class="pb-2 px-2">
+        <%= l post.created_at %>
       </div>
     </div>
   <% end %>
