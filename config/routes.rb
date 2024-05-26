@@ -10,9 +10,9 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root to: "homes#top"
-    get "home/about" => "homes#about", as: "about"
-    get 'home/privacy' => "homes#privacy", as: "privacy"
-    get 'home/terms_of_service' => "homes#terms_of_service", as: "terms_of_service"
+    get "/about" => "homes#about", as: "about"
+    get '/privacy' => "homes#privacy", as: "privacy"
+    get '/terms_of_service' => "homes#terms_of_service", as: "terms_of_service"
     get "/my_page", to: "users#my_page", as: "my_page"
     get '/users/:id', to: 'users#show', as: 'user'
     resources :users, except: [:new, :show,:destroy] do
