@@ -11,10 +11,10 @@
 </div>
 <div class="row justify-content-center">
   <div class="col-12 col-md-10 col-lg-6">
-      <% if @users.present? %>
-        <%= render 'public/users/index', users: @users %>
-      <% else %>
-        <h6 class="text-center mt-5">フォローはしていません</h6>
-      <% end %>
+    <% if @users.present? %>
+      <%= render 'public/users/index', users: @users %>
+    <% else %>
+      <h6 class="text-center mt-5">フォローはしていません</h6>
+    <% end %>
   </div>
 </div>

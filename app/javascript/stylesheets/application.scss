@@ -223,7 +223,7 @@ footer {
 }
 
 @media (max-width: 769.98px) {
-  .name_link {
+  .name_link,.footer_link{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

@@ -4,7 +4,7 @@
       <%= chat.message %>
     </span>
   </div>
-    <%= link_to chat_path(chat), method: :delete, remote: true, id: "delete_chat_#{chat.id}",class: "btn btn-sm btn_delete ml-2" do %>
-      <i class="fa-solid fa-trash-can"></i>
-    <% end %>
+  <%= link_to chat_path(chat), method: :delete, remote: true, id: "delete_chat_#{chat.id}",class: "btn btn-sm btn_delete ml-2" do %>
+    <i class="fa-solid fa-trash-can"></i>
+  <% end %>
 </div>

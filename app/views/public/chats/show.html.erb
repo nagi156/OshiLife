@@ -1,7 +1,8 @@
 <div class="row justify-content-center my-4">
   <div class="card col-11 col-md-8 col-lg-6">
-    <h5 id= "room" class= "text-center mt-3" date-room= "<%= @room.id %>" date-user= "<%= current_user.id %>"><%= @user.name %>さんとのチャット</h5>
-
+    <h5 id= "room" class= "text-center mt-3" date-room= "<%= @room.id %>" date-user= "<%= current_user.id %>">
+      <%= @user.name %>さんとのチャット
+    </h5>
     <div id="message">
       <% @chats.each do |chat| %>
         <% if chat.user_id ==  current_user.id %>
@@ -17,7 +18,6 @@
       <% end %>
     </div>
     <div class="row justify-content-end my-3 mr-3">
-
       <%= form_with model: @chat, data: {remote: true} do |f| %>
         <%= f.text_field :message, id: "message_area" %>
         <%= f.submit "送信", class: "btn btn-secondary btn-sm" %>
