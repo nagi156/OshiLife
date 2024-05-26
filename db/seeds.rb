@@ -15,12 +15,14 @@ olivia = User.find_or_create_by!(email: "olivia1@example.com") do |user|
   user.name = "Olivia"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user1.png"), filename:"sample-user1.png")
+  user.introduction = "推しのライブに向けてうちわ量産中！よろしくお願いします！"
 end
 
 james = User.find_or_create_by!(email: "james2@example.com") do |user|
   user.name = "James"
   user.password = "password"
   user.profile_image = ActiveStorage::Blob.create_and_upload!(io: File.open("#{Rails.root}/db/fixtures/sample-user2.png"), filename:"sample-user2.png")
+  user.introduction = "痛バッグやうちわ、ぬいなど大体何でも作ります。100％ではありませんがフォロバします～"
 end
 
 
