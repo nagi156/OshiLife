@@ -21,10 +21,12 @@
 - 自分が作った応援グッズの作り方や使用したものの情報提供、成果物として投稿したい時
 
 ## 設計書
-###実装機能リスト
+### 実装機能リスト
+
 ![機能カタログ](https://github.com/nagi156/OshiLife/assets/158553840/fd37f72b-7856-4cfd-a482-95cf42be94e7)
 
-###アプリケーション詳細設計書
+### アプリケーション詳細設計書
+
 ![アプリケーション詳細設計書](https://github.com/nagi156/OshiLife/assets/158553840/14c82626-2fa2-49bd-a13d-5a02f7e1940d)
 ![アプリケーション詳細設計書2](https://github.com/nagi156/OshiLife/assets/158553840/c6aad9a0-ccc6-49bb-8d4a-8c0f64e52ed6)
 ​
