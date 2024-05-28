@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   scope module: :public do
     root to: "homes#top"
+    get "search" => "searches#search"
     get "/about" => "homes#about", as: "about"
     get '/privacy' => "homes#privacy", as: "privacy"
     get '/terms_of_service' => "homes#terms_of_service", as: "terms_of_service"
@@ -32,7 +33,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :chats, only: [:show, :create, :destroy]
-    get "search" => "searches#search"
+    resources :notifications, only: [:index]
   end
 
   #ここから管理者のルーティング↓
