@@ -1,43 +1,52 @@
-<div class="row justify-content-center">
+<h4 class="text-center">プロフィールの変更</h4>
+
+<div class="row justify-content-center my-4">
   <div class="col-12 col-md-10 col-lg-6">
-    <h5>プロフィールの変更</h5>
-    <%= render 'layouts/errors', obj: @user %>
-    <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
-      <div class="form-group">
-        <%= f.label "プロフィール画像" %>
-        <%= f.file_field :profile_image, accept: "image/*" %>
-      </div>
-      
-      <div class="form-group">
-        <%= f.label "ユーザー名" %>
-        <%= f.text_field :name, class: "form-control" %>
-      </div>
-      
-       <div class="form-group">
-        <%= f.label "自己紹介" %>
-        <%= f.text_area :introduction, row: "5", class: "form-control" %>
-      </div>
+    <div class="card shadow">
+      <div class="card-body">
+        <%= render 'layouts/errors', obj: @user %>
+        <%= form_with model: @user,url: admin_user_path, method: :patch do |f| %>
+          <div class="form-group">
+            <%= f.label "プロフィール画像" %>
+            <%= f.file_field :profile_image, accept: "image/*" %>
+          </div>
 
-      <div class="row">
-        <div class="col-12 col-md-5 col-lg-6">
-          <%= f.label :is_active, "会員ステータス" %>
-          <%= f.radio_button :is_active, :true %>
-          <%= f.label :is_active, "有効", { value: :true } %>
-          <%= f.radio_button :is_active, :false %>
-          <%= f.label :is_active, "退会", { value: :false } %>
-        </div>
+          <div class="form-group">
+            <%= f.label "ユーザー名" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label "メールアドレス" %>
+            <%= f.text_field :email, class: "form-control" %>
+          </div>
 
-        <div class="col-12 col-md-5 col-lg-6">
+           <div class="form-group">
+            <%= f.label "自己紹介" %>
+            <%= f.text_area :introduction, row: "5", class: "form-control" %>
+          </div>
+
           <div class="row">
-            <div class="col-6">
-              <%= link_to "戻る", admin_user_path(@user), class: "btn btn-secondary" %>
+            <div class="col-12 col-md-5 col-lg-6">
+              <%= f.label :is_active, "会員ステータス" %>
+              <%= f.radio_button :is_active, :true %>
+              <%= f.label :is_active, "有効", { value: :true } %>
+              <%= f.radio_button :is_active, :false %>
+              <%= f.label :is_active, "退会", { value: :false } %>
             </div>
-            <div class="col-6">
-              <%= f.submit "変更を保存", class: "btn btn_post" %>
+
+            <div class="col-12 col-md-5 col-lg-6">
+              <div class="row">
+                <div class="col-6">
+                  <%= link_to "戻る", admin_user_path(@user), class: "btn btn_return" %>
+                </div>
+                <div class="col-6">
+                  <%= f.submit "変更を保存", class: "btn btn_post" %>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
+        <% end %>
       </div>
-    <% end %>
+    </div>
   </div>
 </div>
