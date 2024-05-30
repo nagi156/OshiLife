@@ -47,6 +47,16 @@
             <% end %>
           </li>
           <li class="nav-item">
+            <%= link_to notifications_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
+              <% if current_user.notifications.where(checked: false).exists? %>
+                <i class="fa-solid fa-bell" ,style= "color: #ffff33;"></i>
+              <% else %>
+                <i class="fa-regular fa-bell"></i>
+              <% end %>
+                通知
+            <% end %>
+          </li>
+          <li class="nav-item">
             <%= link_to new_post_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-pen"></i> 新規投稿
             <% end %>

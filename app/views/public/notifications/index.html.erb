@@ -1,0 +1,9 @@
+<h4>通知一覧</h4>
+<% if @notificataions.present? %>
+  <%= link_to "全削除", notification_path(@notificataions), method: :delete %>
+  <%= @notificataions.each do |notification| %>
+    <%= render "#{notification.action_type}", notification: notification %>
+  <% end %>
+<% else %>
+  通知はありません
+<% end %>

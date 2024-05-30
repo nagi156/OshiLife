@@ -11,6 +11,8 @@ class Post < ApplicationRecord
 
   has_one_attached :complete_image
 
+  has_one :notification, as: :subject, dependent: :destroy
+
   validates :title, presence: true, length: { in: 1..30 }
 
   # 投稿画像の有無とリサイズ

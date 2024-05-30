@@ -1,0 +1,7 @@
+<%= link_to transition_path(notification) do %>
+  <div>
+    <%= link_to notification.subject.following.name, user_path(notification.subject.user) %>
+    があなたのフォローしました。
+    <%= "(#{time_ago_in_words(notification.create_at)}前)" %>
+  </div>
+<% end %>
