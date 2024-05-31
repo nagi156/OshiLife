@@ -7,6 +7,8 @@ module Public::NotificationsHelper
       post_path(notification.subject.post)
     when :followed_me
       user_path(notification.subject.following)
+    when :chated_me
+       chat_path(notification.subject_id)
     end
   end
 end
