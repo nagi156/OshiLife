@@ -33,7 +33,7 @@ Rails.application.routes.draw do
       resources :comments, only: [:create, :destroy]
     end
     resources :chats, only: [:show, :create, :destroy]
-    resources :notifications, only: [:index]
+    resources :notifications, only: [:index, :destroy]
   end
 
   #ここから管理者のルーティング↓

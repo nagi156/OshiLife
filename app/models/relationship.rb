@@ -4,11 +4,11 @@ class Relationship < ApplicationRecord
 
   has_one :notification, as: :subject, dependent: :destroy
 
-  after_create_commit :create_notification
+  after_create_commit :create_notifications
 
   private
 
-  def create_notification
+  def create_notifications
     Notification.create(subject: self, user: followed, action_type: :followed_me)
   end
 end

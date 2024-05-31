@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <% if post.user.is_active? %>
+  <%# if post.user.is_active? %>
     <div class="card shadow m-2" style="width: 18rem;">
       <%= link_to post_path(post) do %>
         <div class="card-img-top border-bottom">
@@ -40,5 +40,5 @@
         <%= l post.created_at %>
       </div>
     </div>
-  <% end %>
+  <%# end %>
 <% end %>

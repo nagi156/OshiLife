@@ -1,9 +1,22 @@
-<h4>通知一覧</h4>
-<% if @notificataions.present? %>
-  <%= link_to "全削除", notification_path(@notificataions), method: :delete %>
-  <%= @notificataions.each do |notification| %>
-    <%= render "#{notification.action_type}", notification: notification %>
+<h4 class="text-center my-5">通知一覧</h4>
+<div class="row justify-content-center mb-3">
+  <% if @notifications.present? %>
+  <div class="col-10">
+    <%= link_to "全削除",notification_path(@notifications), method: :delete, class: "btn btn_delete" %>
+  </div>
+  <div class="col-10 mt-3">
+
+    <% @notifications.each do |notification| %>
+      <%= render "#{notification.action_type}", notification: notification %>
+    <% end %>
+  </div>
+  <% else %>
+    通知はありません
   <% end %>
-<% else %>
-  通知はありません
-<% end %>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-6">
+    <%= paginate @notifications %>
+  </div>
+</div>

@@ -4,13 +4,13 @@ class Favorite < ApplicationRecord
 
   has_one :notification, as: :subject, dependent: :destroy
 
-  after_create_commit :create_notification
+  after_create_commit :create_notifications
 
   validates :user_id, uniqueness: {scope: :post_id}
 
   private
 
-  def create_notification
+  def create_notifications
     Notification.create(subject: self, user: self.post.user, action_type: :liked_to_own_post)
   end
 
