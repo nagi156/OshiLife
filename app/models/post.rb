@@ -2,6 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
+  has_many :tags, dependent: :destroy
 
   has_many :materials, inverse_of: :post
   accepts_nested_attributes_for :materials, allow_destroy: true
