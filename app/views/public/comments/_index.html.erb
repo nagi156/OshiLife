@@ -17,7 +17,7 @@
                 <span class="user_name mx-2"><%= comment.user.name %></span>
               <% end %>
             </td>
-            <td><%= comment.comment %></td>
+            <td><span class="comment_text"><%= comment.comment %></span></td>
             <td>
               <%= link_to post_comment_path(comment.post, comment), method: :delete, remote: true, data: {"turbolinks" => false}, class: "btn btn-sm btn_delete" do %>
                 削除 <i class="fa-solid fa-trash-can"></i>

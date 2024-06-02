@@ -9,7 +9,6 @@ body,
   min-height: 100vh;
   background-color: #fffbfa;
   font-family: "Kiwi Maru", serif;
-  font-weight: 400;
   font-style: normal;
   color: #696969;
 }
@@ -198,6 +197,15 @@ footer {
 // フォームのレイアウトを崩さないようにする
 .field_with_errors {
   display: contents;
+}
+
+// AIのタグのレイアウト
+.positive {
+    color: #40BA8D;
+}
+
+.negative {
+    color: #FE003F;
 }
 
 

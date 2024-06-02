@@ -12,6 +12,8 @@ import "jquery";
 import "popper.js";
 import "bootstrap";
 import "../stylesheets/application";
+import "../script";
+
 
 var jQuery = require("jquery");
 global.$ = global.jQuery = jQuery;
