@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <% if post.user.is_active? %>
+  <%# if post.user.is_active? %>
     <div class="card shadow m-2" style="width: 18rem;">
       <%= link_to post_path(post) do %>
         <div class="card-img-top border-bottom">
@@ -23,7 +23,8 @@
         <% end %>
       </div>
       <!--いいねボタン-->
-      <div class="card-link border-top text-right pt-3 px-3">
+      <div class="card-link d-flex justify-content-end border-top pt-3 px-3">
+        <div class="mr-2"><i class="fa-regular fa-comment"></i><%= post.comments.count %></div>
         <% unless post.user_id == current_user.id || current_user.guest_user?  %>
           <div id="favorite_<%= post.id %>">
             <%= render 'public/favorites/favorite_btn', post: post %>
@@ -39,5 +40,5 @@
         <%= l post.created_at %>
       </div>
     </div>
-  <% end %>
+  <%# end %>
 <% end %>

@@ -21,6 +21,8 @@ class User < ApplicationRecord
   has_many :reverse_relationships, class_name: 'Relationship', foreign_key: :followed_id
   has_many :followeds, through: :reverse_relationships, source: :following
 
+  has_many :notifications, dependent: :destroy
+
   has_one_attached :profile_image
   # プロフィール画像の有無&リサイズ
   def get_profile_image

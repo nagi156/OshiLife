@@ -15,7 +15,8 @@
           <%= post.user.name %>
         <% end %>
       </div>
-      <div class="card-link border-top text-right pt-3 px-3">
+      <div class="card-link d-flex justify-content-end border-top pt-3 px-3">
+        <div class="mr-2"><i class="fa-regular fa-comment"></i><%= post.comments.count %></div>
         <i class="fa-solid fa-heart" style= "color: red;"></i> <%= post.favorites.count %>
       </div>
       <div class="pb-2 px-2">
