@@ -9,7 +9,6 @@ body,
   min-height: 100vh;
   background-color: #fffbfa;
   font-family: "Kiwi Maru", serif;
-  font-weight: 400;
   font-style: normal;
   color: #696969;
 }
@@ -201,18 +200,12 @@ footer {
 }
 
 // AIのタグのレイアウト
-.tags_name{
-  background-color: #027b71;
-  font-weight: 500;
-  display: inline;
-  padding: .2em .6em .3em;
-  font-size: 75%;
-  line-height: 1;
-  color: #fff;
-  text-align: center;
-  white-space: nowrap;
-  vertical-align: baseline;
-  border-radius: .25em;
+.positive {
+    color: #40BA8D;
+}
+
+.negative {
+    color: #FE003F;
 }
 
 
