@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     resources :posts, except: [:new, :index]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
+    resources :genres, except: [:new, :show]
     get "search" => "searches#search"
   end
 end
