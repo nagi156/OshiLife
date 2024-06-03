@@ -1,0 +1,2 @@
+class Gernre < ApplicationRecord
+end
