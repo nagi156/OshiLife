@@ -4,7 +4,7 @@ class Admin::GenresController < ApplicationController
 
   def index
     @genres = Genre.all
-    @genre = Grenre.new
+    @genre = Genre.new
   end
 
   def create
@@ -21,9 +21,9 @@ class Admin::GenresController < ApplicationController
 
   def update
     if @genre.update(genre_params)
-      redirect_to request.referer, notice: 'ジャンルを更新しました。'
+      redirect_to admin_genres_path, notice: 'ジャンルを更新しました。'
     else
-      render :index
+      render :edit
     end
   end
 
