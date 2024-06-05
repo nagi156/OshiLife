@@ -10,8 +10,10 @@ class Admin::GenresController < ApplicationController
   def create
     @genre = Genre.new(genre_params)
     if @genre.save
-      redirect_to request.referer, notice: 'ジャンルを追加しました。'
+      redirect_to genres_path, notice: 'ジャンルを追加しました。'
     else
+      flash.now[:alert] = "ジャンル登録に失敗しました。内容をご確認ください。"
+      @genres = Genre.all
       render :index
     end
   end

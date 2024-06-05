@@ -29,6 +29,7 @@ ja:
       user: ユーザー
       material: 材料
       recipe: 作り方
+      genre: ジャンル
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。

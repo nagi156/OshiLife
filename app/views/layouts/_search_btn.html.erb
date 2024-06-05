@@ -1,15 +1,13 @@
-<div class="row mr-3 justify-content-end">
-  <div class="d-flex">
-    <div class="col-8 p-0">
+<div class="form-group d-flex mt-5">
+    <div class="col-5 col-md-3 col-lg-7 col-xl-8 p-0">
       <%= f.text_field :word, class: "form-control", placeholder: "キーワード" %>
       <%= f.hidden_field :search, value: 'partial' %>
     </div>
-    <div class="col-4">
+    <div class="col-4 col-md-3 col-lg-5 col-xl-4">
       <%= f.submit "検索", class: "btn btn_search btn-block" %>
     </div>
-  </div>
 </div>
-<div class="button_radio text-right">
+<div class="button_radio">
   <%= f.radio_button :model,"ユーザー",checked: true %>
   <%= f.label "ユーザー" %>
   <%= f.radio_button :model,"投稿" %>

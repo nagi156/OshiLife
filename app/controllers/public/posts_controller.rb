@@ -67,7 +67,7 @@ class Public::PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(
-      :title,:complete_image,#postモデルの属性
+      :title,:complete_image, :genre_id,#postモデルの属性
       materials_attributes:[:id,:name, :amount,:_destroy],#材料モデル（子モデル）の属性
       recipes_attributes:[:id, :instructions, :recipe_image, :_destroy]#作り方モデル（子モデル）の属性
       )

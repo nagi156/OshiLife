@@ -9,21 +9,48 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <div id="wrapper">
       <header>
         <%= render 'layouts/header' %>
       </header>
-      <main class="container-fluid">
+      <div class="container-fluid">
         <div class="text-center">
           <p class="notice mb-0 mt-1"><%= notice %></p>
           <p class="alert m-0"><%= alert %></p>
         </div>
-        <%= render 'layouts/search_form' %>
-        <%= yield %>
-      </main>
-      <footer><%= render 'layouts/footer' %></footer>
+        <div class="row">
+          <!-- サイドバー -->
+          <div class="col-lg-3 d-none d-lg-block">
+            <!-- サイドバーのコンテンツ -->
+            <%= render 'layouts/search_form' %>
+            
+            サイドバー
+            
+          </div>
+          <!-- メインコンテンツ -->
+          <div class="col-lg-9">
+            <main>
+              <!-- スマートフォンサイズの場合、検索機能をメインコンテンツの上に移動 -->
+              <div class="d-lg-none">
+                <%= render 'layouts/search_form' %>
+              </div>
+              <%= yield %>
+            </main>
+            
+            <div class="col-lg-3 d-lg-block">
+              <!-- スマートフォンサイズの場合、サイドバーはメインコンテンツの下に移動 -->
+              <div class="d-lg-none">
+                <!-- サイドバーのコンテンツ -->
+                サイドバー
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer>
+        <%= render 'layouts/footer' %>
+      </footer>
     </div>
   </body>
 </html>
