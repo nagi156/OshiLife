@@ -2,6 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, except: [:index, :show]
+  before_action :set_genre, except: [:index, :destroy]
 
   def new
     @post = Post.new
@@ -83,5 +84,9 @@ class Public::PostsController < ApplicationController
     if current_user&.guest_user?
       redirect_to request.referer, alert: "閲覧のみ可能です。ご利用の際はご登録してご利用ください。"
     end
+  end
+
+  def set_genre
+    @genres = Genre.all
   end
 end

@@ -14,7 +14,7 @@ class Post < ApplicationRecord
 
   has_one :notification, as: :subject, dependent: :destroy
 
-  validates :title, presence: true, length: { in: 1..30 }
+  validates :title, :genre_id, presence: true, length: { in: 1..30 }
 
   # 投稿画像の有無とリサイズ
   def get_complete_image
