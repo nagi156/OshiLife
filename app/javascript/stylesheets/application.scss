@@ -134,12 +134,26 @@ footer {
   color: #027b71;
 }
 
+// ジャンル関連
 .genre_tag{
   background-color: #e0f7e6;
   border-radius: 5px;
   color: #0184a9;
   padding: 2px;
 }
+
+.genre_counter{
+  background-color: #e0f7e6;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7em;
+  color: #0184a9;
+}
+
 
 
 // チャット画面
@@ -259,5 +273,12 @@ footer {
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
+  }
+}
+
+@media (max-width: 1000px) {
+  .search-form {
+    display: flex;
+    justify-content: center;
   }
 }

@@ -9,48 +9,59 @@
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
+
+
   <body>
     <div id="wrapper">
       <header>
         <%= render 'layouts/header' %>
       </header>
-      <div class="container-fluid">
-        <div class="text-center">
-          <p class="notice mb-0 mt-1"><%= notice %></p>
-          <p class="alert m-0"><%= alert %></p>
-        </div>
+      <div class="text-center">
+        <p class="notice mb-0 mt-1"><%= notice %></p>
+        <p class="alert m-0"><%= alert %></p>
+      </div>
+      <div class="container">
         <div class="row">
+          <% if @page == "top" || @page == "about" || @page == "login" || @page == "new_registration" %>
+            <div class="col-lg-12">
+              <main>
+                <%= yield %>
+              </main>
+            </div>
+          <% else %>
           <!-- サイドバー -->
-          <div class="col-lg-3 d-none d-lg-block">
+          <div class="col-lg-3 d-none d-lg-block border mb-5">
             <!-- サイドバーのコンテンツ -->
-            <%= render 'layouts/search_form' %>
-            
-            サイドバー
-            
+            <div class="d-flex justify-content-center">
+              <%= render 'layouts/search_form' %>
+            </div>
+            <%= render 'layouts/sideber', genres: @genres %>
+          </div>
+
+          <!-- スマートフォンサイズの場合、検索機能をメインコンテンツの上に移動 -->
+          <div class="col-12 d-lg-none mb-3">
+            <div class="d-flex justify-content-center">
+              <%= render 'layouts/search_form' %>
+            </div>
           </div>
           <!-- メインコンテンツ -->
           <div class="col-lg-9">
             <main>
-              <!-- スマートフォンサイズの場合、検索機能をメインコンテンツの上に移動 -->
-              <div class="d-lg-none">
-                <%= render 'layouts/search_form' %>
-              </div>
               <%= yield %>
             </main>
-            
-            <div class="col-lg-3 d-lg-block">
-              <!-- スマートフォンサイズの場合、サイドバーはメインコンテンツの下に移動 -->
-              <div class="d-lg-none">
-                <!-- サイドバーのコンテンツ -->
-                サイドバー
-              </div>
-            </div>
           </div>
         </div>
+          <!-- スマートフォンサイズの場合、サイドバーはメインコンテンツの下に移動 -->
+          <div class="d-lg-none d-flex justify-content-center border mb-5">
+            <div class="col-12">
+            <%= render 'layouts/sideber', genres: @genres %>
+            </div>
+          </div>
+        <% end %>
       </div>
-      <footer>
-        <%= render 'layouts/footer' %>
-      </footer>
     </div>
+    <footer>
+      <%= render 'layouts/footer' %>
+    </footer>
   </body>
 </html>

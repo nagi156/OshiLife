@@ -2,6 +2,7 @@ class Public::UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, only: [:edit]
+  before_action :set_genre
 
   def index
     @users = User.all.page(params[:page])
@@ -74,4 +75,7 @@ class Public::UsersController < ApplicationController
     end
   end
 
+  def set_genre
+    @genres = Genre.all
+  end
 end

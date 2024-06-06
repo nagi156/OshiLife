@@ -1,5 +1,6 @@
 class Admin::SearchesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_genre
 
   def search
     @model = params[:model]
@@ -10,4 +11,12 @@ class Admin::SearchesController < ApplicationController
       @records = Post.search_for(params[:search], @word).page(params[:page])
     end
   end
+
+  private
+
+  def set_genre
+    @genres = Genre.all
+  end
+
+
 end

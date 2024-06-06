@@ -1,75 +1,82 @@
-<div class="row justify-content-center">
-  <div class="card mb-5 col-11 col-md-10 col-lg-8">
-    <div class="row border p-2">
-      <div class="col-12 col-md-5 col-lg-4 text-center">
-        <%= image_tag @post.get_complete_image, size: "200x200",class: "border border-dark-subtle" %>
+<div class="card mb-5">
+  <div class="row">
+
+    <div class="col-12 col-md-5 col-lg-4 text-center">
+      <%= image_tag @post.get_complete_image, size: "200x200",class: "border border-dark-subtle mt-5" %>
+    </div>
+
+    <div class="col-12 col-md-7 col-lg-8">
+      <div class="row">
+        <h4 class="post_title col-9 my-4 text-center"><%= @post.title %></h4>
+
+        <!--いいねボタン-->
+        <div class="col-3 text-center my-4">
+          <% unless @post.user_id == current_user.id || current_user.guest_user? %>
+            <div id="favorite_<%= @post.id %>">
+              <%= render 'public/favorites/favorite_btn', post: @post %>
+            </div>
+          <% else %>
+            <div style="color: red;">
+              <i class="fa-solid fa-heart"></i>
+              <%= @post.favorites.count %>
+            </div>
+          <% end %>
+        </div>
       </div>
-      <div class="col-12 col-md-7 col-lg-8">
-        <div class="row d-flex">
-          <h4 class="post_title col-9 my-4"><%= @post.title %></h4>
-          <!--いいねボタン-->
-          <div class="col-3 text-center my-4">
-            <% unless @post.user_id == current_user.id || current_user.guest_user? %>
-              <div id="favorite_<%= @post.id %>">
-                <%= render 'public/favorites/favorite_btn', post: @post %>
-              </div>
-            <% else %>
-              <div style="color: red;">
-                <i class="fa-solid fa-heart"></i>
-                <%= @post.favorites.count %>
-              </div>
+
+      <div class="row my-3">
+        <div class="col-12">
+          ジャンル：
+          <span class="genre_tag mx-3">
+            <%= @post.genre.name %>
+          </span>
+        </div>
+      </div>
+
+      <!--ユーザー情報-->
+      <div class="row mb-3">
+        <div class="col-7 text-left">
+          <% if @post.user == current_user %>
+            <%= link_to my_page_path do %>
+              <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+              <span class="user_name ml-2"><%= @post.user.name %></span>
             <% end %>
-          </div>
+          <% else %>
+            <%= link_to user_path(@post.user) do %>
+              <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
+              <span class="user_name mx-3"><%= @post.user.name %></span>
+            <% end %>
+          <% end %>
         </div>
 
-        <div class="row my-3">
-          <div class="col-12">
-            ジャンル：
-            <span class="genre_tag mx-3">
-              <%= @post.genre.name %>
-            </span>
-          </div>
+        <div class="col-5">
+          <% if @post.user_id == current_user.id %>
+            <%= link_to "編集",edit_post_path(@post), class: "btn btn-sm btn_post m-2" %>
+            <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn_delete" %>
+          <% end %>
         </div>
-
-
-        <div class="row mb-3 border-bottom">
-          <div class="col-7 col-lg-8 text-left p-1">
-            <% if @post.user == current_user %>
-              <%= link_to my_page_path do %>
-                <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-                <span class="user_name ml-2"><%= @post.user.name %></span>
-              <% end %>
-            <% else %>
-              <%= link_to user_path(@post.user) do %>
-                <%= image_tag @post.user.get_profile_image, size: "50x50", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
-                <span class="user_name mx-3"><%= @post.user.name %></span>
-              <% end %>
-            <% end %>
-          </div>
-          <div class="col-5 col-lg-4">
-            <% if @post.user_id == current_user.id %>
-              <%= link_to "編集",edit_post_path(@post), class: "btn btn-sm btn_post m-2" %>
-              <%= link_to "削除", @post, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn_delete" %>
-            <% end %>
-          </div>
-        </div>
-        <!--材料リスト-->
-        <div class="row">
-          <div class="material_list_title col-2 col-md-3 col-lg-4">材料</div>
-          <div class="col-10 co-md-9 col-lg-8"><%= render partial: 'material_list', locals:{ materials: @post.materials} %></div>
-        </div>
+      </div>
+      <!--材料リスト-->
+      <div class="row">
+        <div class="material_list_title col-2 col-md-3">材料</div>
+        <div class="col-9 co-md-9 col-lg-8"><%= render partial: 'material_list', locals:{ materials: @post.materials} %></div>
       </div>
     </div>
-    <div class="row-12 my-3">
-      <h5>作り方</h5>
+  </div>
+
+  <div class="row my-3">
+    <div class="col-12">
+      <h5 class="ml-3">作り方</h5>
+    </div>
+    <div class="col-12">
       <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
     </div>
-    <!--コメント一覧、フォーム-->
-    <div class="row justify-content-end">
-      <div class="col-8 col-md-7 col-lg-6">
-        <%= render 'public/comments/form',post: @post,comment: @comment %>
-      </div>
-    </div>
-    <div id="comment_index"><%= render 'public/comments/index', post: @post %></div>
   </div>
+  <!--コメント一覧、フォーム-->
+  <div class="row justify-content-end">
+    <div class="col-8 col-md-7 col-lg-6">
+      <%= render 'public/comments/form',post: @post,comment: @comment %>
+    </div>
+  </div>
+  <div id="comment_index"><%= render 'public/comments/index', post: @post %></div>
 </div>

@@ -2,7 +2,7 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, except: [:index, :show]
-  before_action :set_genre, except: [:index, :destroy]
+  before_action :set_genre
 
   def new
     @post = Post.new

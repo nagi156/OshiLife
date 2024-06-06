@@ -1,5 +1,6 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_genre
 
   def top
     if params[:latest]
@@ -11,6 +12,12 @@ class Admin::HomesController < ApplicationController
     else
       @posts = Post.all.page(params[:page]).per(8)
     end
+  end
+
+  private
+
+  def set_genre
+    @genres = Genre.all
   end
 
 end
