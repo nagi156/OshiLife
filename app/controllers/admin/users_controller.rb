@@ -32,7 +32,7 @@ class Admin::UsersController < ApplicationController
   end
 
   def set_genre
-    @genres = Genre.all
+     @genres = Genre.all.page(params[:page]).per(5)
   end
 
 end

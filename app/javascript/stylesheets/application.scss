@@ -7,7 +7,7 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #fffbfa;
+  background-color: #fafdff;
   font-family: "Kiwi Maru", serif;
   font-style: normal;
   color: #696969;
@@ -26,9 +26,23 @@ footer {
   margin-top: auto;
 }
 
+#sidebar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Full height */
+  overflow-y: auto;
+}
+
 .card{
   background-color: #fffef7;
   border: 0.3px solid #a2d7dd;
+}
+
+.card2{
+  background-color: #fffbfa;
+  border: 0.3px solid #ebcbc2;
+  border-radius: 10px;
 }
 
 
@@ -176,7 +190,7 @@ footer {
   display: grid;
   justify-content: center;
 }
-
+// 通知のレイアウト
 .notification-badge {
   background-color: #FF8339;
   color: white;

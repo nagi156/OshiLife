@@ -1,5 +1,5 @@
 <div class="form-group d-flex mt-5">
-  <div class="col-7 p-0">
+  <div class="col-7">
     <%= f.text_field :word, class: "form-control", placeholder: "キーワード" %>
     <%= f.hidden_field :search, value: 'partial' %>
   </div>
@@ -7,7 +7,7 @@
     <%= f.submit "検索", class: "btn btn_search btn-block" %>
   </div>
 </div>
-<div class="button_radio">
+<div class="button_radio pl-2">
   <%= f.radio_button :model,"ユーザー",checked: true %>
   <%= f.label "ユーザー" %>
   <%= f.radio_button :model,"投稿" %>

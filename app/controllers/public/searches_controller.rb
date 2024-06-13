@@ -9,5 +9,6 @@ class Public::SearchesController < ApplicationController
     else
       @records = Post.search_for(params[:search], @word).page(params[:page])
     end
+    @genres = Genre.all.page(params[:page]).per(5)
   end
 end

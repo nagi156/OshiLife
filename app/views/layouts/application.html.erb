@@ -20,9 +20,11 @@
         <p class="notice mb-0 mt-1"><%= notice %></p>
         <p class="alert m-0"><%= alert %></p>
       </div>
-      <div class="container">
+      <div class="container-fluid">
         <div class="row">
-          <% if @page == "top" || @page == "about" || @page == "login" || @page == "new_registration" %>
+          <% if @page == "top" || @page == "about" || @page == "login" ||
+                @page == "new_registration" || @page == "terms_of_service" ||
+                @page =="privacy" %>
             <div class="col-lg-12">
               <main>
                 <%= yield %>
@@ -30,12 +32,14 @@
             </div>
           <% else %>
           <!-- サイドバー -->
-          <div class="col-lg-3 d-none d-lg-block border mb-5">
+          <div class="col-lg-3 d-none d-lg-block my-5" id="sidebar">
             <!-- サイドバーのコンテンツ -->
-            <div class="d-flex justify-content-center">
-              <%= render 'layouts/search_form' %>
+            <div class="card2">
+              <div class="d-flex justify-content-center">
+                <%= render 'layouts/search_form' %>
+              </div>
+              <%= render 'layouts/sideber', genres: @genres %>
             </div>
-            <%= render 'layouts/sideber', genres: @genres %>
           </div>
 
           <!-- スマートフォンサイズの場合、検索機能をメインコンテンツの上に移動 -->
@@ -52,8 +56,8 @@
           </div>
         </div>
           <!-- スマートフォンサイズの場合、サイドバーはメインコンテンツの下に移動 -->
-          <div class="d-lg-none d-flex justify-content-center border mb-5">
-            <div class="col-12">
+          <div class="d-lg-none d-flex justify-content-center mb-5">
+            <div class="col-10 card2">
             <%= render 'layouts/sideber', genres: @genres %>
             </div>
           </div>
@@ -63,5 +67,6 @@
     <footer>
       <%= render 'layouts/footer' %>
     </footer>
+    </script>
   </body>
 </html>

@@ -3,13 +3,13 @@ class Admin::GenresController < ApplicationController
   before_action :set_genre, only: [:show,:edit, :update, :destroy]
 
   def index
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page]).per(5)
     @genre = Genre.new
   end
 
   def show
     @posts = @genre.posts
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page]).per(5)
   end
 
   def create

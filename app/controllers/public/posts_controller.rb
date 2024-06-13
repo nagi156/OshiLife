@@ -87,6 +87,6 @@ class Public::PostsController < ApplicationController
   end
 
   def set_genre
-    @genres = Genre.all
+    @genres = Genre.all.page(params[:page])
   end
 end

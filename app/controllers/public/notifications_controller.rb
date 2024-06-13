@@ -6,6 +6,7 @@ class Public::NotificationsController < ApplicationController
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
+    @genres = Genre.all.page(params[:page]).per(5)
   end
 
   def destroy

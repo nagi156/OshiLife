@@ -1,6 +1,7 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
   before_action :user_entering_room_limit, only: [:show]
+  before_action :set_genre
 
   def show
     @user = User.find(params[:id])
@@ -42,6 +43,10 @@ class Public::ChatsController < ApplicationController
     unless current_user.followed_by?(user) && user.followed_by?(current_user)
       redirect_to posts_path
     end
+  end
+
+  def set_genre
+     @genres = Genre.all.page(params[:page]).per(5)
   end
 
 end
