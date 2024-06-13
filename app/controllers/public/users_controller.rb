@@ -1,8 +1,8 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user, only: [:edit, :update]
-  before_action :ensure_guest_user, only: [:edit]
   before_action :set_genre
+  before_action :ensure_correct_user, only: [:edit, :update, :unsubscribe, :withdraw]
+  before_action :ensure_guest_user, only: [:edit]
 
   def index
     @users = User.all.page(params[:page])
@@ -61,6 +61,11 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image, :email, :password, :password_confirmation)
   end
 
+  def set_genre
+    @genres = Genre.all.page(params[:page]).per(5)
+  end
+
+  # アクセス制限のメソッド
   def ensure_correct_user
     @user = User.find(params[:id])
     unless @user == current_user
@@ -75,7 +80,4 @@ class Public::UsersController < ApplicationController
     end
   end
 
-  def set_genre
-    @genres = Genre.all.page(params[:page]).per(5)
-  end
 end

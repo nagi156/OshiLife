@@ -141,7 +141,10 @@ footer {
   color: #fff;
 }
 
-
+.new_post {
+    position: absolute;
+    right: 20%; /* デフォルトの位置 */
+  }
 
 // 文字色変更
 .name_link, .card-title, label, .user_name{
@@ -164,10 +167,9 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.7em;
+  font-size: 1em;
   color: #0184a9;
 }
-
 
 
 // チャット画面
@@ -190,6 +192,7 @@ footer {
   display: grid;
   justify-content: center;
 }
+
 // 通知のレイアウト
 .notification-badge {
   background-color: #FF8339;
@@ -281,6 +284,7 @@ footer {
  }
 }
 
+
 @media (max-width: 769.98px) {
   .name_link,.footer_link{
     display: flex;
@@ -290,9 +294,17 @@ footer {
   }
 }
 
+// 検索ボタンのレスポンシブ
 @media (max-width: 1000px) {
   .search-form {
     display: flex;
     justify-content: center;
   }
 }
+
+//投稿一覧の見出しのレスポンシブ
+ @media (max-width: 425px) {
+    .new_post {
+      right: 0; /* スマホサイズの場合の位置 */
+    }
+  }

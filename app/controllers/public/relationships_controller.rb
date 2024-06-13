@@ -1,5 +1,6 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_genre
 
   def create
     @user = User.find(params[:user_id])
@@ -22,6 +23,12 @@ class Public::RelationshipsController < ApplicationController
   def followers
     @user = User.find(params[:user_id])
     @users = @user.followeds
+  end
+
+  private
+
+  def set_genre
+    @genres = Genre.all.page(params[:page]).per(5)
   end
 
 

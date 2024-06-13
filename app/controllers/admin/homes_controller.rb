@@ -4,13 +4,13 @@ class Admin::HomesController < ApplicationController
 
   def top
     if params[:latest]
-      @posts = Post.latest.page(params[:page]).per(8)
+      @posts = Post.latest.page(params[:page])
     elsif params[:old]
-      @posts = Post.old.page(params[:page]).per(8)
+      @posts = Post.old.page(params[:page])
     elsif params[:most_favorites]
-      @posts = Post.most_favorites.page(params[:page]).per(8)
+      @posts = Post.most_favorites.page(params[:page])
     else
-      @posts = Post.all.page(params[:page]).per(8)
+      @posts = Post.all.page(params[:page])
     end
   end
 

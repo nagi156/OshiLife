@@ -32,7 +32,7 @@
             </div>
           <% else %>
           <!-- サイドバー -->
-          <div class="col-lg-3 d-none d-lg-block my-5" id="sidebar">
+          <div class="col-lg-3 offset-lg-1 d-none d-lg-block my-5" id="sidebar">
             <!-- サイドバーのコンテンツ -->
             <div class="card2">
               <div class="d-flex justify-content-center">
@@ -49,7 +49,7 @@
             </div>
           </div>
           <!-- メインコンテンツ -->
-          <div class="col-lg-9">
+          <div class="col-lg-8">
             <main>
               <%= yield %>
             </main>

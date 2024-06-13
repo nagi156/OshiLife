@@ -1,23 +1,24 @@
 <div class="row my-5 pl-2">
   <div class="col-12">
     <% if admin_signed_in? %>
-      <% if request.fullpath.include?("/admin")%>
       <!--adminログイン後のリンク-->
+      <% if request.fullpath.include?("/admin")%>
         <%= link_to admin_genres_path,style: "color: #3e8d92;" do %>
           <i class="fa-solid fa-tags"></i>ジャンル一覧
         <% end %>
       <% end %>
     <% else user_signed_in? %>
-      <% unless request.fullpath.include?("/admin") %>
       <!--userログイン後のリンク-->
+      <% unless request.fullpath.include?("/admin") %>
         <%= link_to genres_path,style: "color: #3e8d92;" do %>
           <i class="fa-solid fa-tags"></i>ジャンル一覧
         <% end %>
       <% end %>
     <% end %>
   </div>
+
   <div class="col-11">
-    <table class="table table-bordered">
+    <table class="table border">
       <thead>
         <tr>
           <th>ジャンル</th>
@@ -59,13 +60,8 @@
       </tbody>
     </table>
   </div>
-  <% unless admin_signed_in? %>
-    <div class="col-12 my-3">
-      <%= link_to new_post_path, style: "color: #3e8d92;" do %>
-        <i class="fa-solid fa-pen"></i> 新規投稿
-      <% end %>
-    </div>
 
+  <% unless admin_signed_in? %>
     <div class="col-12 mb-3">
       <%= link_to posts_path,style: "color: #3e8d92;" do %>
         <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
