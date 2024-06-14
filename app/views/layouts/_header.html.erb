@@ -31,6 +31,13 @@
       <% elsif user_signed_in? %>
         <% unless request.fullpath.include?("/admin") %>
           <!--userログイン後のリンク-->
+
+          <li class="nav-item">
+          <%= link_to new_post_path, class: "nav-link mr-3", style: "color: #3e8d92;" do %>
+            <i class="fa-solid fa-pen-to-square"></i> 新規投稿
+          <% end %>
+          </li>
+
           <li class="nav-item">
             <%= link_to my_page_path, class: "nav-link mr-3",style: "color: #3e8d92;" do %>
               <i class="fa-solid fa-user"></i> マイページ

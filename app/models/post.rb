@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   has_one :notification, as: :subject, dependent: :destroy
 
   validates :title, presence: true, length: { in: 1..30 }
+  validate :check_image_extension
 
   # 投稿画像の有無とリサイズ
   def get_complete_image
@@ -41,5 +42,22 @@ class Post < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :most_favorites, -> { left_joins(:favorites).group("posts.id").order("COUNT(favorites.id) DESC") }
+
+  private
+
+  def check_image_extension
+    if complete_image.attached?
+      acceptable_types = ["image/jpeg", "image/png"]
+      acceptable_extensions = [".jpeg", ".jpg", ".png"]
+
+      unless acceptable_types.include?(complete_image.blob.content_type)
+        errors.add(:complete_image, 'はjpegまたはpng形式の画像のみアップロードできます')
+      end
+
+      unless acceptable_extensions.include?(File.extname(complete_image.blob.filename.to_s).downcase)
+        errors.add(:complete_image, 'はjpegまたはpng形式の画像のみアップロードできます')
+      end
+    end
+  end
 
 end

@@ -50,4 +50,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:destroy]
     get "search" => "searches#search"
   end
+  
+  get '/favicon.ico', to: proc { [204, {}, []] }
 end
