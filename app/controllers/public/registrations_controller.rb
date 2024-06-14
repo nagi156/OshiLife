@@ -2,13 +2,13 @@
 
 class Public::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
+  before_action :set_sidebar
   # before_action :configure_account_update_params, only: [:update]
 
-  # GET /resource/sign_up
-  def new
-    @page = "new_registration"
-    super
-  end
+  # # GET /resource/sign_up
+  # def new
+  #   super
+  # end
 
   # POST /resource
   # def create
@@ -64,10 +64,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
     flash[:notice] = "ようこそ！Oshi Lifeへ！"
     posts_path
   end
-  
+
    private
 
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :registration_check])
+  end
+
+  def set_sidebar
+    @show_sidebar = false
   end
 end

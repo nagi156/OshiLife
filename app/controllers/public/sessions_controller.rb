@@ -3,11 +3,11 @@
 class Public::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params
   before_action :user_state, only: [:create]
+  before_action :set_sidebar
   # GET /resource/sign_in
-  def new
-    @page = "login"
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   # def create
@@ -44,6 +44,11 @@ class Public::SessionsController < Devise::SessionsController
     return unless user.valid_password?(params[:user][:password])
     return if user.is_active
     redirect_to new_user_registration_path, alert: "退会済みです。再度、登録してご利用ください。"
+  end
+
+
+  def set_sidebar
+    @show_sidebar = false
   end
 
 end
