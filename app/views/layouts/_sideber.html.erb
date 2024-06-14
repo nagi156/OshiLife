@@ -1,5 +1,20 @@
-<div class="row my-5 pl-2">
-  <div class="col-12">
+<!--投稿一覧＆ユーザー一覧-->
+<% unless admin_signed_in? %>
+  <div class="col-12 my-4">
+    <%= link_to posts_path,style: "color: #3e8d92;" do %>
+      <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
+    <% end %>
+  </div>
+
+  <div class="col-12 mb-3">
+    <%= link_to users_path, style: "color: #3e8d92;" do %>
+      <i class="fa-solid fa-users"></i> ユーザー一覧
+    <% end %>
+  </div>
+<% end %>
+<!--ジャンル関係-->
+<div class="row pl-2">
+  <div class="col-12 my-3">
     <% if admin_signed_in? %>
       <!--adminログイン後のリンク-->
       <% if request.fullpath.include?("/admin")%>
@@ -52,7 +67,7 @@
             </td>
           </tr>
         <% end %>
-        <div class="row justify-content-center mb-5">
+        <div class="row justify-content-center">
           <div class="col-6">
             <%= paginate @genres %>
           </div>
@@ -61,17 +76,4 @@
     </table>
   </div>
 
-  <% unless admin_signed_in? %>
-    <div class="col-12 mb-3">
-      <%= link_to posts_path,style: "color: #3e8d92;" do %>
-        <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
-      <% end %>
-    </div>
-
-    <div class="col-12 mb-3">
-      <%= link_to users_path, style: "color: #3e8d92;" do %>
-        <i class="fa-solid fa-users"></i> ユーザー一覧
-      <% end %>
-    </div>
-  <% end %>
 </div>
