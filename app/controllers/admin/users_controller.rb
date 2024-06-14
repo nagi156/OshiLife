@@ -1,5 +1,6 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
+  before_action :set_genre
 
   def index
     @users = User.all.page(params[:page])
@@ -24,10 +25,16 @@ class Admin::UsersController < ApplicationController
     end
   end
 
+
+
   private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :email, :is_active)
+  end
+
+  def set_genre
+     @genres = Genre.all.page(params[:page]).per(5)
   end
 
 end

@@ -7,7 +7,7 @@ body,
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #fffbfa;
+  background-color: #fafdff;
   font-family: "Kiwi Maru", serif;
   font-style: normal;
   color: #696969;
@@ -26,9 +26,23 @@ footer {
   margin-top: auto;
 }
 
+#sidebar {
+  position: -webkit-sticky; /* For Safari */
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Full height */
+  overflow-y: auto;
+}
+
 .card{
   background-color: #fffef7;
   border: 0.3px solid #a2d7dd;
+}
+
+.card2{
+  background-color: #fffbfa;
+  border: 0.3px solid #ebcbc2;
+  border-radius: 10px;
 }
 
 
@@ -127,11 +141,34 @@ footer {
   color: #fff;
 }
 
-
+.new_post {
+    position: absolute;
+    right: 20%; /* デフォルトの位置 */
+  }
 
 // 文字色変更
 .name_link, .card-title, label, .user_name{
   color: #027b71;
+}
+
+// ジャンル関連
+.genre_tag{
+  background-color: #e0f7e6;
+  border-radius: 5px;
+  color: #0184a9;
+  padding: 2px;
+}
+
+.genre_counter{
+  background-color: #e0f7e6;
+  border-radius: 50%;
+  width: 1.5em;
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1em;
+  color: #0184a9;
 }
 
 
@@ -156,6 +193,7 @@ footer {
   justify-content: center;
 }
 
+// 通知のレイアウト
 .notification-badge {
   background-color: #FF8339;
   color: white;
@@ -246,6 +284,7 @@ footer {
  }
 }
 
+
 @media (max-width: 769.98px) {
   .name_link,.footer_link{
     display: flex;
@@ -254,3 +293,18 @@ footer {
     align-items: center;
   }
 }
+
+// 検索ボタンのレスポンシブ
+@media (max-width: 1000px) {
+  .search-form {
+    display: flex;
+    justify-content: center;
+  }
+}
+
+//投稿一覧の見出しのレスポンシブ
+ @media (max-width: 425px) {
+    .new_post {
+      right: 0; /* スマホサイズの場合の位置 */
+    }
+  }

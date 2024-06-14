@@ -1,13 +1,13 @@
 <h5 class="text-center my-4">プロフィール</h5>
-<div class="row justify-content-center mb-4">
-  <div class="col-11 col-md-10 col-lg-6 border-bottom"  style="background-color: #fbf6e8;">
+<div class="row justify-content-center mb-5">
+  <div class="col-11 col-md-10 border-bottom"  style="background-color: #fbf6e8;">
     <div class="row justify-content-center pt-2 border-bottom">
       <div class="col-3 text-center">
         <%= image_tag @user.get_profile_image, size: "70x70", style: 'border-radius: 50%', class: "border border-dark-subtle my-1" %>
       </div>
       <div class="col-9 text-center">
         <div class="row">
-          <div class="user_name col-7 col-md-5 col-lg-5 pt-3">
+          <div class="user_name col-7 pt-3">
             <h5><%= @user.name %></h5>
             <p><%= @user.email %></p>
           </div>
@@ -18,9 +18,9 @@
               <% end %><br>
               <span class="user_status">会員ステータス:</span>
               <% if @user.is_active? %>
-                <span class="text-success"><strong>　有効</strong></span>
+                <span class="text-success"><strong>有効</strong></span>
               <% else %>
-                <span class="text-muted"><strong>　退会</strong></span>
+                <span class="text-muted"><strong>退会</strong></span>
               <% end %>
             <% end %>
           </div>
@@ -33,10 +33,10 @@
     </div>
     <!--フォロー数-->
     <div class="row mb-2">
-      <div class="follow_count col-4 col-lg-3" ) style= "color: #027b71;" >
+      <div class="follow_count col-6 text-center" style= "color: #027b71;" >
         フォロー数： <%= @user.followings.count %>
       </div>
-      <div class="follow_count col-4 col-lg-3" ) style="color: #027b71;" >
+      <div class="follow_count col-6 text-center" style="color: #027b71;" >
         フォロワー数： <%= @user.followeds.count %>
       </div>
     </div>

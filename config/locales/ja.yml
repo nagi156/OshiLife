@@ -5,12 +5,16 @@ ja:
       material: 材料
       recipe: 作り方
       post: 投稿
+      genre: ジャンル
     attributes:
       user:
         name: 名前
         registration_check: 利用規約
+      genre:
+        name: 名前
       post:
         title: タイトル
+        genre: ジャンル
       post/materials:
         name: 材料名
       post/recipes:

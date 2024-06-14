@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     end
     resources :chats, only: [:show, :create, :destroy]
     resources :notifications, only: [:index, :destroy]
+    resources :genres, only: [:index,:show]
   end
 
   #ここから管理者のルーティング↓
@@ -43,6 +44,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get '' => "homes#top"
+    resources :genres, except: [:new]
     resources :posts, except: [:new, :index]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]

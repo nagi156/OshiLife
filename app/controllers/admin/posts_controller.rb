@@ -1,6 +1,6 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
-
+  before_action :set_genre
   def show
     @post = Post.find(params[:id])
   end
@@ -38,4 +38,10 @@ class Admin::PostsController < ApplicationController
       recipes_attributes:[:id, :instructions, :recipe_image, :_destroy]#作り方モデル（子モデル）の属性
       )
   end
+
+  def set_genre
+    @genres = Genre.all.page(params[:page]).per(5)
+  end
+
+
 end
