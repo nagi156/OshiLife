@@ -15,10 +15,12 @@ ja:
       post:
         title: タイトル
         genre: ジャンル
+        complete_image: 完成画像
       post/materials:
         name: 材料名
       post/recipes:
         instructions: 作り方
+        recipe_image: 作り方の画像
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
