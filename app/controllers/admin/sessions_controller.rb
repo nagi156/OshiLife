@@ -2,12 +2,11 @@
 
 class Admin::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
-
+  before_action :set_sidebar
   # GET /resource/sign_in
-  def new
-    @page = "login"
-    super
-  end
+  # def new
+  #   super
+  # end
 
   # POST /resource/sign_in
   # def create
@@ -34,4 +33,11 @@ class Admin::SessionsController < Devise::SessionsController
     flash[:notice] = "ログアウトしました。"
     new_admin_session_path
   end
+
+  private
+
+  def set_sidebar
+    @show_sidebar = false
+  end
+
 end

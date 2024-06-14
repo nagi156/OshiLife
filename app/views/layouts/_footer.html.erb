@@ -1,6 +1,8 @@
 <div class="p-3 text-center"style="background-color: #e9c9d5;">
   <span class="footer_link mx-3" style= "color: #3e8d92;">©Oshi Life.Inc</span>
-  <%= link_to "Oshi Lifeについて", about_path, class: "footer_link mx-3", style: "color: #3e8d92;" %>
-  <%= link_to "利用規約", terms_of_service_path, class: "footer_link mx-3",style: "color: #3e8d92;" %>
-  <%= link_to "プライバシーポリシー", privacy_path, class: "footer_link mx-3", style: "color: #3e8d92;"  %>
+  <% unless admin_signed_in? %>
+    <%= link_to "Oshi Lifeについて", about_path, class: "footer_link mx-3", style: "color: #3e8d92;" %>
+    <%= link_to "利用規約", terms_of_service_path, class: "footer_link mx-3",style: "color: #3e8d92;" %>
+    <%= link_to "プライバシーポリシー", privacy_path, class: "footer_link mx-3", style: "color: #3e8d92;"  %>
+  <% end %>
 </div>

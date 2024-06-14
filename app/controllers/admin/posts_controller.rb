@@ -1,22 +1,9 @@
 class Admin::PostsController < ApplicationController
   before_action :authenticate_admin!
   before_action :set_genre
+  
   def show
     @post = Post.find(params[:id])
-  end
-
-  def edit
-    @post = Post.find(params[:id])
-  end
-
-  def update
-    @post = Post.find(params[:id])
-    if @post.update(post_params)
-      redirect_to admin_post_path(@post), notice: "編集しました。"
-    else
-      flash[:alert] = "編集に失敗しました。内容を確認してください。"
-      render :edit
-    end
   end
 
   def destroy

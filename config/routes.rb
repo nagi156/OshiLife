@@ -45,11 +45,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get '' => "homes#top"
     resources :genres, except: [:new]
-    resources :posts, except: [:new, :index]
+    resources :posts, only: [:show, :destroy]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
     get "search" => "searches#search"
   end
-  
+
   get '/favicon.ico', to: proc { [204, {}, []] }
 end
