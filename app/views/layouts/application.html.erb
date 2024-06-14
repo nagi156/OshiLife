@@ -22,9 +22,7 @@
       </div>
       <div class="container-fluid">
         <div class="row">
-          <% if @page == "top" || @page == "about" || @page == "login" ||
-                @page == "new_registration" || @page == "terms_of_service" ||
-                @page =="privacy" %>
+          <% if @show_sidebar == false %>
             <div class="col-lg-12">
               <main>
                 <%= yield %>
