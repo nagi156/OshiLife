@@ -6,11 +6,11 @@
         <% @notifications.each do |notification| %>
           <%= render notification.action_type, notification: notification %>
         <% end %>
-        <span class="d-flex justify-content-end">
+        <span class="d-flex justify-content-end my-5">
           <%= link_to "全削除", notification_path(@notifications), method: :delete, class: "btn btn_delete" %>
         </span>
       <% else %>
-      <span class="d-flex justify-content-center">通知はありません</span>
+        <p class="d-flex justify-content-center my-5">通知はありません</p>
       <% end %>
     </div>
     <div class="col-12">

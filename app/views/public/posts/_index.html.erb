@@ -11,12 +11,12 @@
       <% end %>
       <div class="card-body p-2">
         <% if post.user_id == current_user.id %>
-          <%= link_to my_page_path, class: "name_link" do %>
+          <%= link_to my_page_path, class: "user_link" do %>
             <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
             <%= post.user.name %>
           <% end %>
         <% else %>
-          <%= link_to user_path(post.user), class: "name_link" do %>
+          <%= link_to user_path(post.user), class: "user_link" do %>
             <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
             <%= post.user.name %>
           <% end %>

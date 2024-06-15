@@ -1,8 +1,8 @@
 <!--投稿一覧＆ユーザー一覧-->
 <% unless admin_signed_in? %>
   <div class="col-12 my-4">
-    <%= link_to posts_path,style: "color: #3e8d92;" do %>
-      <i class="fa-regular fa-rectangle-list"></i> 投稿一覧
+    <%= link_to new_post_path, style: "color: #3e8d92;" do %>
+      <i class="fa-solid fa-pen-to-square"></i> 新規投稿
     <% end %>
   </div>
 
@@ -75,5 +75,4 @@
       </tbody>
     </table>
   </div>
-
 </div>

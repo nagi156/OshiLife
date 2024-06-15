@@ -147,7 +147,7 @@ footer {
   }
 
 // 文字色変更
-.name_link, .card-title, label, .user_name{
+.user_link, .card-title, label, .user_name{
   color: #027b71;
 }
 
@@ -279,14 +279,14 @@ footer {
  .material_name, .material_amount, #comment_counter,
  .comment_list,.comment_text, .recipe_instructions,
  .follow_count, .btn,.user_status, .text-success,
- .text-muted, .pagination{
+ .text-muted, .pagination, #comment_area{
    font-size: 0.7rem;
  }
 }
 
 
 @media (max-width: 769.98px) {
-  .name_link,.footer_link{
+  .user_link,.footer_link{
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
