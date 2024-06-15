@@ -6,7 +6,9 @@ class Public::NotificationsController < ApplicationController
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
-    @genres = Genre.all.page(params[:page]).per(5)
+    # サイドバー適応するため
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
+    @total_genres_count = Genre.count
   end
 
   def destroy

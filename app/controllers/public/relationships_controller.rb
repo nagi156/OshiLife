@@ -1,6 +1,7 @@
 class Public::RelationshipsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_genre
+  before_action :set_genre, except: [:create,:destroy]
+  before_action :all_genre_count, except: [:create,:destroy]
 
   def create
     @user = User.find(params[:user_id])
@@ -28,8 +29,10 @@ class Public::RelationshipsController < ApplicationController
   private
 
   def set_genre
-    @genres = Genre.all.page(params[:page]).per(5)
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
   end
 
-
+  def all_genre_count
+    @total_genres_count = Genre.count
+  end
 end

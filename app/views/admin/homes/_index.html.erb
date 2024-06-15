@@ -9,15 +9,20 @@
           <h5 class="card-title text-center"><%= post.title.truncate(9) %></h5>
         </div>
       <% end %>
+      <!--ユーザー情報-->
       <div class="card-text p-2">
         <%= link_to admin_user_path(post.user), class: "name_link" do %>
           <%= image_tag post.user.get_profile_image, size: "40x40", style: 'border-radius: 50%', class: "border border-dark-subtle" %>
           <%= post.user.name %>
         <% end %>
       </div>
+      <!--いいね＆コメント数-->
       <div class="card-link d-flex justify-content-end border-top pt-3 px-3">
         <div class="mr-2"><i class="fa-regular fa-comment"></i><%= post.comments.count %></div>
-        <i class="fa-solid fa-heart" style= "color: red;"></i> <%= post.favorites.count %>
+        <div style="color: red;">
+          <i class="fa-solid fa-heart"></i>
+          <%= post.favorites.count %>
+        </div>
       </div>
       <div class="pb-2 px-2">
         <%= l post.created_at %>

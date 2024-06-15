@@ -1,6 +1,5 @@
 class Admin::HomesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_genre
 
   def top
     if params[:latest]
@@ -12,12 +11,9 @@ class Admin::HomesController < ApplicationController
     else
       @posts = Post.all.page(params[:page])
     end
-  end
-
-  private
-
-  def set_genre
-     @genres = Genre.all.page(params[:page]).per(5)
+    # サイドバー適応のため
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
+    @total_genres_count = Genre.count
   end
 
 end

@@ -36,7 +36,7 @@
               <div class="d-flex justify-content-center">
                 <%= render 'layouts/search_form' %>
               </div>
-              <%= render 'layouts/sideber', genres: @genres %>
+              <%= render 'layouts/sideber', genres: @genres, total_genres_count: @total_genres_count%>
             </div>
           </div>
 
@@ -56,7 +56,7 @@
           <!-- スマートフォンサイズの場合、サイドバーはメインコンテンツの下に移動 -->
           <div class="d-lg-none d-flex justify-content-center mb-5">
             <div class="col-10 card2">
-            <%= render 'layouts/sideber', genres: @genres %>
+            <%= render 'layouts/sideber', genres: @genres, total_genres_count: @total_genres_count %>
             </div>
           </div>
         <% end %>

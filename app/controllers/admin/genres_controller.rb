@@ -2,9 +2,11 @@ class Admin::GenresController < ApplicationController
   before_action :authenticate_admin!
   before_action :find_genre, only: [:show,:edit, :update, :destroy]
   before_action :set_genre, only: [:index, :show, :edit]
+  before_action :all_genre_count, only: [:index, :show, :edit]
 
   def index
     @genre = Genre.new
+    @main_genres = Genre.all.page(params[:page])
   end
 
   def show
@@ -45,12 +47,14 @@ class Admin::GenresController < ApplicationController
   end
 
   def set_genre
-    @genres = Genre.all.page(params[:page]).per(5)
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
   end
 
+  def all_genre_count
+    @total_genres_count = Genre.count
+  end
 
   def genre_params
     params.require(:genre).permit(:name)
   end
-
 end

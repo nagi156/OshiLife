@@ -1,7 +1,6 @@
 class Public::ChatsController < ApplicationController
   before_action :authenticate_user!
   before_action :user_entering_room_limit, only: [:show]
-  before_action :set_genre
 
   def show
     @user = User.find(params[:id])
@@ -20,6 +19,10 @@ class Public::ChatsController < ApplicationController
 
     @chats = @room.chats
     @chat = Chat.new(room_id: @room.id)
+    
+    # サイドバーの情報取得のため
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
+    @total_genres_count = Genre.count
   end
 
   def create
@@ -44,9 +47,4 @@ class Public::ChatsController < ApplicationController
       redirect_to posts_path
     end
   end
-
-  def set_genre
-     @genres = Genre.all.page(params[:page]).per(5)
-  end
-
 end
