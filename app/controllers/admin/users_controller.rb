@@ -1,6 +1,7 @@
 class Admin::UsersController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_genre
+  before_action :set_genre, except: [:update]
+  before_action :all_genre_count, except: [:update]
 
   def index
     @users = User.all.page(params[:page])
@@ -25,16 +26,19 @@ class Admin::UsersController < ApplicationController
     end
   end
 
-
-
   private
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :email, :is_active)
   end
 
+  # サイドバー適応のため
   def set_genre
-     @genres = Genre.all.page(params[:page]).per(5)
+     @genres = Genre.all.page(params[:sidebar_page]).per(5)
+  end
+
+  def all_genre_count
+    @total_genres_count = Genre.count
   end
 
 end

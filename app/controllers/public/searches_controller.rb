@@ -9,6 +9,8 @@ class Public::SearchesController < ApplicationController
     else
       @records = Post.search_for(params[:search], @word).page(params[:page])
     end
-    @genres = Genre.all.page(params[:page]).per(5)
+    # サイドバーの適応のため
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
+    @total_genres_count = Genre.count
   end
 end

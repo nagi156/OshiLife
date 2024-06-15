@@ -2,7 +2,8 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, except: [:index, :show]
-  before_action :set_genre
+  before_action :set_genre, except: [:create, :update, :destroy]
+  before_action :all_genre_count, except: [:create, :update, :destroy]
 
   def new
     @post = Post.new
@@ -87,6 +88,10 @@ class Public::PostsController < ApplicationController
   end
 
   def set_genre
-    @genres = Genre.all.page(params[:page])
+    @genres = Genre.all.page(params[:sidebar_page]).per(5)
+  end
+
+  def all_genre_count
+    @total_genres_count = Genre.count
   end
 end

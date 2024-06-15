@@ -1,8 +1,8 @@
 <div class="row justify-content-center">
-  <div class="col-12 col-md-10 col-lg-8">
+  <div class="col-11 my-5">
     <% if @model == "ユーザー" %>
-      <h4 class="text-center my-5">ユーザー検索　「<%= @word %>」の結果</h4>
-      <div class="row justify-content-center">
+      <div class="card shadow">
+        <h4 class="text-center my-5">ユーザー検索　「<%= @word %>」の結果</h4>
         <% if  @records.exists? %>
           <%= render 'public/users/index', users: @records %>
         <% else %>

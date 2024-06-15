@@ -1,6 +1,6 @@
-<h4 class="text-center">ジャンル一覧</h4>
-<div class="row justify-content-center my-4">
+<div class="row justify-content-center my-5">
   <div class="card col-11 col-md-9">
+    <h4 class="text-center my-3">ジャンル一覧</h4>
     <table class="table">
       <thead>
         <tr>
@@ -9,7 +9,7 @@
         </tr>
       </thead>
       <tbody>
-        <% @genres.each do |genre| %>
+        <% @main_genres.each do |genre| %>
           <tr>
             <td class="text-center">
               <%= link_to "#{genre.name}", genre_path(genre),style: "color: #3e8d92;"%>
@@ -23,10 +23,10 @@
         <% end %>
       </tbody>
     </table>
-  </div>
-</div>
-<div class="row justify-content-center mb-5">
-  <div class="col-6">
-    <%= paginate @genres %>
+    <div class="row justify-content-center">
+      <div class="col-6">
+        <%= paginate @main_genres %>
+      </div>
+    </div>
   </div>
 </div>

@@ -39,7 +39,7 @@
           <th>ジャンル</th>
           <th>
             <span class="genre_counter">
-              <%= genres.count %>
+              <%= total_genres_count %>
             </span>
           </th>
         </tr>
@@ -67,12 +67,12 @@
             </td>
           </tr>
         <% end %>
-        <div class="row justify-content-center">
-          <div class="col-6">
-            <%= paginate @genres %>
-          </div>
-        </div>
       </tbody>
     </table>
+    <div class="row justify-content-center">
+      <div class="col-10">
+        <%= paginate @genres, param_name: :sidebar_page %>
+      </div>
+    </div>
   </div>
 </div>
