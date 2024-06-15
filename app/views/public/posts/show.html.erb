@@ -1,11 +1,11 @@
 <div class="card shadow my-5">
-  <div class="row">
+  <div class="row justify-content-center">
 
-    <div class="col-12 col-md-5 col-lg-4 text-center">
+    <div class="col-11 col-md-5 col-lg-4 text-center">
       <%= image_tag @post.get_complete_image, size: "200x200",class: "border border-dark-subtle mt-5" %>
     </div>
 
-    <div class="col-12 col-md-7 col-lg-8">
+    <div class="col-11 col-md-7 col-lg-8">
       <div class="row">
         <h4 class="post_title col-9 my-4 text-center"><%= @post.title %></h4>
 
@@ -25,7 +25,7 @@
       </div>
 
       <div class="row my-3">
-        <div class="col-12">
+        <div class="col-11">
           ジャンル：
           <span class="genre_tag mx-3">
             <%= @post.genre.name %>
@@ -58,17 +58,17 @@
       </div>
       <!--材料リスト-->
       <div class="row">
-        <div class="material_list_title col-2 col-md-3">材料</div>
+        <div class="material_list_title col-2">材料</div>
         <div class="col-9 co-md-9 col-lg-8"><%= render partial: 'material_list', locals:{ materials: @post.materials} %></div>
       </div>
     </div>
   </div>
 
-  <div class="row my-3">
-    <div class="col-12">
-      <h5 class="ml-3">作り方</h5>
+  <div class="row my-3 justify-content-center">
+    <div class="col-11">
+      <h5>作り方</h5>
     </div>
-    <div class="col-12">
+    <div class="col-11">
       <%= render partial: 'recipe_list', locals:{ recipes: @post.recipes} %>
     </div>
   </div>
