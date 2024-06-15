@@ -10,7 +10,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
-    @posts = @genre.posts
+    @posts = @genre.posts.page(params[:page])
   end
 
   def create
