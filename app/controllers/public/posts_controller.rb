@@ -2,9 +2,9 @@ class Public::PostsController < ApplicationController
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
   before_action :ensure_guest_user, except: [:index, :show]
-  before_action :set_genre, except: [:update, :destroy]
-  before_action :all_genre_count, except: [:update, :destroy]
   before_action :main_genres, except: [:index, :destroy]
+  before_action :set_genre, except: [:destroy]
+  before_action :all_genre_count, except: [:destroy]
 
   def new
     @post = Post.new
@@ -87,11 +87,12 @@ class Public::PostsController < ApplicationController
       redirect_to request.referer, alert: "閲覧のみ可能です。ご利用の際はご登録してご利用ください。"
     end
   end
-
+  # メインコンテンツのジャンル取得
   def main_genres
     @main_genres = Genre.all
   end
 
+  # サイドバーの情報取得のため
   def set_genre
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
   end

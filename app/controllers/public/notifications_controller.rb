@@ -6,7 +6,7 @@ class Public::NotificationsController < ApplicationController
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
     end
-    # サイドバー適応するため
+    # サイドバーの情報取得のため
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
     @total_genres_count = Genre.count
   end

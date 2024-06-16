@@ -4,7 +4,7 @@ class Admin::PostsController < ApplicationController
   def show
     @post = Post.find(params[:id])
 
-    # サイドバー適応のため
+    # サイドバーの情報取得のため
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
     @total_genres_count = Genre.count
   end

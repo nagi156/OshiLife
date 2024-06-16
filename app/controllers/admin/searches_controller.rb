@@ -9,6 +9,7 @@ class Admin::SearchesController < ApplicationController
     else
       @records = Post.search_for(params[:search], @word).page(params[:page])
     end
+    # サイドバーの情報取得のため
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
     @total_genres_count = Genre.count
   end
