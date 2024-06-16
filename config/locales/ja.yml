@@ -10,6 +10,7 @@ ja:
       user:
         name: 名前
         registration_check: 利用規約
+        profile_image: プロフィール画像
       genre:
         name: 名前
       post:
