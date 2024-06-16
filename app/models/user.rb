@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { in: 1..50 }
   validates :registration_check, acceptance: true, on: :create
+  # 拡張子の制限メソッド
+  validate :check_image_extension
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -67,5 +69,24 @@ class User < ApplicationRecord
   def followed_by?(user)
      followings.include?(user)
   end
+
+  private
+
+  def check_image_extension
+    if profile_image.attached?
+      acceptable_types = ["image/jpeg", "image/png"]
+      acceptable_extensions = [".jpeg", ".jpg", ".png"]
+
+      unless acceptable_types.include?(profile_image.blob.content_type)
+        errors.add(:profile_image, 'はjpegまたはpng形式の画像のみアップロードできます')
+      end
+
+      unless acceptable_extensions.include?(File.extname(profile_image.blob.filename.to_s).downcase)
+        errors.add(:profile_image, 'はjpegまたはpng形式の画像のみアップロードできます')
+      end
+    end
+  end
+
+
 end
 

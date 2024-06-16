@@ -1,7 +1,7 @@
 class Public::UsersController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_genre, except: [:update, :withdraw]
-  before_action :all_genre_count, except: [:update, :withdraw]
+  before_action :set_genre, except: [:withdraw]
+  before_action :all_genre_count, except: [:withdraw]
   before_action :ensure_correct_user, only: [:edit, :update, :unsubscribe, :withdraw]
   before_action :ensure_guest_user, only: [:edit]
 
@@ -62,7 +62,7 @@ class Public::UsersController < ApplicationController
     params.require(:user).permit(:name, :introduction, :profile_image, :email, :password, :password_confirmation)
   end
 
-  # サイドバー適応のため
+  # サイドバーの情報取得のため
   def set_genre
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
   end

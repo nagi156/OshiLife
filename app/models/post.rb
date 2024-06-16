@@ -15,6 +15,7 @@ class Post < ApplicationRecord
   has_one :notification, as: :subject, dependent: :destroy
 
   validates :title, presence: true, length: { in: 1..30 }
+  # 拡張子の制限メソッド
   validate :check_image_extension
 
   # 投稿画像の有無とリサイズ

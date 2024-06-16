@@ -27,7 +27,7 @@ class Public::RelationshipsController < ApplicationController
   end
 
   private
-
+  # サイドバーの情報取得のため
   def set_genre
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
   end
