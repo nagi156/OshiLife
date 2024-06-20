@@ -6,6 +6,7 @@ ja:
       recipe: 作り方
       post: 投稿
       genre: ジャンル
+      comment: コメント
     attributes:
       user:
         name: 名前
@@ -22,6 +23,8 @@ ja:
       post/recipes:
         instructions: 作り方
         recipe_image: 作り方の画像
+      comment:
+        comment: コメント
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
