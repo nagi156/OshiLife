@@ -1,13 +1,13 @@
 class Public::CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_guest_user, except: [:index]
+  before_action :ensure_guest_user
 
   def create
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.score = Language.get_data(comment_params[:comment])
     @comment.post_id = @post.id
-    @comment.save
+    render :validate unless @comment.save
   end
 
   def destroy
