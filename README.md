@@ -2,6 +2,7 @@
 ​
 ## サイト概要
 ### サイトテーマ
+
 ![サイトテーマ](https://github.com/nagi156/OshiLife/assets/158553840/fd125373-8eb2-4247-b92d-6ef0162bdf05)
 ​
 ### テーマを選んだ理由
@@ -21,15 +22,29 @@
 - 自分が作った応援グッズの作り方や使用したものの情報提供、成果物として投稿したい時
 
 ## 設計書
+
+### 機能説明
+| TOP画面 | 登録画面 |
+| :----: | :----: |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/1a574103-a904-4cb3-97fa-f20b649a1127" width= "300px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/bea12caf-03b5-49cc-989d-32325917bd56" width= "300px" > |
+| 当サイトはサイトの雰囲気を掴んでもらうため閲覧限定ですが、登録せずともサイトの閲覧が可能です。閲覧のみであれば「お試しログイン」からご利用ください。| 新規登録画面で全ての入力欄、利用規約に同意の上ご利用をお願いします。登録後のログイン時はメールアドレスとパスワードでログイン可能です。 |
+
+| ホーム画面 | 投稿フォーム |
+| :----: | :----: |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/e843a06d-5e4a-408b-a98c-c2af0f81bbf1" width= "300px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/f8e72e6d-f54b-4df5-9cd8-8f1cd5c2dae9" width= "300px" > |
+| 新規登録、ログインしましたらホーム画面に遷移します。新規投稿やユーザー一覧、カテゴリーごと投稿の閲覧が可能です。| 新規投稿ではレシピ投稿のように複数の材料や工程の保存が可能です。 |
+| 投稿の詳細 |
+| :----: |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/5429e1c6-db61-46d9-bca9-91aaba4d8747" width= "300px" > | <img src="" width="300px" >
+| 投稿のタイトルや画像をクリックすると詳細の画面に切り替わります。ここでは、投稿者であれば編集、削除が可能です。投稿者以外であれば投稿に対するコメントができます。 |
 ### 実装機能リスト
 
 ![実装機能](https://github.com/nagi156/OshiLife/assets/158553840/ddd0b164-5094-4f04-8c0c-f88886ac89d0)
 
 
-### アプリケーション詳細設計書
+### ER図
 
-![アプリケーション詳細設計書](https://github.com/nagi156/OshiLife/assets/158553840/14c82626-2fa2-49bd-a13d-5a02f7e1940d)
-![アプリケーション詳細設計書2](https://github.com/nagi156/OshiLife/assets/158553840/c6aad9a0-ccc6-49bb-8d4a-8c0f64e52ed6)
+![ER図](https://github.com/nagi156/OshiLife/assets/158553840/ef832e13-ca38-41f2-be86-c35ee79b8457)
 ​
 ## 開発環境
 - OS：Linux(CentOS)
