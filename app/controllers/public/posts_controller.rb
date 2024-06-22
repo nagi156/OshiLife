@@ -25,15 +25,30 @@ class Public::PostsController < ApplicationController
   end
 
   def index
-    if params[:latest]
-      @posts = Post.latest.page(params[:page])
-    elsif params[:old]
-      @posts = Post.old.page(params[:page])
-    elsif params[:most_favorites]
-      @posts = Post.most_favorites.page(params[:page])
-    else
-      @posts = Post.all.page(params[:page])
-    end
+    @sort_option = if params[:latest]
+                     'latest'
+                   elsif params[:old]
+                     'old'
+                   elsif params[:most_favorites]
+                     'most_favorites'
+                   elsif params[:following_ids]
+                     'following'
+                   else
+                     'default'
+                   end
+
+    @posts = case @sort_option
+             when 'latest'
+               Post.latest.page(params[:page])
+             when 'old'
+               Post.old.page(params[:page])
+             when 'most_favorites'
+               Post.most_favorites.page(params[:page])
+             when 'following'
+               Post.where(user_id: current_user.following_ids).order(created_at: :desc).page(params[:page])
+             else
+               Post.all.order(created_at: :desc).page(params[:page])
+             end
   end
 
   def show

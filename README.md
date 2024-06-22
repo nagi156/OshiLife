@@ -26,17 +26,24 @@
 ### 機能説明
 | TOP画面 | 登録画面 |
 | :----: | :----: |
-| <img src="https://github.com/nagi156/OshiLife/assets/158553840/1a574103-a904-4cb3-97fa-f20b649a1127" width= "300px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/bea12caf-03b5-49cc-989d-32325917bd56" width= "300px" > |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/1a574103-a904-4cb3-97fa-f20b649a1127" width= "400px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/bea12caf-03b5-49cc-989d-32325917bd56" width= "400px" > |
 | 当サイトはサイトの雰囲気を掴んでもらうため閲覧限定ですが、登録せずともサイトの閲覧が可能です。閲覧のみであれば「お試しログイン」からご利用ください。| 新規登録画面で全ての入力欄、利用規約に同意の上ご利用をお願いします。登録後のログイン時はメールアドレスとパスワードでログイン可能です。 |
 
 | ホーム画面 | 投稿フォーム |
 | :----: | :----: |
-| <img src="https://github.com/nagi156/OshiLife/assets/158553840/e843a06d-5e4a-408b-a98c-c2af0f81bbf1" width= "300px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/f8e72e6d-f54b-4df5-9cd8-8f1cd5c2dae9" width= "300px" > |
-| 新規登録、ログインしましたらホーム画面に遷移します。新規投稿やユーザー一覧、カテゴリーごと投稿の閲覧が可能です。| 新規投稿ではレシピ投稿のように複数の材料や工程の保存が可能です。 |
-| 投稿の詳細 |
-| :----: |
-| <img src="https://github.com/nagi156/OshiLife/assets/158553840/5429e1c6-db61-46d9-bca9-91aaba4d8747" width= "300px" > | <img src="" width="300px" >
-| 投稿のタイトルや画像をクリックすると詳細の画面に切り替わります。ここでは、投稿者であれば編集、削除が可能です。投稿者以外であれば投稿に対するコメントができます。 |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/e843a06d-5e4a-408b-a98c-c2af0f81bbf1" width= "400px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/f8e72e6d-f54b-4df5-9cd8-8f1cd5c2dae9" width= "400px" > |
+| 新規登録やログインしましたらホーム画面に遷移します。新規投稿やユーザー一覧、カテゴリーごと投稿の閲覧が可能です。| 新規投稿では一度に複数の材料や工程が追加をすることができ、投稿が可能です。 |
+
+| 投稿の詳細 | ユーザー一覧 |
+| :----: | :----: |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/5429e1c6-db61-46d9-bca9-91aaba4d8747" width= "400px" > | <img src="https://github.com/nagi156/OshiLife/assets/158553840/e48f47c3-4751-4280-9212-5b5bc6b374a5" width="400px" > |
+| 投稿のタイトルや画像をクリックすると詳細の画面に切り替わります。ここでは、投稿者であれば編集、削除が可能です。投稿者以外であれば投稿に対するコメントができます。 | ユーザー一覧では他のユーザーをフォローすることや、気になったユーザーの詳細に遷移することができます。 |
+
+| ユーザー詳細 | DM機能 |
+| :----: | :----: |
+| <img src="https://github.com/nagi156/OshiLife/assets/158553840/b9d75eb5-90b4-4734-9700-0b3786528be6" width="400px"> | <img src="https://github.com/nagi156/OshiLife/assets/158553840/75364b1f-a116-4d2e-8c74-e1e4086cc8d4" width="400px"> |
+| ユーザー詳細ではそのユーザーがどのような投稿をしたのか一覧で閲覧が可能です。また、ヘッダーにはマイページのリンクがあり、ログインユーザーの情報の編集が可能です。| ユーザーは相互フォロワーになるとDM機能が使えるようになり、ユーザー同士の交流が可能となります。 |
+
 ### 実装機能リスト
 
 ![実装機能](https://github.com/nagi156/OshiLife/assets/158553840/ddd0b164-5094-4f04-8c0c-f88886ac89d0)

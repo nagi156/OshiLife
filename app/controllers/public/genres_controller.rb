@@ -9,12 +9,12 @@ class Public::GenresController < ApplicationController
 
   def show
     @genre = Genre.find(params[:id])
-    @posts = @genre.posts.page(params[:page])
+    @posts = @genre.posts.most_favorites.page(params[:page])
   end
 
 
   private
-  
+
   # サイドバーの情報取得のため
   def set_genre
     @genres = Genre.page(params[:sidebar_page]).per(5)
