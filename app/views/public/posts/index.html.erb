@@ -5,11 +5,21 @@
   <% end %>
 </div>
 
-<p class="text-center my-3">
-  <%= link_to "新しい順", posts_path(latest: "true"), style: "color: #027b71;" %>
-  / <%= link_to "古い順", posts_path(old: "true"), style: "color: #027b71;" %>
-  / <%= link_to "評価の高い順", posts_path(most_favorites: "true"), style: "color: #027b71;" %>
-</p>
+<ul class="nav nav-underline justify-content-center mb-3">
+  <li class="nav-item">
+    <%= link_to "新しい順", posts_path(latest: "true"), class: "nav-link #{'active' if @sort_option == 'latest'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "古い順", posts_path(old: "true"), class: "nav-link #{'active' if @sort_option == 'old'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "評価の高い順", posts_path(most_favorites: "true"), class: "nav-link #{'active' if @sort_option == 'most_favorites'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "フォロー中", posts_path(following_ids: "true"), class: "nav-link #{'active' if @sort_option == 'following'}" %>
+  </li>
+</ul>
+
 <div class="row justify-content-center d-flex flex-wrap mb-3">
   <% if @posts.exists? %>
     <%= render 'index', posts: @posts %>

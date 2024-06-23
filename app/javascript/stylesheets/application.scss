@@ -246,6 +246,26 @@ footer {
     color: #FE003F;
 }
 
+// 投稿一覧の並び替えの下線
+.nav-underline .nav-link {
+  position: relative;
+  display: inline-block;
+  color: #027b71;
+}
+
+.nav-underline .nav-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: #027b71;
+  transition: width .3s;
+}
+
+.nav-underline .nav-link:hover::after,
+.nav-underline .nav-link.active::after {
+  width: 100%;
+}
 
 
 // 文字サイズ変更

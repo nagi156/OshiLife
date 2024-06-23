@@ -10,7 +10,7 @@ class Admin::GenresController < ApplicationController
   end
 
   def show
-    @posts = @genre.posts.page(params[:page])
+    @posts = @genre.posts.most_favorites.page(params[:page])
   end
 
   def create
