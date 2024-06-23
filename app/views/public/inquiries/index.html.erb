@@ -1,0 +1,23 @@
+<div class="row justify-content-center">
+  <div class="col-11 col-md-10 my-5">
+    <h4>お問い合わせ一覧</h4>
+    <% if @inquiry.exists? %>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>お問い合わせ内容</th>
+            <th>お問い合わせ詳細</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><%= @inquiry.title %></td>
+            <td><%= @inquiry.message %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% else %>
+      <p>お問い合わせはありません</p>
+    <% end %>
+  </div>
+</div>

@@ -24,6 +24,7 @@ class User < ApplicationRecord
   has_many :followeds, through: :reverse_relationships, source: :following
 
   has_many :notifications, dependent: :destroy
+  has_many :inquiries
 
   has_one_attached :profile_image
   # プロフィール画像の有無&リサイズ

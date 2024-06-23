@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :chats, only: [:show, :create, :destroy]
     resources :notifications, only: [:index, :destroy]
     resources :genres, only: [:index,:show]
+    resources :inquiries, only: [:new, :create, :index, :show]
   end
 
   #ここから管理者のルーティング↓
