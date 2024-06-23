@@ -1,5 +1,7 @@
 class Public::InquiriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :ensure_correct_user
+  before_action :ensure_guest_user
 
   def new
     @inquiry = current_user.inquiries.build
@@ -15,7 +17,7 @@ class Public::InquiriesController < ApplicationController
   end
 
   def index
-    @inquiries = Inquiry.all.order(created_at: :decs).page(params[:page])
+    @inquiries = current_user.inquiries.order(created_at: :decs).page(params[:page])
   end
 
   def show
@@ -27,5 +29,18 @@ class Public::InquiriesController < ApplicationController
 
   def inquiry_params
     params.require(:inquiry).permit(:message)
+  end
+
+  def ensure_correct_user
+    @inquiry = Inquiry.find(params[:id])
+    unless @inqui.user_id == current_user.id
+      redirect_to inquiries_path
+    end
+  end
+
+  def ensure_guest_ryuser
+    if current_user&.guest_user?
+      redirect_to request.referer, alert: "ご利用の際はご登録してご利用ください。"
+    end
   end
 end

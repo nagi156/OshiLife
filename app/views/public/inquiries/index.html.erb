@@ -6,18 +6,28 @@
         <thead>
           <tr>
             <th>お問い合わせ内容</th>
-            <th>お問い合わせ詳細</th>
+            <th>お問い合わせ状況</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td><%= @inquiry.title %></td>
-            <td><%= @inquiry.message %></td>
+            <td>
+              <%= link_to inquiry_path(inquiry) do %>
+                <%= @inquiry.title %>
+              <% end %>
+            </td>
+            <td>
+              <% if @inquiry.answered? %>
+                <span class="text-success"><strong>回答済</strong></span>
+              <% else %>
+                <span class="text-muted"><strong>未回答</strong></span>
+              <% end %>
+            </td>
           </tr>
         </tbody>
       </table>
     <% else %>
-      <p>お問い合わせはありません</p>
+      <p>お問い合わせしていません。</p>
     <% end %>
   </div>
 </div>
