@@ -50,7 +50,7 @@ Rails.application.routes.draw do
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
     resources :inquiries, only: [:index, :show, :update]
-    resources :contacts, only: [] do
+    resources :contacts, only: [:index, :show] do
       collection do
         post :send_individual_email
         post :send_bulk_email

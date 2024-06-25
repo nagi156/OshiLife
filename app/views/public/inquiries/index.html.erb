@@ -1,7 +1,13 @@
-<div class="row justify-content-center">
+<div class="d-flex justify-content-center align-items-center position-relative my-5">
+  <h4 class="flex-grow-1 text-center mb-0">お問い合わせ一覧</h4>
+  <%= link_to new_inquiry_path, class: "ml-3 new_post btn btn_post" do %>
+    <i class="fa-solid fa-pen-to-square" style="font-size:1.5em;"></i> 問い合わせフォーム
+  <% end %>
+</div>
+
+<div class="row justify-content-center text-center">
   <div class="col-11 col-md-10 my-5">
-    <h4>お問い合わせ一覧</h4>
-    <% if @inquiry.exists? %>
+    <% if @inquiries.exists? %>
       <table class="table table-hover">
         <thead>
           <tr>

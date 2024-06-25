@@ -1,0 +1,19 @@
+<%= form_with url: send_individual_email_admin_contacts_path, method: :post do |f| %>
+  <div class="form-group">
+    <%= f.label 'ユーザー' %>
+    <%= f.select :user_id, options_from_collection_for_select(User.all, :id, :email) %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label '件名' %>
+    <%= f.text_field :subject %>
+  </div>
+  
+  <div class="form-group">
+    <%= f.label '内容' %>
+    <%= f.text_area :content %>
+  </div>
+  <div class="form-group">
+    <%= f.submit '送信', class: "btn btn_post" %>
+  </div>
+<% end %>

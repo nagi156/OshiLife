@@ -1,7 +1,7 @@
 class Public::InquiriesController < ApplicationController
   before_action :authenticate_user!
-  before_action :ensure_correct_user
-  before_action :ensure_guest_user
+  before_action :ensure_accessible_user
+  before_action :set_sidebar
 
   def new
     @inquiry = current_user.inquiries.build
@@ -10,14 +10,14 @@ class Public::InquiriesController < ApplicationController
   def create
     @inquiry = current_user.inquiries.build(inquiry_params)
     if @inquiry.save
-      redirect_to inquiries_path, notice: 'お問い合わせを送信しました。'
+      redirect_to inquiry_path(inquiry), notice: 'お問い合わせを送信しました。'
     else
       render :new
     end
   end
 
   def index
-    @inquiries = current_user.inquiries.order(created_at: :decs).page(params[:page])
+    @inquiries = current_user.inquiries.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -31,16 +31,13 @@ class Public::InquiriesController < ApplicationController
     params.require(:inquiry).permit(:message)
   end
 
-  def ensure_correct_user
-    @inquiry = Inquiry.find(params[:id])
-    unless @inqui.user_id == current_user.id
-      redirect_to inquiries_path
+  def ensure_accessible_user
+    unless current_user
+      redirect_to inquiries_path, alert: "アクセスが制限されています。"
     end
   end
 
-  def ensure_guest_ryuser
-    if current_user&.guest_user?
-      redirect_to request.referer, alert: "ご利用の際はご登録してご利用ください。"
-    end
+  def set_sidebar
+    @show_sidebar = false
   end
 end

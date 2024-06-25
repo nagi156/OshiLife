@@ -2,6 +2,7 @@ class Admin::InquiriesController < ApplicationController
   before_action :authenticate_admin!
   before_action :ensure_admin!
   before_action :set_inquiry, except: [:index]
+  before_action :set_sidebar
 
   def index
     @unanswereds = Inquiry.where(answered: false)
@@ -32,6 +33,10 @@ class Admin::InquiriesController < ApplicationController
 
   def ensure_admin!
     redirect_to root_path, alert: "アクセス権限がありません。" unless current_user.admin?
+  end
+
+  def set_sidebar
+    @show_sidebar = false
   end
 
 end
