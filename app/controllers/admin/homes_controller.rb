@@ -9,7 +9,7 @@ class Admin::HomesController < ApplicationController
     elsif params[:most_favorites]
       @posts = Post.most_favorites.page(params[:page])
     else
-      @posts = Post.all..order(created_at: :desc).page(params[:page])
+      @posts = Post.all.order(created_at: :desc).page(params[:page])
     end
     # サイドバー適応のため
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
