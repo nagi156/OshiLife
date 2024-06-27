@@ -5,7 +5,7 @@ class Admin::SearchesController < ApplicationController
     @model = params[:model]
     @word = params[:word]
     if @model == "ユーザー"
-      @records = User.search_for(params[:search], @word).order(created_at: :desc).page(params[:page])
+      @records = User.search_for(params[:search], @word).order(created_at: :asc).page(params[:page])
     else
       @records = Post.search_for(params[:search], @word).order(created_at: :desc).page(params[:page])
     end

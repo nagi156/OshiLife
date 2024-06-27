@@ -6,7 +6,7 @@ class Admin::GenresController < ApplicationController
 
   def index
     @genre = Genre.new
-    @main_genres = Genre.all.page(params[:page])
+    @main_genres = Genre.all.order(created_at: :desc).page(params[:page])
   end
 
   def show
@@ -19,7 +19,7 @@ class Admin::GenresController < ApplicationController
       redirect_to admin_genres_path, notice: 'ジャンルを追加しました。'
     else
       flash.now[:alert] = "ジャンル登録に失敗しました。内容をご確認ください。"
-      @genres = Genre.all
+      @main_genres = Genre.all.order(created_at: :desc).page(params[:page])
       render :index
     end
   end
