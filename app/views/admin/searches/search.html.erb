@@ -1,14 +1,14 @@
 <div class="row justify-content-center my-5">
   <div class="col-11">
     <% if @model == "ユーザー" %>
-      <div class="card shadow">
-        <h4 class="text-center my-5">ユーザー検索　「<%= @word %>」の結果</h4>
-        <% if  @records.exists? %>
+      <h4 class="text-center my-5">ユーザー検索　「<%= @word %>」の結果</h4>
+      <% if  @records.exists? %>
+        <div class="card shadow">
           <%= render 'admin/users/index', users: @records %>
-        <% else %>
-          <h6>ユーザーは見つかりませんでした</h6>
-        <% end %>
-      </div>
+        </div>
+      <% else %>
+        <h6 class="text-center mb-5">ユーザーは見つかりませんでした</h6>
+      <% end %>
     <% else %>
       <h4 class="text-center">投稿検索　「<%= @word %>」の結果</h4>
       <div class="row justify-content-center d-flex flex-wrap my-5">
