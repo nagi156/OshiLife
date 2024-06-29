@@ -1,0 +1,17 @@
+<h4>問い合わせ詳細</h4>
+<%= @inquiry.user.name %>
+<%= @inquiry.title %>
+<%= @inquiry.message %>
+
+<%= form_with model: @inquiry, url: admin_inquiry_path(inquiry), method: :patch do |f| %>
+  <%= f.radio_button :answered, :true %>
+  <%= f.label :answered, "回答済", { value: :true } %>
+  <%= f.radio_button :answered, :false %>
+  <%= f.label :answered, "未回答", { value: :false } %>
+  <%= f.submit "更新", class: "btn btn_post" %>
+<% end %>
+
+<h4>返信</h4>
+<%= form_with model: @inquiry, url: admin_inquiry_path(inquiry), method: :post do |f| %>
+  
+<% end %>

@@ -43,7 +43,9 @@ class Post < ApplicationRecord
   scope :latest, -> {order(created_at: :desc)}
   scope :old, -> {order(created_at: :asc)}
   scope :most_favorites, -> { left_joins(:favorites).group("posts.id").order("COUNT(favorites.id) DESC") }
+  scope :following, -> (following_ids) { where(user_id: following_ids).order(created_at: :desc) }
 
+  
   private
 
   def check_image_extension

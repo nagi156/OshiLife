@@ -4,7 +4,7 @@
 
     <h4>お問い合わせフォーム</h4>
 
-    <%= form_with model: @inquiry, url: admin_inquiries_path do |f| %>
+    <%= form_with model: @inquiry, url: inquiries_path do |f| %>
       <div class="form-group">
         <%= f.label "お問い合わせ内容" %>
         <%= f.text_field :title, class: "form-control", placeholder: "例) 投稿方法について" %>
