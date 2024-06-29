@@ -1,53 +1,48 @@
 class Admin::InquiriesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :ensure_admin!
   before_action :set_inquiry, except: [:index]
   before_action :set_sidebar
 
   def index
-    @sort_option = params[:sort]
+    @sort_option = if params[:answered]
+                      'answered'
+                   elsif params[:unanswered]
+                      'unanswered'
+                   else
+                      'default'
+                   end
 
     @inquiries = case @sort_option
-                 when 'answred'
+                 when 'answered'
                    Inquiry.answered.page(params[:page])
                  when 'unanswered'
                    Inquiry.unanswered.page(params[:page])
                  else
-                   Inquiry.all.order(created_at: :desc).order(created_at: :desc).page(params[:page])
+                   Inquiry.all.order(created_at: :desc).page(params[:page])
                  end
   end
 
   def show
   end
-  
-  def create
-    @inquiry.new(inquiry_params)
-    if @inquiry.save
-      redirect
-  end
-  
 
-  def update
-    if @inquiry.update(inquiry_params)
-      redirect_to admin_inquiries_path, notice: "ステータス変更しました。"
-    else
-      flash[:alert] = "ステータス変更に失敗しました。"
-      render :show
-    end
+  def respond
+      @inquiry.update(response_params)
+      @inquiry.update(answered: 'answered')
+
+      # メールの送信
+      ContactMailer.response_email(@inquiry).deliver_now
+
+      redirect_to admin_inquiries_path, notice: 'ステータス変更と返信が完了しました。'
   end
 
   private
-
-  def inquiry_params
-    params.require(:inquiry).permit(:message,:answered)
-  end
 
   def set_inquiry
     @inquiry = Inquiry.find(params[:id])
   end
 
-  def ensure_admin!
-    redirect_to root_path, alert: "アクセス権限がありません。" unless current_user.admin?
+  def response_params
+    params.require(:inquiry).permit(:response)
   end
 
   def set_sidebar

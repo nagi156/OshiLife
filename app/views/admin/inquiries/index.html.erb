@@ -2,23 +2,24 @@
 
 <ul class="nav nav-underline justify-content-center mb-3">
   <li class="nav-item">
-    <%= link_to "回答済", admin_inquiries_path(sort :answered), class: "nav-link #{'active' if @sort_option == 'answered'}" %>
+    <%= link_to "回答済", admin_inquiries_path('answered' == true), class: "nav-link #{'active' if @sort_option == 'answered'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to "未回答", admin_inquiries_path(sort :unanswered), class: "nav-link #{'active' if @sort_option == 'unanswered'}" %>
+    <%= link_to "未回答", admin_inquiries_path('unanswered' == true), class: "nav-link #{'active' if @sort_option == 'unanswered'}" %>
   </li>
 </ul>
 
 <div class="row justify-content-center text-center">
   <div class="col-11 col-md-10 my-5">
     <% if @inquiries.exists? %>
-      <%= @inquiries.each do |inquiry| %>
+      <% @inquiries.each do |inquiry| %>
         <table class="table table-hover">
           <thead>
             <tr>
               <th>問い合わせ内容</th>
               <th>ユーザー名</th>
-              <th>問い合わせ状況</th>
+              <th>問い合わせステータス</th>
+              <th>詳細</th>
             </tr>
           </thead>
           <tbody>
@@ -36,12 +37,13 @@
                   <span class="text-muted"><strong>未回答</strong></span>
                 <% end %>
               </td>
+              <td><%= link_to "詳細", admin_inquiry_path(inquiry), style: "color: #3e8d92;"%></td>
             </tr>
           </tbody>
         </table>
       <% end %>
     <% else %>
-      <p>問い合わせはいません。</p>
+      <p>問い合わせはありません。</p>
     <% end %>
   </div>
 </div>

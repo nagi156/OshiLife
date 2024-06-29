@@ -3,8 +3,8 @@ class Inquiry < ApplicationRecord
 
   validates :message, presence: true
 
-  scope :answered, -> { where(answred: true).order(created_at: :desc) }
-  scope :unanswered, -> { where(answred: false).order(created_at: :desc) }
+  scope :answered, -> { where(answered: true).order(created_at: :desc) }
+  scope :unanswered, -> { where(answered: false).order(created_at: :desc) }
 
 
 end

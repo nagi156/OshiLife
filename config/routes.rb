@@ -49,11 +49,9 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :destroy]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
-    resources :inquiries, only: [:index, :show, :update]
-    resources :contacts, only: [:index, :show] do
-      collection do
-        post :send_individual_email
-        post :send_bulk_email
+    resources :inquiries, only: [:index, :show] do
+      member do
+        patch 'respond'
       end
     end
     get "search" => "searches#search"

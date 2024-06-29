@@ -4,13 +4,13 @@ class Public::InquiriesController < ApplicationController
   before_action :set_sidebar
 
   def new
-    @inquiry = current_user.inquiries.build
+    @inquiry = current_user.inquiries.new
   end
 
   def create
-    @inquiry = current_user.inquiries.build(inquiry_params)
+    @inquiry = current_user.inquiries.new(inquiry_params)
     if @inquiry.save
-      redirect_to inquiry_path(inquiry), notice: 'お問い合わせを送信しました。'
+      redirect_to inquiry_path(@inquiry), notice: 'お問い合わせを送信しました。'
     else
       render :new
     end
@@ -28,7 +28,7 @@ class Public::InquiriesController < ApplicationController
   private
 
   def inquiry_params
-    params.require(:inquiry).permit(:message)
+    params.require(:inquiry).permit(:title,:message)
   end
 
   def ensure_accessible_user

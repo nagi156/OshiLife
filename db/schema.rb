@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_06_23_075656) do
+ActiveRecord::Schema.define(version: 2024_06_29_064544) do
 
   create_table "action_mailbox_inbound_emails", force: :cascade do |t|
     t.integer "status", default: 0, null: false
@@ -103,11 +103,12 @@ ActiveRecord::Schema.define(version: 2024_06_23_075656) do
 
   create_table "inquiries", force: :cascade do |t|
     t.integer "user_id"
-    t.string "title", null: false
-    t.text "message", null: false
+    t.string "title"
+    t.text "message"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "answered", default: false, null: false
+    t.text "response"
     t.index ["user_id"], name: "index_inquiries_on_user_id"
   end
 
