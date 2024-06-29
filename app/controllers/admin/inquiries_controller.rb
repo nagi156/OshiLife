@@ -26,13 +26,17 @@ class Admin::InquiriesController < ApplicationController
   end
 
   def respond
+    if @inquiry.update(answered: 'answered')
       @inquiry.update(response_params)
-      @inquiry.update(answered: 'answered')
 
       # メールの送信
       ContactMailer.response_email(@inquiry).deliver_now
 
       redirect_to admin_inquiries_path, notice: 'ステータス変更と返信が完了しました。'
+    else
+      flash[:alert] = "送信に失敗しました。"
+      render :show
+    end
   end
 
   private

@@ -1,18 +1,17 @@
-<h4>問い合わせ一覧</h4>
+<h4 class="text-center">問い合わせ一覧</h4>
 
 <ul class="nav nav-underline justify-content-center mb-3">
   <li class="nav-item">
-    <%= link_to "回答済", admin_inquiries_path('answered' == true), class: "nav-link #{'active' if @sort_option == 'answered'}" %>
+    <%= link_to "回答済", admin_inquiries_path(answered: "true"), class: "nav-link #{'active' if @sort_option == 'answered'}" %>
   </li>
   <li class="nav-item">
-    <%= link_to "未回答", admin_inquiries_path('unanswered' == true), class: "nav-link #{'active' if @sort_option == 'unanswered'}" %>
+    <%= link_to "未回答", admin_inquiries_path(unanswered: "true"), class: "nav-link #{'active' if @sort_option == 'unanswered'}" %>
   </li>
 </ul>
 
 <div class="row justify-content-center text-center">
-  <div class="col-11 col-md-10 my-5">
+  <div class="col-11 col-md-10 col-lg-6 my-5">
     <% if @inquiries.exists? %>
-      <% @inquiries.each do |inquiry| %>
         <table class="table table-hover">
           <thead>
             <tr>
@@ -23,25 +22,26 @@
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>
-                <%= link_to admin_inquiry_path(inquiry) do %>
-                  <%= inquiry.title %>
-                <% end %>
-              </td>
-              <td><%= inquiry.user.name %></td>
-              <td>
-                <% if inquiry.answered? %>
-                  <span class="text-success"><strong>回答済</strong></span>
-                <% else %>
-                  <span class="text-muted"><strong>未回答</strong></span>
-                <% end %>
-              </td>
-              <td><%= link_to "詳細", admin_inquiry_path(inquiry), style: "color: #3e8d92;"%></td>
-            </tr>
+            <% @inquiries.each do |inquiry| %>
+              <tr>
+                <td><%= inquiry.title %></td>
+                <td>
+                  <%= link_to admin_user_path(inquiry.user) do %>
+                    <%= inquiry.user.name %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if inquiry.answered? %>
+                    <span class="text-success"><strong>回答済</strong></span>
+                  <% else %>
+                    <span class="text-muted"><strong>未回答</strong></span>
+                  <% end %>
+                </td>
+                <td><%= link_to "詳細", admin_inquiry_path(inquiry), style: "color: #3e8d92;"%></td>
+              </tr>
+            <% end %>
           </tbody>
         </table>
-      <% end %>
     <% else %>
       <p>問い合わせはありません。</p>
     <% end %>

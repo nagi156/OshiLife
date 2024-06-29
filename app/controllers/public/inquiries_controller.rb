@@ -12,13 +12,30 @@ class Public::InquiriesController < ApplicationController
     if @inquiry.save
       redirect_to inquiry_path(@inquiry), notice: 'お問い合わせを送信しました。'
     else
+      flash[:alert] = "送信に失敗しました。"
       render :new
     end
   end
 
   def index
-    @inquiries = current_user.inquiries.order(created_at: :desc).page(params[:page])
+    @sort_option = if params[:answered]
+                      'answered'
+                   elsif params[:unanswered]
+                      'unanswered'
+                   else
+                      'default'
+                   end
+
+    @inquiries = case @sort_option
+                 when 'answered'
+                   Inquiry.answered.page(params[:page])
+                 when 'unanswered'
+                   Inquiry.unanswered.page(params[:page])
+                 else
+                   Inquiry.all.order(created_at: :desc).page(params[:page])
+                 end
   end
+
 
   def show
     @inquiry = Inquiry.find(params[:id])
