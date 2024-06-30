@@ -1,0 +1,56 @@
+<div class="d-flex justify-content-center align-items-center position-relative my-5">
+  <h4 class="flex-grow-1 text-center mb-0">お問い合わせ一覧</h4>
+  <%= link_to new_inquiry_path, class: "ml-3 new_post btn btn_post" do %>
+    <i class="fa-solid fa-pen-to-square" style="font-size:1.5em;"></i> 問い合わせフォーム
+  <% end %>
+</div>
+
+<ul class="nav nav-underline justify-content-center mb-3">
+  <li class="nav-item">
+    <%= link_to "回答済", inquiries_path(answered: "true"), class: "nav-link #{'active' if @sort_option == 'answered'}" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to "未回答", inquiries_path(unanswered: "true"), class: "nav-link #{'active' if @sort_option == 'unanswered'}" %>
+  </li>
+</ul>
+
+
+<div class="row justify-content-center text-center">
+  <div class="col-11 col-md-10 my-5">
+    <% if @inquiries.exists? %>
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>お問い合わせ内容</th>
+              <th>お問い合わせ状況</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @inquiries.each do |inquiry| %>
+              <tr>
+                <td>
+                  <%= link_to inquiry_path(inquiry) do %>
+                    <%= inquiry.title %>
+                  <% end %>
+                </td>
+                <td>
+                  <% if inquiry.answered? %>
+                    <span class="text-success"><strong>回答済</strong></span>
+                  <% else %>
+                    <span class="text-muted"><strong>未回答</strong></span>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+    <% else %>
+      <p>お問い合わせはありません。</p>
+    <% end %>
+  </div>
+</div>
+<div class="row justify-content-center mb-5">
+  <div class="col-6">
+    <%= paginate @inquiries %>
+  </div>
+</div>

@@ -25,6 +25,10 @@ ja:
         recipe_image: 作り方の画像
       comment:
         comment: コメント
+      inquiry:
+        title: お問い合わせ内容
+        message: お問い合わせ詳細
+        response: 返信内容
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'

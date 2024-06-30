@@ -1,0 +1,61 @@
+<h4 class="text-center">問い合わせ詳細</h4>
+<div class="row justify-content-center">
+  <div class="card col-11 col-md-10 col-lg-6 my-5">
+    <div class="row my-3">
+      <span class="col-6">問い合わせの内容</span>
+      <span class="col-6"><%= @inquiry.title %></span>
+    </div>
+    <div class="row mb-3">
+      <span class="col-6">ユーザー名</span>
+      <span class="col-6"><%= @inquiry.user.name %></span>
+    </div>
+    <div class="row mb-3">
+      <span class="col-6">問い合わせの詳細</span>
+      <span class="col-6"><%= @inquiry.message %></span>
+    </div>
+    <div class="row mb-5">
+      <span class="col-6">問い合わせ状況</span>
+      <span class="col-6">
+        <% if @inquiry.answered? %>
+          <span class="text-success"><strong>回答済</strong></span>
+        <% else %>
+          <span class="text-muted"><strong>未回答</strong></span>
+        <% end %>
+      </span>
+    </div>
+    <% if flash[:inquiry_errors].present? %>
+      <div class="mt-4">
+        <div class="alert alert-danger">
+          <ul>
+            <% flash[:inquiry_errors].each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+    <%= form_with model: @inquiry, url: respond_admin_inquiry_path(@inquiry), method: :patch do |f| %>
+      <div class="form-group row">
+        <%= f.label "返信",class: "col-3" %>
+        <%= f.text_area :response, row: 5 ,class: "col-8 form-control" %>
+      </div>
+      <div class="form-group row">
+        <div class="col-11 text-right">
+          <%= f.submit "送信", class: "btn btn_post" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="row justify-content-center mb-5">
+  <div class="col-11 col-md-10 col-lg-6 text-right">
+    <%= link_to "問い合わせ一覧に戻る", admin_inquiries_path, class: "btn btn_return" %>
+  </div>
+</div>
+
+
+
+
+
+

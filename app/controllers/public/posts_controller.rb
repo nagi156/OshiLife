@@ -45,7 +45,7 @@ class Public::PostsController < ApplicationController
              when 'most_favorites'
                Post.most_favorites.page(params[:page])
              when 'following'
-               Post.where(user_id: current_user.following_ids).order(created_at: :desc).page(params[:page])
+               Post.following(user_id: current_user.following_ids).page(params[:page])
              else
                Post.all.order(created_at: :desc).page(params[:page])
              end

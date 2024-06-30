@@ -63,7 +63,6 @@ gem 'jquery-rails'
 gem 'rails-i18n'
 gem "enum_help"
 
-
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'

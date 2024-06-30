@@ -35,6 +35,7 @@ Rails.application.routes.draw do
     resources :chats, only: [:show, :create, :destroy]
     resources :notifications, only: [:index, :destroy]
     resources :genres, only: [:index,:show]
+    resources :inquiries, only: [:new, :create, :index, :show]
   end
 
   #ここから管理者のルーティング↓
@@ -48,6 +49,12 @@ Rails.application.routes.draw do
     resources :posts, only: [:show, :destroy]
     resources :users, except: [:new, :destroy]
     resources :comments, only: [:destroy]
+    resources :inquiries, only: [:index, :show] do
+      member do
+        patch 'respond'
+        get "send_mail"
+      end
+    end
     get "search" => "searches#search"
   end
 
