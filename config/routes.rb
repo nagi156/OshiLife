@@ -52,6 +52,7 @@ Rails.application.routes.draw do
     resources :inquiries, only: [:index, :show] do
       member do
         patch 'respond'
+        get "send_mail"
       end
     end
     get "search" => "searches#search"

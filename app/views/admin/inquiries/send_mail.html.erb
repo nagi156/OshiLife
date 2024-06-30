@@ -1,0 +1,17 @@
+<div class="row justify-content-center my-5">
+  <div>
+    <h2 class="mb-3">送信が完了しました</h2>
+    <p>内容は以下の通りです。</p>
+    <div>
+      [タイトル]<p class="font-weight-bold"><%= @inquiry.title %></p>
+    </div>
+    <div>
+      [本文]<p class="font-weight-bold"><%= safe_join(@inquiry.response.split("\n"),tag(:br)) %></p>
+    </div>
+  </div>
+</div>
+<div class="row justify-content-center">
+  <div class="col-11 col-md-10 col-lg-6 text-right">
+    <%= link_to "問い合わせ一覧に戻る", admin_inquiries_path, class: "btn btn_return" %>
+  </div>
+</div>

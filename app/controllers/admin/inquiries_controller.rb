@@ -1,6 +1,6 @@
 class Admin::InquiriesController < ApplicationController
   before_action :authenticate_admin!
-  before_action :set_inquiry, except: [:index]
+  before_action :set_inquiry, only: [:show, :respond, :send_mail]
   before_action :set_sidebar
 
   def index
@@ -26,27 +26,32 @@ class Admin::InquiriesController < ApplicationController
   end
 
   def respond
-    if @inquiry.update(answered: 'answered')
-      @inquiry.update(response_params)
+    # assign_attributes: オブジェクトの属性を一括して設定するが、データベースへの保存は行わない。
+    @inquiry.assign_attributes(response_params.merge(answered: 'answered'))
 
-      # メールの送信
+    # context: :admin: バリデーションのコンテキストを指定し、特定の条件下でのみバリデーションを実行する
+    if @inquiry.save(context: :admin)
       ContactMailer.response_email(@inquiry).deliver_now
-
-      redirect_to admin_inquiries_path, notice: 'ステータス変更と返信が完了しました。'
+      redirect_to send_mail_admin_inquiry_path, notice: 'ステータス変更と返信が完了しました。'
     else
       flash[:alert] = "送信に失敗しました。"
-      render :show
+      flash[:inquiry_errors] = @inquiry.errors.full_messages
+      redirect_to admin_inquiry_path(@inquiry)
     end
   end
 
-  private
-
-  def set_inquiry
-    @inquiry = Inquiry.find(params[:id])
+  def send_mail
   end
+
+
+  private
 
   def response_params
     params.require(:inquiry).permit(:response)
+  end
+
+  def set_inquiry
+    @inquiry = Inquiry.find(params[:id])
   end
 
   def set_sidebar

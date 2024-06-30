@@ -1,8 +1,5 @@
 <h4 class="text-center">問い合わせ詳細</h4>
 <div class="row justify-content-center">
-  <div class="text-center">
-    <%= render 'layouts/errors', obj: @inquiry %>
-  </div>
   <div class="card col-11 col-md-10 col-lg-6 my-5">
     <div class="row my-3">
       <span class="col-6">問い合わせの内容</span>
@@ -26,6 +23,17 @@
         <% end %>
       </span>
     </div>
+    <% if flash[:inquiry_errors].present? %>
+      <div class="mt-4">
+        <div class="alert alert-danger">
+          <ul>
+            <% flash[:inquiry_errors].each do |error| %>
+              <li><%= error %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
     <%= form_with model: @inquiry, url: respond_admin_inquiry_path(@inquiry), method: :patch do |f| %>
       <div class="form-group row">
         <%= f.label "返信",class: "col-3" %>
@@ -42,7 +50,7 @@
 
 <div class="row justify-content-center mb-5">
   <div class="col-11 col-md-10 col-lg-6 text-right">
-    <%= link_to "戻る", admin_inquiries_path, class: "btn btn_return" %>
+    <%= link_to "問い合わせ一覧に戻る", admin_inquiries_path, class: "btn btn_return" %>
   </div>
 </div>
 
