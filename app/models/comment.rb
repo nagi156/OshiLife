@@ -5,11 +5,11 @@ class Comment < ApplicationRecord
 
   validates :comment, presence: true
 
-  after_create_commit :create_notifications
+  include NotificationConcern
 
-  private
+  after_create :create_notifications
 
   def create_notifications
-    Notification.create(subject: self, user: self.post.user, action_type: :commented_to_own_post)
+    create_notification(self.post.user, self, :commented_to_own_post)
   end
 end
