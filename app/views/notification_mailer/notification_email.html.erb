@@ -1,0 +1,17 @@
+<p>【Oshi Life】</p>
+<p><%= @user.name %>さんへ通知をお知らせします。</p>
+
+<p>
+  <% case @notification.action_type %>
+  <% when 'commented_to_own_post' %>
+    <%= @subject.user.name %>さんがあなたの投稿にコメントしました。
+  <% when 'liked_to_own_post' %>
+    <%= @subject.user.name %>さんがあなたの投稿にいいねをしました。
+  <% when 'followed_me' %>
+    <%= @subject.following.name %> さんがあなたをフォローしました。
+  <% when 'chated_me' %>
+    <%= @subject.user.name %> さんがあなたにメッセージを送りました。
+  <% else %>
+    新しい通知です。
+  <% end %>
+</p>

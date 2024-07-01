@@ -5,6 +5,7 @@ class Public::NotificationsController < ApplicationController
     @notifications = current_user.notifications.order(created_at: :desc).page(params[:page])
     @notifications.where(checked: false).each do |notification|
       notification.update(checked: true)
+      NotificationMailer.notification_email(current_user, notification).deliver_now
     end
     # サイドバーの情報取得のため
     @genres = Genre.all.page(params[:sidebar_page]).per(5)
