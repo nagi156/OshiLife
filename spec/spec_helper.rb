@@ -91,4 +91,7 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+  config.mock_with :rspec do |mocks|
+    mocks.allow_message_expectations_on_nil = true
+  end
 end

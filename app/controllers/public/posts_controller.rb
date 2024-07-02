@@ -99,7 +99,7 @@ class Public::PostsController < ApplicationController
 
   def ensure_guest_user
     if current_user&.guest_user?
-      redirect_to request.referer, alert: "閲覧のみ可能です。ご利用の際はご登録してご利用ください。"
+      redirect_to(request.referer || root_path, alert: "閲覧のみ可能です。ご利用の際はご登録してご利用ください。")
     end
   end
   # メインコンテンツのジャンル取得

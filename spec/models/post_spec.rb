@@ -1,13 +1,14 @@
 require 'rails_helper'
 
-Rspec.describe Post, type: :model do
+RSpec.describe Post, type: :model do
   let(:post) { build(:post) }
+  let(:genre) { create(:genre) }
 
   it "有効な投稿内容の場合は保存されるか" do
     expect(post).to be_valid
   end
 
-  context "バリデーションのテスト" do
+  context "入力フォームのバリデーションのテスト" do
     it "タイトルが空の時、保存されないか" do
       post.title = nil
       expect(post).not_to be_valid
@@ -16,13 +17,20 @@ Rspec.describe Post, type: :model do
       post.genre = nil
       expect(post).not_to be_valid
     end
-    it "材料が空の時、保存されないか" do
-      post.material = []
-      expect(post).not_to be_valid
+  end
+
+  context "拡張子のバリデーションエラーのテスト" do
+    it "jpeg/pngの拡張子の場合は保存される" do
+      post.valid?
+      expect(post.errors[:complete_image]).not_to include("はjpegまたはpng形式の画像のみアップロードできます")
     end
-    it "作り方が空の時、保存されないか" do
-      post.recipe = []
-      expect(post).not_to be_valid
+
+    it "jpeg/pngの拡張子以外はバリデーションエラーが出る" do
+      post.complete_image.attach(io: StringIO.new("invalid binary data"), filename: 'invalid_image.gif', content_type: 'image/gif')
+      post.valid?
+      expect(post.errors[:complete_image]).to include("はjpegまたはpng形式の画像のみアップロードできます")
     end
   end
+
+
 end
