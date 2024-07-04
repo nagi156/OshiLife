@@ -8,11 +8,15 @@ FactoryBot.define do
     transient do
       materials_count { 2 } # デフォルトで2つのmaterialsを生成する例
       recipes_count { 2 }
-      image_data { Faker::File.file }
     end
 
-    after(:build) do |post, evaluator|
-      post.complete_image.attach(io: StringIO.new(evaluator.image_data), filename: 'test_image.jpeg', content_type: 'image/jpeg')
+    after(:build) do |post|
+      image_data = Faker::Lorem.characters(number: 10) # ダミーのデータを生成
+      post.complete_image.attach(
+        io: StringIO.new(image_data),
+        filename: 'test_image.jpeg',
+        content_type: 'image/jpeg'
+      )
     end
 
     after(:create) do |post, evaluator|

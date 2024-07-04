@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Recipe, type: :model do
   let(:post) { create(:post) }
+  let(:recipe) { build(:recipe) }
 
   it "画像の拡張子が利用できる拡張子の場合は保存ができる" do
 
@@ -19,15 +20,15 @@ RSpec.describe Recipe, type: :model do
 
   context "拡張子のバリデーションエラーのテスト" do
     it "jpeg/pngの拡張子の場合は保存される" do
-      
+
       recipe.valid?
       expect(recipe.errors[:recipe_image]).not_to include("はjpegまたはpng形式の画像のみアップロードできます")
     end
 
     it "jpeg/pngの拡張子以外はバリデーションエラーが出る" do
-      post.complete_image.attach(io: File.open('path/to/invalid_image.gif'), filename: 'invalid_image.gif', content_type: 'image/gif')
-      post.valid?
-      expect(post.errors[:recipe_image]).to include("はjpegまたはpng形式の画像のみアップロードできます")
+      recipe.recipe_image.attach(io: StringIO.new("invalid binary data"), filename: 'invalid_image.gif', content_type: 'image/gif')
+      recipe.valid?
+      expect(recipe.errors[:recipe_image]).to include("はjpegまたはpng形式の画像のみアップロードできます")
     end
   end
 end
