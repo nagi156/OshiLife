@@ -100,34 +100,40 @@ RSpec.describe "Posts", type: :request do
   end
 
   describe "GET /edit" do
+    let(:other_user) { create(:user) }
+    let(:user_post) { create(:post, user: user) }
+    let(:other_post) { create(:post, user: other_user) }
+
     context "ログインユーザーの場合" do
       before do
         sign_in user
-        visit edit_post_path(post)
       end
 
-      it "編集ページにアクセスできる" do
+      it "自分投稿の編集ページにアクセスできる" do
+        get edit_post_path(user_post)
         expect(response).to have_http_status(:success)
       end
+      it "他のユーザーの投稿の編集ページにアクセスできない。" do
+        get edit_post_path(other_post)
+        expect(response).to redirect_to(posts_path)
+      end
+
     end
 
     context "ゲストユーザーの場合" do
       before do
         sign_in guest_user
-        get edit_post_path(post)
       end
       it "アクセスできない。" do
-        
-      get new_post_path
-        expect(response).to redirect_to(root_path)
-        follow_redirect!
-        expect(response.body).to include('閲覧のみ可能です。ご利用の際はご登録してご利用ください。')
+
+      get edit_post_path(user_post)
+        expect(response).to redirect_to(posts_path)
       end
     end
 
     context "未ログインユーザーの場合" do
       before do
-        get edit_post_path(post)
+        get edit_post_path(user_post)
       end
 
       it "サインインページにリダイレクトされる" do
@@ -137,35 +143,48 @@ RSpec.describe "Posts", type: :request do
   end
 
   describe "PATCH /update" do
+    let(:other_user) { create(:user) }
+    let(:user_post) { create(:post, user: user) }
+    let(:other_post) { create(:post, user: other_user) }
+
     context "ログインユーザーの場合" do
       before do
         sign_in user
-        patch post_path(post), params: { post: { title: "Updated Title" } }
       end
 
-      it "投稿が更新される" do
-        expect(response).to redirect_to(post_path(post))
-        follow_redirect!
-        expect(response.body).to include("Updated Title")
+      it "自身の投稿が編集して更新できる" do
+        test1_path = Rails.root.join('spec', 'fixtures', 'files', 'test1.png')
+        test2_path = Rails.root.join('spec', 'fixtures', 'files', 'test2.png')
+
+        patch post_path(user_post), params: {
+          post: {
+            title: "Updated Title",
+            complete_image: fixture_file_upload(test1_path, 'image/png'),
+            recipe_image: fixture_file_upload(test2_path, 'image/png')
+          }
+        }
       end
+      it "他ユーザーの投稿の編集して更新はできない" do
+        patch post_path(other_post), params: { post: { title: "Updated Title" } }
+        expect(response).to redirect_to(posts_path)
+      end
+
     end
 
     context "ゲストユーザーの場合" do
       before do
         sign_in guest_user
-        patch post_path(post), params: { post: { title: "Updated Title" } }
+        patch post_path(user_post), params: { post: { title: "Updated Title" } }
       end
 
       it "アクセスが制限される" do
-        expect(response).to redirect_to(request.referer || root_path)
-        follow_redirect!
-        expect(response.body).to include("閲覧のみ可能です。ご利用の際はご登録してご利用ください。")
+        expect(response).to redirect_to(posts_path)
       end
     end
 
     context "未ログインユーザーの場合" do
       before do
-        patch post_path(post), params: { post: { title: "Updated Title" } }
+        patch post_path(user_post), params: { post: { title: "Updated Title" } }
       end
 
       it "サインインページにリダイレクトされる" do
