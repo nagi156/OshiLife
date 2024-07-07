@@ -153,22 +153,23 @@ RSpec.describe "Posts", type: :request do
       end
 
       it "自身の投稿が編集して更新できる" do
-        test1_path = Rails.root.join('spec', 'fixtures', 'files', 'test1.png')
-        test2_path = Rails.root.join('spec', 'fixtures', 'files', 'test2.png')
-
         patch post_path(user_post), params: {
           post: {
-            title: "Updated Title",
-            complete_image: fixture_file_upload(test1_path, 'image/png'),
-            recipe_image: fixture_file_upload(test2_path, 'image/png')
+            title: "Updated Title"
+            }
           }
-        }
-      end
+
+      expect(response).to redirect_to(post_path(user_post))
+      follow_redirect!
+
+      expect(response.body).to include("Updated Title")
+      expect(response).to have_http_status(:ok)
+    end
+
       it "他ユーザーの投稿の編集して更新はできない" do
         patch post_path(other_post), params: { post: { title: "Updated Title" } }
         expect(response).to redirect_to(posts_path)
       end
-
     end
 
     context "ゲストユーザーの場合" do
@@ -192,5 +193,24 @@ RSpec.describe "Posts", type: :request do
       end
     end
   end
+
+  # describe "Delete/destroy" do
+  #   let(:other_user) { create(:user) }
+  #   let(:user_post) { create(:post, user: user) }
+  #   let(:other_post) { create(:post, user: other_user) }
+
+  #   context "ログインユーザー" do
+  #     before do
+  #       sign_in user
+  #     end
+
+  #     it "自分の投稿を削除できる" do
+
+  #     end
+
+  #   end
+
+
+  # end
 
 end

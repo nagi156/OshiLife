@@ -10,18 +10,14 @@ FactoryBot.define do
       recipes_count { 2 }
     end
 
-    after(:build) do |post|
-      image_data = Faker::Lorem.characters(number: 10) # ダミーのデータを生成
-      post.complete_image.attach(
-        io: StringIO.new(image_data),
-        filename: 'test_image.jpeg',
-        content_type: 'image/jpeg'
-      )
-    end
+
 
     after(:create) do |post, evaluator|
       create_list(:material, evaluator.materials_count, post: post)
       create_list(:recipe, evaluator.recipes_count, post: post)
     end
+  end
+  factory :complete_image do
+    image_file { fixture_file_upload(Rails.root.join('spec', 'fixtures', 'test1.jpg'), 'image/jpeg') }
   end
 end
