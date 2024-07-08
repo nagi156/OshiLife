@@ -73,7 +73,7 @@ class Public::PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if @post.destroy
-      redirect_to my_page_path
+      redirect_to my_page_path, notice: "削除"
     else
       flash[:alert] = "削除できませんでした。"
       render :show

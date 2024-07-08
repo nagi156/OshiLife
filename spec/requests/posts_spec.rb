@@ -194,23 +194,49 @@ RSpec.describe "Posts", type: :request do
     end
   end
 
-  # describe "Delete/destroy" do
-  #   let(:other_user) { create(:user) }
-  #   let(:user_post) { create(:post, user: user) }
-  #   let(:other_post) { create(:post, user: other_user) }
+  describe "Delete/destroy" do
+    let(:other_user) { create(:user) }
+    let(:user_post) { create(:post, user: user) }
+    let(:other_post) { create(:post, user: other_user) }
 
-  #   context "ログインユーザー" do
-  #     before do
-  #       sign_in user
-  #     end
+    context "ログインユーザー" do
+      before do
+        sign_in user
+      end
 
-  #     it "自分の投稿を削除できる" do
+      it "自分の投稿を削除できる" do
+        delete post_path(user_post)
 
-  #     end
+        expect(response).to redirect_to(my_page_path)
+        follow_redirect!
 
-  #   end
+        expect(response).to have_http_status(:ok)
+      end
+      it "他ユーザーの投稿は削除できない" do
+        delete post_path(other_post)
+        expect(response).to redirect_to(my_page_path)
+      end
+    end
 
+    context "ゲストユーザー" do
+      before do
+        sign_in guest_user
+        delete post_path(user_post)
+        allow(request).to receive(:referer).and_return(root_path)
+      end
+      it "アクセスできない" do
+        expect(response).to redirect_to(root_path)
+      end
+    end
 
-  # end
+    context "未ログインユーザー" do
+      before do
+        delete post_path(user_post)
+      end
+      it "サインイン画面にリダイレクト" do
+        expect(response).to redirect_to(new_user_session_path)
+      end
+    end
+  end
 
 end
