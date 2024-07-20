@@ -267,6 +267,10 @@ footer {
   width: 100%;
 }
 
+//フォームのカスタマイズ（最初のフォーム削除できないようにする）
+#first-material-field.button_delete.disabled{
+  opacity: 0.5;
+}
 
 // 文字サイズ変更
 @media (min-width: 992px) {
