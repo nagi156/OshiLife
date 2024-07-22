@@ -268,7 +268,7 @@ footer {
 }
 
 //フォームのカスタマイズ（最初のフォーム削除できないようにする）
-#first-material-field.button_delete.disabled{
+.nested-fields:first-child{
   opacity: 0.5;
 }
 

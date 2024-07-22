@@ -27,14 +27,3 @@ document.addEventListener("turbolinks:load", function() {
         }
     });
 });
-
-document.addEventListener('DOMContentLoaded', function() {
-  const firstMaterialField = document.getElementById('first-material-field');
-  if (firstMaterialField) {
-    const deleteButton = firstMaterialField.querySelector('.btn_delete');
-    if (deleteButton) {
-      deleteButton.disabled = true;
-      deleteButton.classList.add('disabled');
-    }
-  }
-});
